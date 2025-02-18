@@ -5,9 +5,14 @@ import Link from 'next/link';
 
 export default function Welcome() {
   return (
-    <AuthLayout>
+    // <AuthLayout>
+    <>
       <Head>
         <title>Welcome | NutriBox</title>
+        <meta name="description" content="Welcome to nutribox app" />
+        <meta property="og:title" content="Welcome | NutriBox" />
+        <meta property="og:description" content="Welcome to nutribox app" />
+        <meta property="og:image" content="/og-image.jpg" />
       </Head>
       <div className='w-full flex flex-col outfit-font'>
         <img src="/assets/img/welcome.png" alt="Nubo Welcome" className="w-full h-auto mx-auto mt-10" />
@@ -22,6 +27,7 @@ export default function Welcome() {
           Lanjutkan dengan Google
         </Button>
       </div>
-    </AuthLayout>
+      </>
+    // </AuthLayout>
   );
 }

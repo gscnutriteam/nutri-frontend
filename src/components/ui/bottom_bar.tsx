@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Home, BarChart2, MessageCircle, User, Scan } from "lucide-react";
-import { usePage } from "@inertiajs/react";
+// import { usePage } from "@inertiajs/react";
 
 const BottomBar: React.FC = () => {
-  const { url } = usePage();
+  // const { url } = usePage();
   const [active, setActive] = useState("");
 
-  useEffect(() => {
-    setActive(url);
-  }, [url]);
+  // useEffect(() => {
+  //   setActive(url);
+  // }, [url]);
 
   const classActive = "text-primary bg-bg-selected rounded-lg cursor-default";
   const iconActive = "text-primary";
