@@ -2,6 +2,18 @@ import AuthLayout from "@/layout/auth_layout";
 import Head from "next/head";
 import { RegisterInfoForm } from "../components/register_info_form";
 import { BackButton } from "../components/back_button";
+import { Metadata } from "next";
+
+export const metaDataRegisterInfo: Metadata = {
+  title: 'Register Detail | NutriBox',
+  description: 'Register Detail page nutribox app',
+  icons: "/assets/img/logo.png",
+  openGraph: {
+    title: 'Register Detail | NutriBox',
+    description: 'Register Detail page nutribox app',
+  }
+}
+
 
 export default function RegisterInfo() {
   return (

@@ -53,12 +53,12 @@ export const RegisterInfoForm = () => {
   const form = useForm<z.infer<typeof registerInfoSchema>>({
     resolver: zodResolver(registerInfoSchema),
     defaultValues: {
-      age: age ?? undefined,
+      age: typeof age === 'number' ? age : undefined,
       gender: gender ?? undefined,
-      height: height ?? undefined,
-      weight: weight ?? undefined,
+      height: typeof height === 'number' ? height : undefined,
+      weight: typeof weight === 'number' ? weight : undefined,
       physicalActivity: physicalActivity ?? undefined,
-      medicalHistory: medicalHistory,
+      medicalHistory: medicalHistory ?? '',
     },
   });
 
@@ -74,7 +74,9 @@ export const RegisterInfoForm = () => {
       physicalActivity: values.physicalActivity as PhsyicalActivity,
       medicalHistory: values.medicalHistory,
     });
+    
   }
+
   return (
     <>
       <Form {...form}>
@@ -93,6 +95,7 @@ export const RegisterInfoForm = () => {
                     type="number"
                     placeholder="Masukkan umur"
                     {...field}
+                    value={field.value || ''}
                     onChange={(e) => field.onChange(e.target.valueAsNumber)}
                   />
                 </FormControl>
@@ -108,7 +111,7 @@ export const RegisterInfoForm = () => {
                 <FormLabel className="font-semibold">Jenis Kelamin</FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
+                  value={field.value || ''}
                 >
                   <FormControl>
                     <SelectTrigger>
@@ -137,6 +140,7 @@ export const RegisterInfoForm = () => {
                     type="number"
                     placeholder="Masukkan tinggi badan"
                     {...field}
+                    value={field.value || ''}
                     onChange={(e) => field.onChange(e.target.valueAsNumber)}
                   />
                 </FormControl>
@@ -157,6 +161,7 @@ export const RegisterInfoForm = () => {
                     type="number"
                     placeholder="Masukkan berat badan"
                     {...field}
+                    value={field.value || ''}
                     onChange={(e) => field.onChange(e.target.valueAsNumber)}
                   />
                 </FormControl>
@@ -172,7 +177,7 @@ export const RegisterInfoForm = () => {
                 <FormLabel className="font-semibold">Aktivitas Fisik</FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
+                  value={field.value || ''}
                 >
                   <FormControl>
                     <SelectTrigger>
@@ -198,7 +203,11 @@ export const RegisterInfoForm = () => {
                   Riwayat Penyakit
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="Masukkan riwayat penyakit" {...field} />
+                  <Input
+                    placeholder="Masukkan riwayat penyakit"
+                    {...field}
+                    value={field.value || ''}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>

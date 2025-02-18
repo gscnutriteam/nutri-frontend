@@ -1,11 +1,21 @@
 import { Button } from '@/components/ui/button';
 import AuthLayout from '@/layout/auth_layout';
+import { Metadata } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 
+export const metadataWelcome: Metadata = {
+  title: 'Welcome | NutriBox',
+  description: 'Welcome page nutribox app',
+  icons: "/assets/img/logo.png",
+  openGraph: {
+    title: 'Welcome | NutriBox',
+    description: 'Welcome page nutribox app',
+  }
+}
+
 export default function Welcome() {
   return (
-    // <AuthLayout>
     <>
       <Head>
         <title>Welcome | NutriBox</title>
@@ -28,6 +38,5 @@ export default function Welcome() {
         </Button>
       </div>
       </>
-    // </AuthLayout>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 import { useRouter } from "next/navigation";
 
-export const BackButton = ({ className = "" }: {className?: string}) => {
+export const BackButton = ({ className = "cursor-pointer" }: {className?: string}) => {
   const router = useRouter();
   return (
     <div className={className} onClick={()=> router.back()}>

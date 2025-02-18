@@ -1,12 +1,21 @@
-import AuthLayout from '@/layout/auth_layout';
-import Head from 'next/head';
-import { RegisterUserForm } from '../components/register_user_form';
-import { BackButton } from '../components/back_button';
+import Head from "next/head";
+import { RegisterUserForm } from "../components/register_user_form";
+import { BackButton } from "../components/back_button";
+import { Metadata } from "next";
 
+export const metadataRegisterUser: Metadata = {
+  title: 'Register | NutriBox',
+  description: 'Register page nutribox app',
+  icons: "/assets/img/logo.png",
+  openGraph: {
+    title: 'Register | NutriBox',
+    description: 'Register page nutribox app',
+  }
+}
 
 export default function RegisterUser() {
   return (
-    <AuthLayout>
+    <>
       <Head>
         <title>Welcome | NutriBox</title>
       </Head>
@@ -23,6 +32,6 @@ export default function RegisterUser() {
         </p>
         <RegisterUserForm />
       </div>
-    </AuthLayout>
+    </>
   );
 }
