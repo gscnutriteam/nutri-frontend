@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { registerUserSchema } from "../schema/form_schema";
 import { useRegisterStore } from "../store/register_store";
 import { useRouter } from "next/navigation";
-import { useAppRouter } from "@/app/app/hooks/useAppRouter";
+import { useAppRouter } from "@/hooks/useAppRouter";
 
 export const RegisterUserForm = () => {
   const { name, email, password, set } = useRegisterStore();

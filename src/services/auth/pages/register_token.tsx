@@ -1,14 +1,9 @@
 import AuthLayout from '@/layout/auth_layout';
-import Head from 'next/head';
 import { RegisterTokenForm } from '../components/register_token_form';
 
 export default function RegisterToken() {
   return (
     <AuthLayout>
-      <Head>
-        <title>Welcome | Nutri
-          App</title>
-      </Head>
       <div className="w-full flex flex-col outfit-font">
         <img
           src="/assets/img/register-3.png"

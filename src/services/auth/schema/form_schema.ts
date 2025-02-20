@@ -84,5 +84,15 @@ const registerUserSchema = z
       path: ['confirmPassword'],
     });
 
+  const loginSchema = z.object({
+    email: z.string({
+      required_error: 'Email wajib diisi',
+    }).email({
+      message: 'Email tidak valid',
+    }),
+    password: z.string({
+      required_error: 'Password wajib diisi',
+    }),
+  });
 
-export { registerInfoSchema, registerTokenSchema, registerUserSchema };
+export { registerInfoSchema, registerTokenSchema, registerUserSchema, loginSchema };

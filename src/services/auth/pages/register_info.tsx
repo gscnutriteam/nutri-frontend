@@ -1,5 +1,3 @@
-import AuthLayout from "@/layout/auth_layout";
-import Head from "next/head";
 import { RegisterInfoForm } from "../components/register_info_form";
 import { BackButton } from "../components/back_button";
 import { Metadata } from "next";
@@ -17,10 +15,7 @@ export const metaDataRegisterInfo: Metadata = {
 
 export default function RegisterInfo() {
   return (
-    <AuthLayout>
-      <Head>
-        <title>Welcome | NutriBox</title>
-      </Head>
+    <>
       <div className="w-full flex flex-col outfit-font">
        <BackButton />
         <img
@@ -34,6 +29,6 @@ export default function RegisterInfo() {
         </p>
         <RegisterInfoForm />
       </div>
-    </AuthLayout>
+    </>
   );
 }

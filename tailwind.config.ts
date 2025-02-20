@@ -20,6 +20,8 @@ export default {
 		  colors: {
 			main: 'var(--main)',
 			overlay: 'var(--overlay)',
+			button: 'var(--button)',
+			select: 'var(--select)',
 			bg: {
 				DEFAULT: 'var(--bg)',  // This defines the base bg color
 				selected: '#FFFAE6'     // This adds the selected variant

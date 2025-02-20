@@ -1,19 +1,19 @@
-import { RegisterUserForm } from "../components/register_user_form";
 import { BackButton } from "../components/back_button";
 import { Metadata } from "next";
+import { LoginForm } from "../components/login_form";
 import LinkAPP from "@/components/util/link";
 
-export const metadataRegisterUser: Metadata = {
-  title: 'Register | NutriBox',
-  description: 'Register page nutribox app',
+export const metadataLoginUser: Metadata = {
+  title: 'Login | NutriBox',
+  description: 'Login page nutribox app',
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: 'Register | NutriBox',
-    description: 'Register page nutribox app',
+    title: 'Login | NutriBox',
+    description: 'Login page nutribox app',
   }
 }
 
-export default function RegisterUser() {
+export default function Login() {
   return (
     <>
       <div className="w-full flex flex-col outfit-font">
@@ -23,13 +23,13 @@ export default function RegisterUser() {
           alt="Nubo Welcome"
           className="w-1/2 h-auto mx-auto mt-10"
         />
-        <h1 className="text-3xl mt-5 text-center font-semibold">Register</h1>
+        <h1 className="text-3xl mt-5 text-center font-semibold">Login</h1>
         <p className="text-center mt-2 text-sm">
-          Isi data diri anda di bawah ini
+          Masukkan akun anda di bawah ini
         </p>
-        <RegisterUserForm />
+        <LoginForm />
         <p className="text-center mt-4 text-sm">
-          Sudah punya akun? <LinkAPP href="/login" className="text-button underline">Login</LinkAPP>
+          Belum punya akun? <LinkAPP href="/register" className="text-button underline">Register</LinkAPP>
         </p>
       </div>
     </>

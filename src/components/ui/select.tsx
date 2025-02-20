@@ -10,7 +10,7 @@ type SelectVariant = 'default' | 'primary' | 'neutral';
 
 const getVariantStyles = (variant: SelectVariant = 'default') => {
   const variants = {
-    default: 'bg-main text-black',
+    default: 'bg-select text-white',
     primary: 'bg-primary text-white',
     neutral: 'bg-white text-black',
   };
