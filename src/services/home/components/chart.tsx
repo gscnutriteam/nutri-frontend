@@ -135,7 +135,7 @@ const Chart: React.FC<ChartProps> = ({
           </Button>
           <Button
             variant="default"
-            className="text-sm bg-[#FFD233] hover:bg-[#FFD233]/90"
+            className="text-sm "
           >
             Selengkapnya
           </Button>

@@ -1,3 +1,4 @@
+"use client"
 import { LucideUser, Star, User, User2 } from 'lucide-react';
 import React from 'react';
 import BMIStats from './BMI_stats';
