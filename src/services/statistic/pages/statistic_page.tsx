@@ -86,7 +86,7 @@ export default function Statistics({ user }: Props) {
           className="w-full absolute -z-0 top-0 left-0 h-full object-cover opacity-10"
           alt="pattern"
         />
-        <BackButton className="ms-8" />
+        <BackButton className="ms-8 mt-4 z-10" variant="white" />
         <div className="w-full p-4">
           <div className="rounded-xl px-4 shadow-sm">
             <Chart

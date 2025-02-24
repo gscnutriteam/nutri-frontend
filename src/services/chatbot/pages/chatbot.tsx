@@ -1,19 +1,12 @@
 import { Metadata } from "next";
 import ChatSection from "../components/chat_section";
 import { BackButton } from "@/services/auth/components/back_button";
+import { HeaderFeature } from "@/components/ui/header_feature";
 
 export default function ChatBot() {
   return (
     <div className="bg-primary">
-      <div className="relative flex w-full bg-primary">
-        <BackButton
-          variant="white"
-          className="absolute top-0 flex items-center left-2 h-full"
-        />
-        <p className="text-center w-full text-xl py-2 font-semibold text-white">
-          Chat Nubo
-        </p>
-      </div>
+      <HeaderFeature title="Chat Nubo" variant={"white"} className="text-center w-full" />
       <div className="bg-main rounded-t-3xl">
         <ChatSection />
       </div>

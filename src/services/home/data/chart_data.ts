@@ -27,13 +27,13 @@ export const monthlyCalorieData: CalorieData[] = [
 ];
 
 export const dailyWeightData: ChartData[] = [
-  { day: 'Senin', weight: 48.0 },
-  { day: 'Selasa', weight: 48.2 },
-  { day: 'Rabu', weight: 48.1 },
-  { day: 'Kamis', weight: 48.3 },
-  { day: 'Jumat', weight: 48.2 },
-  { day: 'Sabtu', weight: 48.0 },
-  { day: 'Minggu', weight: 48.1 },
+  { day: 'Sen', weight: 48.0 },
+  { day: 'Sel', weight: 48.2 },
+  { day: 'Rab', weight: 48.1 },
+  { day: 'Kam', weight: 48.3 },
+  { day: 'Jum', weight: 48.2 },
+  { day: 'Sab', weight: 48.0 },
+  { day: 'Min', weight: 48.1 },
 ];
 
 export const weeklyWeightData: ChartData[] = [
