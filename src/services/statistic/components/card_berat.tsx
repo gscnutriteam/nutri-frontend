@@ -2,6 +2,8 @@ import { BadgeBMI } from "./badge_bmi";
 import { parseDateToString } from "../util/util";
 import { ButtonIcon } from "./button_icon";
 import { CardBeratProps } from "../types/berat";
+import { ModalEditlBerat } from "./modal_edit_berat";
+import { ModalDeleteBerat } from "./modal_delete_berat";
 
 export const CardBerat = (data: CardBeratProps) => {
   return (
@@ -15,8 +17,8 @@ export const CardBerat = (data: CardBeratProps) => {
       </div>
       <div className="flex flex-col">
         <div className="flex gap-2 w-full justify-end">
-          <ButtonIcon variant="edit" />
-          <ButtonIcon variant="delete" />
+          <ModalEditlBerat berat={data.berat} tinggi={data.tinggi} id={data.id} />
+          <ModalDeleteBerat id={data.id} />
         </div>
         <p className="text-textGray mt-1">{parseDateToString(data.tanggal)}</p>
         <div className="flex flex-col w-full items-end mt-2">

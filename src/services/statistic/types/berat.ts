@@ -5,3 +5,9 @@ export interface CardBeratProps {
     tanggal: Date;
     id: number;
 }
+
+export interface ModalEditBeratProps {
+    tinggi: number;
+    berat: number;
+    id: number;
+}
