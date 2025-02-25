@@ -11,3 +11,12 @@ export interface ModalEditBeratProps {
     berat: number;
     id: number;
 }
+
+export interface CardCalorieProps {
+    tanggal: Date;
+    calorie: number;
+    id: number;
+    carbs: number;
+    protein: number;
+    fat: number;
+}

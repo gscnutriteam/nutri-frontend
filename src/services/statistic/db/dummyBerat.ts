@@ -37,4 +37,3 @@ export const dummyBeratCardsData: CardBeratProps[] = [
         tanggal: new Date("2021-08-01"),
     },
 ]
-
