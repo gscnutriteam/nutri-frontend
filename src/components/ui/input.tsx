@@ -1,5 +1,5 @@
 import * as React from 'react'
-
+import { Search } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export interface InputProps
@@ -22,4 +22,23 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 )
 Input.displayName = 'Input'
 
-export { Input }
+const SearchInput = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div className="relative">
+        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <Input
+          {...props}
+          className={cn(
+            'pl-10',
+            className
+          )}
+          ref={ref}
+        />
+      </div>
+    )
+  }
+)
+SearchInput.displayName = 'SearchInput'
+
+export { Input, SearchInput }
