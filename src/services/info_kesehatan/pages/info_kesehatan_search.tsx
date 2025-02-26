@@ -1,6 +1,5 @@
 import { HeaderFeature } from "@/components/ui/header_feature";
 import AppMobileLayout from "@/layout/app_mobile_layout";
-import { Recomendation } from "../components/recomendation";
 import { SearchInput } from "@/components/ui/input";
 import { Metadata } from "next";
 import { SearchResultsCard } from "../components/search_result_card";

@@ -14,3 +14,12 @@ export interface CardInfoKesehatanProps {
     image: string;
     link: string;
 }
+export interface InfoKesehatanHeadProps {
+    tanggal: Date;
+    // TODO: change category type to enum
+    category: string;
+    title: string;
+    image: string;
+    link: string;
+    readingTime: number;
+}
