@@ -4,9 +4,10 @@ import React from 'react';
 
 interface Props {
   children: React.ReactNode;
+  withBottomBar?: boolean;
 }
 
-const AppMobileLayout: React.FC<Props> = ({ children }) => {
+const AppMobileLayout: React.FC<Props> = ({ children, withBottomBar = true }) => {
   return (
     <div>
       <Head>
@@ -20,7 +21,7 @@ const AppMobileLayout: React.FC<Props> = ({ children }) => {
         <link rel="icon" href="/assets/img/logo.png" />
       </Head>
       <div className="relative max-w-md mx-auto ">{children}</div>
-      <BottomBar/>
+      {withBottomBar && <BottomBar/>}
     </div>
   );
 };
