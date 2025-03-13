@@ -48,7 +48,7 @@ export const RegisterInfoForm = () => {
 		if (!name || !email || !password) {
 			router.back();
 		}
-	}, [name, email, password, router]);
+	}, [name, email, password]);
 
 	const form = useForm<z.infer<typeof registerInfoSchema>>({
 		resolver: zodResolver(registerInfoSchema),
