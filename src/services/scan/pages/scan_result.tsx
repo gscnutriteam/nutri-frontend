@@ -1,5 +1,5 @@
 import AppMobileLayout from "@/layout/app_mobile_layout";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import ImageResult from "../components/image_result";
 import { ListMakanan } from "../components/list_makanan";

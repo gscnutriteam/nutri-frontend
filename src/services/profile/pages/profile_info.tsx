@@ -5,7 +5,7 @@ import { Progress } from '@/components/ui/progress';
 import { Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Head from 'next/head';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Gender, PhsyicalActivity } from '@/services/auth/store/register_store';
 
 interface ProfileProps {

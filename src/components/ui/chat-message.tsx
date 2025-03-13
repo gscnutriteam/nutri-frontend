@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useMemo } from "react"
+import type React from "react"
+import { useMemo } from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Code2, Loader2, Terminal } from "lucide-react"
 
@@ -133,7 +134,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
       {files ? (
         <div className="mb-1 flex flex-wrap gap-2">
           {files.map((file, index) => {
-            return <FilePreview file={file} key={index} />
+            return <FilePreview file={file} key={`file ${index + 1}`} />
           })}
         </div>
       ) : null}
@@ -184,7 +185,7 @@ function ToolCall({
           case "call":
             return (
               <div
-                key={index}
+                key={`toolcall ${index + 1}`}
                 className="flex items-center gap-2 rounded-lg border bg-muted px-3 py-2 text-sm text-muted-foreground"
               >
                 <Terminal className="h-4 w-4" />
@@ -195,7 +196,7 @@ function ToolCall({
           case "result":
             return (
               <div
-                key={index}
+                key={`result ${index + 1}`}
                 className="flex flex-col gap-1.5 rounded-lg border bg-muted px-3 py-2 text-sm"
               >
                 <div className="flex items-center gap-2 text-muted-foreground">

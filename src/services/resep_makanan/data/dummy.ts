@@ -1,4 +1,4 @@
-import { MakananHarianProps } from "../types/type";
+import type { MakananHarianProps } from "../types/type";
 
 export const makananHadianData: MakananHarianProps = {
     title: "Hari Pertama",

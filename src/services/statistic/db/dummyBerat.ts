@@ -1,4 +1,4 @@
-import { CardBeratProps } from "../types/berat";
+import type { CardBeratProps } from "../types/berat";
 
 export const dummyBeratCardsData: CardBeratProps[] = [
     {

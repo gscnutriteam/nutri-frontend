@@ -40,25 +40,22 @@ const SelisihBeratTarget = ({from, target, current, isDietTurun}: {from: number,
                     textColor: "text-success",
                     Icon: ArrowDown
                 };
-            } else {
+            }
                 return {
                     textColor: "text-danger",
                     Icon: ArrowUp
                 };
-            }
-        } else {
+        }
             if (current < from) {
                 return {
                     textColor: "text-danger",
                     Icon: ArrowDown
                 };
-            } else {
+            }
                 return {
                     textColor: "text-success",
                     Icon: ArrowUp
                 };
-            }
-        }
     };
 
     const { textColor, Icon } = getStyleAndIcon();
@@ -67,7 +64,7 @@ const SelisihBeratTarget = ({from, target, current, isDietTurun}: {from: number,
         <>
             <div className="flex">
                 <Icon size={16} className={cn(textColor)} />
-                <p className={cn(`text-sm`, textColor)}>{difference} kg</p>
+                <p className={cn("text-sm", textColor)}>{difference} kg</p>
             </div>
         </>
     );

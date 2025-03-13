@@ -3,7 +3,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { DayPicker } from "react-day-picker"
 
-import * as React from "react"
+import type * as React from "react"
 
 import { buttonVariants } from "@/components/ui/button"
 

@@ -1,9 +1,9 @@
 "use client";
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { type ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { cn } from "@/lib/utils";
 import { dailyCalorieData, dailyWeightData, monthlyCalorieData, monthlyWeightData, weeklyCalorieData, weeklyWeightData } from "@/services/home/data/chart_data";
-import { Period } from "@/services/home/types/chart";
+import type { Period } from "@/services/home/types/chart";
 import { useState } from "react";
 import { Area, AreaChart, CartesianGrid, Label, Legend, XAxis, YAxis } from "recharts";
 

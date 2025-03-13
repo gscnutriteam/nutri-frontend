@@ -1,7 +1,7 @@
 import { BadgeBMI } from "./badge_bmi";
 import { parseDateToString } from "../util/util";
 import { ButtonIcon } from "./button_icon";
-import { CardBeratProps } from "../types/berat";
+import type { CardBeratProps } from "../types/berat";
 import { ModalEditlBerat } from "./modal_edit_berat";
 import { ModalDeleteBerat } from "./modal_delete_berat";
 

@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { BadgeMakananProps } from "../types/type";
+import type { BadgeMakananProps } from "../types/type";
 import { Check, Plus } from "lucide-react";
 
 export const BadgeMakanan = ({ title, isAdded = false }: BadgeMakananProps) => {

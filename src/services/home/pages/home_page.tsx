@@ -5,7 +5,7 @@ import CalorieChart from '../components/calorie_chart';
 import BMIStats from '../components/BMI_stats';
 import MenuGrid from '../components/menu_grid';
 import Head from 'next/head';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 export const metadataHome: Metadata = {
   title: 'Home | NutriBox',

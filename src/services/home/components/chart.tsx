@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Area, AreaChart, CartesianGrid, Legend, XAxis, YAxis } from 'recharts';
 import {
   Card,
@@ -7,7 +7,7 @@ import {
   CardHeader,
 } from '@/components/ui/card';
 import {
-  ChartConfig,
+  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,

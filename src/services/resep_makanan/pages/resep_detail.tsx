@@ -1,8 +1,8 @@
 import { HeaderFeature } from "@/components/ui/header_feature";
 import AppMobileLayout from "@/layout/app_mobile_layout";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import MarkdownRenderer from "@/components/ui/markdown-renderer";
-import { DetailHeadProps } from "../types/type";
+import type { DetailHeadProps } from "../types/type";
 import { DetailResepHead } from "../components/detail_head";
 
 export default function ResepMakananDetail() {

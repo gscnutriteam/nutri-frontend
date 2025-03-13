@@ -1,11 +1,12 @@
 "use client";
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import Chart from './chart';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Period } from '../types/chart';
+import type { Period } from '../types/chart';
 import {
   dailyCalorieData,
   weeklyCalorieData,

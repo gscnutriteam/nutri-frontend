@@ -1,7 +1,7 @@
 // import { Head } from '@inertiajs/react';
 // import BottomBar from '@/components/ui/bottom_bar';
 import Head from 'next/head';
-import React from 'react';
+import type React from 'react';
 
 interface Props {
   children: React.ReactNode;

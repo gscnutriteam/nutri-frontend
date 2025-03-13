@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 interface BackIconProps {
   className?: string;
@@ -13,7 +13,9 @@ const BackIcon: React.FC<BackIconProps> = ({ className = '' }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      
     >
+      <title>Back Arrow Icon</title>
       <g id="Arrow_left_long">
         <path
           id="Vector 9"

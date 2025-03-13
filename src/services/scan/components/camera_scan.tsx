@@ -1,6 +1,6 @@
 "use client"
 import React, { useRef, useState } from "react";
-import { Camera, CameraType } from "react-camera-pro";
+import { Camera, type CameraType } from "react-camera-pro";
 import { ArrowLeft, Upload, Camera as CameraIcon, RefreshCw, Zap } from "lucide-react";
 
 export const CameraScan = ()=> {

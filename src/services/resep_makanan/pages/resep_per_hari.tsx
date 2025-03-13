@@ -1,7 +1,7 @@
 import { FlipCard } from "@/components/ui/flip-card";
 import { HeaderFeature } from "@/components/ui/header_feature";
 import AppMobileLayout from "@/layout/app_mobile_layout";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export default function ResepMakananPerHari() {
   return (

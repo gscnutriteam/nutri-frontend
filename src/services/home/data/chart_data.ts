@@ -1,4 +1,4 @@
-import { CalorieData, ChartData } from '../types/chart';
+import type { CalorieData, ChartData } from '../types/chart';
 
 export const dailyCalorieData: CalorieData[] = [
   { day: 'Sen', calories: 1200 },

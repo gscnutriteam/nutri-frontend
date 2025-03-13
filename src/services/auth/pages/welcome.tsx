@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import LinkAPP from '@/components/util/link';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 
 export const metadataWelcome: Metadata = {
   title: 'Welcome | NutriBox',

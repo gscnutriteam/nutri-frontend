@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import { ButtonHTMLAttributes } from "react";
-import { LucideIcon, PencilIcon, Trash } from "lucide-react";
+import type { ButtonHTMLAttributes } from "react";
+import { type LucideIcon, PencilIcon, Trash } from "lucide-react";
 
 interface ButtonIconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant: "edit" | "delete";

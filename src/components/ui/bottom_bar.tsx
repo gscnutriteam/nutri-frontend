@@ -1,5 +1,6 @@
 'use client'
-import React, { useState, useEffect } from "react";
+import type React from "react";
+import { useState, useEffect } from "react";
 import { Home, BarChart2, MessageCircle, User, Scan } from "lucide-react";
 import { usePathname } from "next/navigation";
 // import { usePage } from "@inertiajs/react";

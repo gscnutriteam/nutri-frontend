@@ -1,5 +1,5 @@
 import { BackButton } from "../components/back_button";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { LoginForm } from "../components/login_form";
 import LinkAPP from "@/components/util/link";
 

@@ -20,7 +20,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import type { z } from "zod";
 import { editBeratBadanSchema } from "../schema/form_schema";
 import { FooterImage } from "./footer_image";
 import { PlusCircleIcon } from "lucide-react";

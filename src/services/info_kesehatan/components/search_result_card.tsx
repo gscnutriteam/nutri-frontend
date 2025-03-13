@@ -1,4 +1,4 @@
-import { CardInfoKesehatanProps } from "../types/types";
+import type { CardInfoKesehatanProps } from "../types/types";
 import { CardInfoKesehatan } from "./card-info-kesehatan";
 
 export const SearchResultsCard = ({data}: {data: CardInfoKesehatanProps[]}) => {

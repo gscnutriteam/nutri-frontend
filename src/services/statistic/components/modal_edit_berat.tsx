@@ -21,9 +21,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import type { z } from "zod";
 import { editBeratBadanSchema } from "../schema/form_schema";
-import { ModalEditBeratProps } from "../types/berat";
+import type { ModalEditBeratProps } from "../types/berat";
 import { FooterImage } from "./footer_image";
 
 export const ModalEditlBerat = ({ berat, tinggi }: ModalEditBeratProps) => {

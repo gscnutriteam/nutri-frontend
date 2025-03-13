@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MakananHarianPropsWithVariant } from "../types/type";
+import type { MakananHarianPropsWithVariant } from "../types/type";
 import { cn } from "@/lib/utils";
 
 export const MakananHarian = ({ data }: { data: MakananHarianPropsWithVariant }) => {

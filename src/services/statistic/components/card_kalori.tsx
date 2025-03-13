@@ -1,5 +1,5 @@
 import { parseDateToString } from "../util/util";
-import { CardCalorieProps } from "../types/berat";
+import type { CardCalorieProps } from "../types/berat";
 import Image from "next/image";
 import { ModalDeleteCalorie } from "./modal_delete_calorie";
 

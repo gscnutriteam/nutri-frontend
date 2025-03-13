@@ -1,5 +1,5 @@
 import AppMobileLayout from "@/layout/app_mobile_layout";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { CameraScan } from "../components/camera_scan";
 import { ScanLoading } from "../components/scan_loading";
 

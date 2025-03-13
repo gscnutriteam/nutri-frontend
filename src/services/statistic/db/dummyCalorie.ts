@@ -1,4 +1,4 @@
-import { CardCalorieProps } from "../types/berat";
+import type { CardCalorieProps } from "../types/berat";
 
 export const dummyCalorieCardsData: CardCalorieProps[] = [
     {

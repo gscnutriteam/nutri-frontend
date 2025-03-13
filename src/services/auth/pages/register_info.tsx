@@ -1,6 +1,6 @@
 import { RegisterInfoForm } from "../components/register_info_form";
 import { BackButton } from "../components/back_button";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metaDataRegisterInfo: Metadata = {
   title: 'Register Detail | NutriBox',

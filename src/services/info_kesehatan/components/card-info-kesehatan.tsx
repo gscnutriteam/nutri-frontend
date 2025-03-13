@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CardInfoKesehatanProps } from "../types/types";
+import type { CardInfoKesehatanProps } from "../types/types";
 import { BadgeCategory } from "./badge-category";
 import { dateTimetoYangLalu } from "../util/date";
 

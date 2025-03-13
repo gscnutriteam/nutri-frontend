@@ -1,6 +1,6 @@
 import { RegisterUserForm } from "../components/register_user_form";
 import { BackButton } from "../components/back_button";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import LinkAPP from "@/components/util/link";
 
 export const metadataRegisterUser: Metadata = {

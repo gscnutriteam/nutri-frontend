@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { InfoKesehatanHeadProps } from "../types/types";
+import type { InfoKesehatanHeadProps } from "../types/types";
 import { dateTimetoYangLalu } from "../util/date";
 import { BadgeCategory } from "./badge-category";
 

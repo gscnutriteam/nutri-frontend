@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { BadgeCategory } from "./badge-category";
-import { CardTopNewsProps } from "../types/types";
+import type { CardTopNewsProps } from "../types/types";
 import { dateTimetoYangLalu } from "../util/date";
 
 export const CardTopNews = (data: CardTopNewsProps) => {

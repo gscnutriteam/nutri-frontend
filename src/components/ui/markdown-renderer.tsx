@@ -1,4 +1,5 @@
 import React, { Suspense } from "react"
+import type { JSX } from "react"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
@@ -48,7 +49,7 @@ const HighlightedPre = React.memo(
         <code>
           {tokens.map((line, lineIndex) => (
             <>
-              <span key={lineIndex}>
+              <span key={`${lineIndex}-${tokens[lineIndex].map(token => token.content).join('')}`}>
                 {line.map((token, tokenIndex) => {
                   const style =
                     typeof token.htmlStyle === "string"
@@ -57,7 +58,7 @@ const HighlightedPre = React.memo(
 
                   return (
                     <span
-                      key={tokenIndex}
+                      key={`${lineIndex}-${token.content}-${tokenIndex}`}
                       className="text-shiki-light bg-shiki-light-bg dark:text-shiki-dark dark:bg-shiki-dark-bg"
                       style={style}
                     >
@@ -125,15 +126,14 @@ function childrenTakeAllStringContents(element: any): string {
   }
 
   if (element?.props?.children) {
-    let children = element.props.children
+    const children = element.props.children
 
     if (Array.isArray(children)) {
       return children
         .map((child) => childrenTakeAllStringContents(child))
         .join("")
-    } else {
-      return childrenTakeAllStringContents(children)
     }
+      return childrenTakeAllStringContents(children)
   }
 
   return ""
@@ -190,7 +190,7 @@ function withClass(Tag: keyof JSX.IntrinsicElements, classes: string) {
   const Component = ({ node, ...props }: any) => (
     <Tag className={classes} {...props} />
   )
-  Component.displayName = Tag
+  Component.displayName = Tag as string
   return Component
 }
 

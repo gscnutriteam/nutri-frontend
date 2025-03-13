@@ -1,4 +1,4 @@
-import { CardInfoKesehatanProps, CardTopNewsProps } from "../types/types";
+import type { CardInfoKesehatanProps, CardTopNewsProps } from "../types/types";
 
 export const TopNowCardsData: CardTopNewsProps[] = [
     {

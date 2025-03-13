@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { DetailHeadProps } from "../types/type";
+import type { DetailHeadProps } from "../types/type";
 import { dateTimetoYangLalu } from "@/services/info_kesehatan/util/date";
 
 export const DetailResepHead = ({data} : {data: DetailHeadProps}) => {

@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import ChatSection from "../components/chat_section";
 import { BackButton } from "@/services/auth/components/back_button";
 import { HeaderFeature } from "@/components/ui/header_feature";

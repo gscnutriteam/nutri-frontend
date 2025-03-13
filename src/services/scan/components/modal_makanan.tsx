@@ -20,9 +20,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import type { z } from "zod";
 import { BadgeMakanan } from "./badge_makanan";
-import { BadgeMakananProps } from "../types/type";
+import type { BadgeMakananProps } from "../types/type";
 import { confirmMakananSchema } from "../schema/form_schema";
 import { FooterImage } from "@/services/statistic/components/footer_image";
 import { Check, Plus } from "lucide-react";

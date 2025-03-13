@@ -1,6 +1,6 @@
 "use client"
 import { LucideUser, Star, User, User2 } from 'lucide-react';
-import React from 'react';
+import type React from 'react';
 import BMIStats from './BMI_stats';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';

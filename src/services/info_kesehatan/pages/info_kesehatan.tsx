@@ -1,7 +1,7 @@
 import { HeaderFeature } from "@/components/ui/header_feature";
 import { SearchInput } from "@/components/ui/input";
 import AppMobileLayout from "@/layout/app_mobile_layout";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { TopNews } from "../components/top-news";
 import { Recomendation } from "../components/recomendation";
 

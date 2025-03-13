@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription, cardVariants } from './card';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription, type cardVariants } from './card';
 import { Button } from './button';
 
 // Create variant styles for the flip card
@@ -69,6 +69,7 @@ const FlipCard = React.forwardRef<HTMLDivElement, FlipCardProps>(
           <div 
             className="absolute w-full h-full backface-hidden cursor-pointer"
             onClick={handleFlip}
+            onKeyUp={(e) => {}}
           >
             <Card variant={cardVariant} className="flex flex-col h-full">
               <div className="flex-1 p-4 flex flex-col items-center justify-center">
@@ -88,6 +89,7 @@ const FlipCard = React.forwardRef<HTMLDivElement, FlipCardProps>(
           <div 
             className="absolute w-full h-full backface-hidden rotate-y-180 cursor-pointer"
             onClick={handleFlip}
+            onKeyUp={(e) => {}}
           >
             <Card variant={cardVariant} className="flex flex-col h-full">
               <CardHeader>
@@ -112,6 +114,7 @@ const FlipCard = React.forwardRef<HTMLDivElement, FlipCardProps>(
                     viewBox="0 0 24 24" 
                     stroke="currentColor"
                   >
+                    <title>Icon</title>
                     <path 
                       strokeLinecap="round" 
                       strokeLinejoin="round" 
