@@ -2,11 +2,14 @@ import React from 'react';
 import { Card } from '@/components/ui/card';
 import AppMobileLayout from '@/layout/app_mobile_layout';
 import { Progress } from '@/components/ui/progress';
-import { Star } from 'lucide-react';
+import { LogOutIcon, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Head from 'next/head';
 import type { Metadata } from 'next';
 import { Gender, PhsyicalActivity } from '@/services/auth/store/register_store';
+import { Button } from '@/components/ui/button';
+import { ButtonLogout } from '../components/button_logout';
+import { Toaster } from 'sonner';
 
 interface ProfileProps {
   user: {
@@ -38,6 +41,7 @@ export default function Profile({ user }: ProfileProps) {
         <title>Profile | NutriBox</title>
       </Head>
       <AppMobileLayout>
+        <Toaster position="top-center" richColors />
         <div className="">
           <div className="max-w-7xl mx-auto pb-20">
             <div className="relative">
@@ -139,6 +143,7 @@ export default function Profile({ user }: ProfileProps) {
                     {user.medical_history}
                   </p>
                 </div>
+                <ButtonLogout />
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import LinkAPP from '@/components/util/link';
 import type { Metadata } from 'next';
+import LoginGoogleButton from '../components/login_google_button';
 
 export const metadataWelcome: Metadata = {
   title: 'Welcome | NutriBox',
@@ -25,10 +26,7 @@ export default function Welcome() {
         <LinkAPP className='w-full' href={"login"}>
           <Button className='mt-4 w-full' size={'lg'} variant={'neutral'}>Saya sudah punya akun</Button>
         </LinkAPP>
-        <Button className='mt-4' size={'lg'} variant={'neutral'}>
-          <img src="/assets/icon/google.svg" alt="Google Icon" className="w-6 h-6 inline-block" />
-          Lanjutkan dengan Google
-        </Button>
+        <LoginGoogleButton />
       </div>
       </>
   );

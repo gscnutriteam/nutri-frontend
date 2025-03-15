@@ -1,21 +1,21 @@
 import { create } from "zustand";
 
 export enum Gender {
-    male = 'male',
-    female = 'female',
+    male = 'Male',
+    female = 'Female',
 }
 
 export enum PhsyicalActivity {
-    low = 'low',
-    moderate = 'moderate',
-    high = 'high',
+    low = 'Light',
+    moderate = 'Medium',
+    high = 'Heavy',
 }
 
-interface RegisterData {
+export interface RegisterData {
     name: string;
     email: string;
     password: string;
-    age: number | null;
+    birth: Date | null;
     gender: Gender | null;
     height: number | null;
     weight: number | null;
@@ -29,7 +29,7 @@ interface RegisterDataState extends RegisterData {
     setName: (name: string) => void;
     setEmail: (email: string) => void;
     setPassword: (password: string) => void;
-    setAge: (age: number) => void;
+    setBirth: (birth: Date) => void;
     setGender: (gender: Gender) => void;
     setHeight: (height: number) => void;
     setWeight: (weight: number) => void;
@@ -41,7 +41,7 @@ const registerInitialState: RegisterData = {
     name: '',
     email: '',
     password: '',
-    age: null,
+    birth: null,
     gender: null,
     height: null,
     weight: null,
@@ -56,7 +56,7 @@ export const useRegisterStore = create<RegisterDataState>((set) => ({
     setName: (name: string) => set({ name }),
     setEmail: (email: string) => set({ email }),
     setPassword: (password: string) => set({ password }),
-    setAge: (age: number) => set({ age }),
+    setBirth: (birth: Date) => set({ birth }),
     setGender: (gender: Gender) => set({gender}),
     setHeight: (height: number) => set({ height }),
     setWeight: (weight: number) => set({ weight }),

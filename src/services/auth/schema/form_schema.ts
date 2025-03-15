@@ -1,17 +1,11 @@
 import { z } from "zod";
 
 const registerInfoSchema = z.object({
-  age: z
-    .number({
-      required_error: "Umur wajib diisi",
-    })
-    .min(1, {
-      message: "Umur tidak valid",
-    })
-    .max(100, {
-      message: "Umur tidak valid",
+  birth: z
+    .date({
+      required_error: "Tanggal lahir wajib diisi",
     }),
-  gender: z.enum(["male", "female"], {
+  gender: z.enum(["Male", "Female"], {
     required_error: "Jenis kelamin wajib diisi",
   }),
   height: z
@@ -34,7 +28,7 @@ const registerInfoSchema = z.object({
     .max(500, {
       message: "Berat badan tidak valid",
     }),
-  physicalActivity: z.enum(["low", "moderate", "high"], {
+  physicalActivity: z.enum(["Light", "Medium", "Heavy"], {
     required_error: "Aktivitas fisik wajib diisi",
   }),
   medicalHistory: z.string({
@@ -74,6 +68,12 @@ const registerUserSchema = z
         })
         .min(8, {
           message: 'Password minimal 8 karakter.',
+        })
+        .max(20, {
+          message: 'Password maksimal 20 karakter.',
+        })
+        .regex(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/, {
+          message: 'Password harus mengandung huruf besar, huruf kecil, dan angka.',
         }),
       confirmPassword: z.string({
         required_error: 'Konfirmasi password wajib diisi',

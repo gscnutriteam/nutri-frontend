@@ -1,6 +1,7 @@
 import { RegisterInfoForm } from "../components/register_info_form";
 import { BackButton } from "../components/back_button";
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
 
 export const metaDataRegisterInfo: Metadata = {
   title: 'Register Detail | NutriBox',
@@ -12,10 +13,10 @@ export const metaDataRegisterInfo: Metadata = {
   }
 }
 
-
 export default function RegisterInfo() {
   return (
     <>
+      <Toaster position="top-center" richColors />
       <div className="w-full flex flex-col outfit-font">
        <BackButton />
         <img

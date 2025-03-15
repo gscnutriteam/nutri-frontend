@@ -2,6 +2,7 @@ import { BackButton } from "../components/back_button";
 import type { Metadata } from "next";
 import { LoginForm } from "../components/login_form";
 import LinkAPP from "@/components/util/link";
+import { Toaster } from "sonner";
 
 export const metadataLoginUser: Metadata = {
   title: 'Login | NutriBox',
@@ -16,6 +17,7 @@ export const metadataLoginUser: Metadata = {
 export default function Login() {
   return (
     <>
+      <Toaster position="top-center" richColors />
       <div className="w-full flex flex-col outfit-font">
         <BackButton />
         <img

@@ -21,16 +21,25 @@ import {
 	type PhsyicalActivity,
 	useRegisterStore,
 } from "../store/register_store";
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { registerInfoSchema } from "../schema/form_schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { z } from "zod";
+import useRegisterAPI, { type RegisterResponse } from "../api/register";
+import { toast } from "sonner";
+import { useAppRouter } from "@/hooks/useAppRouter";
+import { Loader2 } from "lucide-react";
+import {
+	formatDateForInput,
+	saveAuthTokenRegister,
+} from "../util/util";
+import { useMutation } from "@tanstack/react-query";
+import { getPayloadFromToken, verifyJWT } from "@/lib/jwt";
 
 export const RegisterInfoForm = () => {
 	const {
-		age,
+		birth,
 		gender,
 		height,
 		weight,
@@ -42,18 +51,18 @@ export const RegisterInfoForm = () => {
 		set,
 	} = useRegisterStore();
 
-	const router = useRouter();
+	const router = useAppRouter();
 
 	useEffect(() => {
 		if (!name || !email || !password) {
 			router.back();
 		}
-	}, [name, email, password]);
+	}, [name, email, password, router]);
 
 	const form = useForm<z.infer<typeof registerInfoSchema>>({
 		resolver: zodResolver(registerInfoSchema),
 		defaultValues: {
-			age: typeof age === "number" ? age : undefined,
+			birth: birth ?? undefined,
 			gender: gender ?? undefined,
 			height: typeof height === "number" ? height : undefined,
 			weight: typeof weight === "number" ? weight : undefined,
@@ -62,17 +71,57 @@ export const RegisterInfoForm = () => {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof registerInfoSchema>) {
+	// React Query mutation
+	const registerMutation = useMutation({
+		mutationFn: useRegisterAPI,
+		onSuccess: async (response) => {
+			if (!response.success) {
+				console.error(response);
+
+				throw new Error(response.error || "Registration failed");
+			}
+
+			const responseData = response.data as RegisterResponse;
+
+			// Store tokens in cookies
+			saveAuthTokenRegister(responseData.tokens);
+
+			// Show success message
+			toast.success("Registration successful!");
+
+			// Redirect user
+			router.push('/token');
+		},
+		onError: (error: Error) => {
+			console.error("Registration error:", error);
+			toast.error(error.message || "Registration failed. Please try again.");
+		}
+	});
+
+	async function onSubmit(values: z.infer<typeof registerInfoSchema>) {
 		if (!name || !email || !password) {
 			router.back();
+			return;
 		}
+
+		// Update store values
 		set({
-			age: values.age,
+			birth: values.birth,
 			gender: values.gender as Gender,
 			height: values.height,
 			weight: values.weight,
-			physicalActivity: values.physicalActivity as PhsyicalActivity,
+			physicalActivity: (values.physicalActivity as PhsyicalActivity) || null,
 			medicalHistory: values.medicalHistory,
+		});
+
+		// Submit using React Query
+		registerMutation.mutate({
+			name,
+			email,
+			password,
+			...values,
+			gender: values.gender as Gender,
+			physicalActivity: (values.physicalActivity as PhsyicalActivity) || null,
 		});
 	}
 
@@ -85,17 +134,19 @@ export const RegisterInfoForm = () => {
 				>
 					<FormField
 						control={form.control}
-						name="age"
+						name="birth"
 						render={({ field }) => (
 							<FormItem>
-								<FormLabel className="font-semibold">Umur</FormLabel>
+								<FormLabel className="font-semibold">Tanggal Lahir</FormLabel>
 								<FormControl>
 									<Input
-										type="number"
-										placeholder="Masukkan umur"
+										type="date"
+										placeholder="Masukkan Tanggal Lahir"
 										{...field}
-										value={field.value || ""}
-										onChange={(e) => field.onChange(e.target.valueAsNumber)}
+										className="relative w-full"
+										value={formatDateForInput(new Date(field.value).getTime())}
+										onChange={(e) => field.onChange(new Date(e.target.value))}
+										disabled={registerMutation.isPending}
 									/>
 								</FormControl>
 								<FormMessage />
@@ -111,6 +162,7 @@ export const RegisterInfoForm = () => {
 								<Select
 									onValueChange={field.onChange}
 									value={field.value || ""}
+									disabled={registerMutation.isPending}
 								>
 									<FormControl>
 										<SelectTrigger>
@@ -118,8 +170,8 @@ export const RegisterInfoForm = () => {
 										</SelectTrigger>
 									</FormControl>
 									<SelectContent>
-										<SelectItem value="male">Laki-laki</SelectItem>
-										<SelectItem value="female">Perempuan</SelectItem>
+										<SelectItem value="Male">Laki-laki</SelectItem>
+										<SelectItem value="Female">Perempuan</SelectItem>
 									</SelectContent>
 								</Select>
 								<FormMessage />
@@ -141,6 +193,7 @@ export const RegisterInfoForm = () => {
 										{...field}
 										value={field.value || ""}
 										onChange={(e) => field.onChange(e.target.valueAsNumber)}
+										disabled={registerMutation.isPending}
 									/>
 								</FormControl>
 								<FormMessage />
@@ -162,6 +215,7 @@ export const RegisterInfoForm = () => {
 										{...field}
 										value={field.value || ""}
 										onChange={(e) => field.onChange(e.target.valueAsNumber)}
+										disabled={registerMutation.isPending}
 									/>
 								</FormControl>
 								<FormMessage />
@@ -177,6 +231,7 @@ export const RegisterInfoForm = () => {
 								<Select
 									onValueChange={field.onChange}
 									value={field.value || ""}
+									disabled={registerMutation.isPending}
 								>
 									<FormControl>
 										<SelectTrigger>
@@ -184,9 +239,9 @@ export const RegisterInfoForm = () => {
 										</SelectTrigger>
 									</FormControl>
 									<SelectContent>
-										<SelectItem value="low">Ringan</SelectItem>
-										<SelectItem value="moderate">Sedang</SelectItem>
-										<SelectItem value="high">Berat</SelectItem>
+										<SelectItem value="Light">Ringan</SelectItem>
+										<SelectItem value="Medium">Sedang</SelectItem>
+										<SelectItem value="Heavy">Berat</SelectItem>
 									</SelectContent>
 								</Select>
 								<FormMessage />
@@ -206,14 +261,22 @@ export const RegisterInfoForm = () => {
 										placeholder="Masukkan riwayat penyakit"
 										{...field}
 										value={field.value || ""}
+										disabled={registerMutation.isPending}
 									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
 						)}
 					/>
-					<Button type="submit" className="w-full">
-						Submit
+					<Button type="submit" className="w-full" disabled={registerMutation.isPending || registerMutation.isSuccess}>
+						{registerMutation.isPending ? (
+							<>
+								<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+								Submitting...
+							</>
+						) : (
+							"Submit"
+						)}
 					</Button>
 				</form>
 			</Form>
