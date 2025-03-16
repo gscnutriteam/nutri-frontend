@@ -26,4 +26,11 @@ const confirmMakananSchema = z.object({
     }),
 });
 
-export { confirmMakananSchema };
+const mealTrackingSchema = z.object({
+    title: z.string().min(1, { message: "Nama makanan tidak boleh kosong" }),
+    eatingTime: z.string().min(1, { message: "Waktu makan harus diisi" }),
+    eatingDate: z.string().min(1, { message: "Tanggal makan harus diisi" }),
+  });
+  
+
+export { confirmMakananSchema, mealTrackingSchema };

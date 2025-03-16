@@ -1,5 +1,4 @@
 import axios from "axios";
-import { logger } from "./logger";
 import { getAuthToken } from "@/services/auth/api/token";
 
 const axiosInstance = axios.create({
@@ -31,7 +30,7 @@ async function apiClient<T, R>(endpoint: string, method: string, data?: T, inclu
 		body: data ? JSON.stringify(data) : undefined,
 	  });
 	  
-	  logger.info(`API Call to ${endpoint}`, {
+	  console.info(`API Call to ${endpoint}`, {
 		status: response.status,
 		statusText: response.statusText
 	  });
@@ -44,7 +43,7 @@ async function apiClient<T, R>(endpoint: string, method: string, data?: T, inclu
 		data: responseData as R
 	  };
 	} catch (error) {
-	  logger.error(`API Call to ${endpoint}`, {
+	  console.error(`API Call to ${endpoint}`, {
 		errorMessage: error instanceof Error ? error.message : String(error)
 	  });
 	  return {

@@ -2,8 +2,6 @@
 
 import { apiClient } from "@/lib/api_instance";
 import { type Gender, type RegisterData, PhsyicalActivity } from "../store/register_store";
-import { logger } from "@/lib/logger";
-import Cookies from "js-cookie";
 import { mapRegisterDataToRequest } from "../util/util";
 
 /**
@@ -57,7 +55,7 @@ const useRegisterAPI = async (data: RegisterData) => {
     const userData: RegisterRequest = mapRegisterDataToRequest(data);
     return await apiClient('/auth/register', 'POST', userData);
   } catch (error) {
-    logger.error('Registration API error:', error);
+    console.error('Registration API error:', error);
     throw error;
   }
 }

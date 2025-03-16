@@ -1,7 +1,6 @@
 "use client";
 import { apiClient } from "@/lib/api_instance";
 import { auth } from "@/lib/firebase";
-import { logger } from "@/lib/logger";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useLoginGoogle } from "./login";
 

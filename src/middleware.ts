@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getPayloadFromToken, verifyJWT } from './lib/jwt';
-import { logger } from './lib/logger';
 
 // Define auth and guest routes
 const baseURL = '/app';
@@ -27,8 +26,6 @@ export async function middleware(request: NextRequest) {
     // Verify the JWT token
     const isValid = await verifyJWT(accessToken);
     const payload = await getPayloadFromToken(accessToken);
-    logger.info(`Token is valid: ${isValid}`);
-    logger.info(`Token payload: ${JSON.stringify(payload)}`);
     if (!isValid) {
       // Clear invalid cookies
       const response = NextResponse.redirect(new URL('/app/login', request.url));
@@ -62,9 +59,7 @@ export async function middleware(request: NextRequest) {
     if (accessToken) {
       // Verify the JWT token
       const isValid = await verifyJWT(accessToken);
-      const payload = await getPayloadFromToken(accessToken);
-      logger.info(`Token is valid: ${isValid}`);
-      logger.info(`Token payload: ${JSON.stringify(payload)}`);
+      const payload = getPayloadFromToken(accessToken);
       if (!isValid || !payload?.userData.isProductTokenVerified) {
         return NextResponse.redirect(new URL('/app/token', request.url));
       }
@@ -103,8 +98,10 @@ export const config = {
     // Match all routes in authRoutes and guestRoutes
     ...authRoutes.map(route => `${route}/:path*`),
     ...guestRoutes.map(route => `${route}/:path*`),
+    ...memberUserRoutes.map(route => `${route}/:path*`),
     // Also match the exact routes without trailing paths
     ...authRoutes,
     ...guestRoutes,
+    ...memberUserRoutes,
   ],
 };

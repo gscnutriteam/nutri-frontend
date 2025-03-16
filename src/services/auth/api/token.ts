@@ -1,8 +1,6 @@
 'use server'
 
 import { apiClient } from '@/lib/api_instance'
-import { logger } from '@/lib/logger'
-import Cookies from 'js-cookie'
 import { cookies } from 'next/headers'
 
 interface TokenRequest {
@@ -26,7 +24,7 @@ const useTokenAPI = async (data: TokenRequest) => {
         // The auth token from cookies will be automatically included by apiClient
         return await apiClient(`/product-token/verify?token=${data.token}`, 'POST', {token: data.token}, true);
     } catch (error) {
-        logger.error('Token API error:', error)
+        console.error('Token API error:', error)
         throw error;
     }
 }

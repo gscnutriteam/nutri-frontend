@@ -2,6 +2,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { X } from "lucide-react"; // Import X icon for close button
+import useScanStore from "../store/scan_store";
+import { useAppRouter } from "@/hooks/useAppRouter";
 
 const ImageResult = ({
   image = "/assets/img/nubo-large.png",
@@ -13,11 +15,16 @@ const ImageResult = ({
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const { scanImageLink } = useScanStore();
+  const router = useAppRouter();
 
   useEffect(() => {
+    if (!scanImageLink) {
+      router.push("/app/scan");
+    }
     setIsLoaded(true);
     return () => setIsLoaded(false);
-  }, []);
+  }, [scanImageLink]);
 
   const openLightbox = () => setIsLightboxOpen(true);
   const closeLightbox = () => setIsLightboxOpen(false);
@@ -36,22 +43,22 @@ const ImageResult = ({
             className="rounded-full w-[50%] border-border border-2 relative aspect-square overflow-hidden shadow-lg z-10 cursor-pointer hover:opacity-90 transition-opacity"
             onClick={openLightbox}
           >
-            <Image src={image} alt={alt} fill className="object-cover" />
+            <Image src={scanImageLink ?? image} alt={alt} fill className="object-cover" />
           </div>
 
           {/* First border set - dark teal */}
           <div className="absolute inset-0 w-full h-full">
-            <div className="absolute inset-0 rounded-full border-2 border-teal-600 opacity-0 pulse-border-1"></div>
+            <div className="absolute inset-0 rounded-full border-2 border-teal-600 opacity-0 pulse-border-1" />
           </div>
 
           {/* Second border set - medium teal */}
           <div className="absolute inset-0 w-full h-full">
-            <div className="absolute inset-0 rounded-full border-2 border-teal-400 opacity-0 pulse-border-2"></div>
+            <div className="absolute inset-0 rounded-full border-2 border-teal-400 opacity-0 pulse-border-2" />
           </div>
 
           {/* Third border set - light cyan */}
           <div className="absolute inset-0 w-full h-full">
-            <div className="absolute inset-0 rounded-full border-2 border-cyan-100 opacity-0 pulse-border-3"></div>
+            <div className="absolute inset-0 rounded-full border-2 border-cyan-100 opacity-0 pulse-border-3" />
           </div>
         </div>
       </div>
@@ -64,6 +71,7 @@ const ImageResult = ({
         >
           <div className="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center">
             <button 
+              type="button"
               className="absolute top-4 right-4 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors z-10"
               onClick={closeLightbox}
               aria-label="Close lightbox"
@@ -75,7 +83,7 @@ const ImageResult = ({
               onClick={(e) => e.stopPropagation()}
             >
               <Image 
-                src={image} 
+                src={scanImageLink} 
                 alt={alt} 
                 className="object-contain max-h-full rounded-lg animate-scale-in shadow-2xl" 
                 width={1200}

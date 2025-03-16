@@ -1,7 +1,6 @@
 'use server';
 
 import { apiClient } from "@/lib/api_instance";
-import { logger } from "@/lib/logger";
 
 interface LoginRequest {
   email: string;
@@ -36,7 +35,7 @@ const useLoginAPI = async (data: LoginRequest) => {
   try {
     return await apiClient('/auth/login', 'POST', data);
   } catch (error) {
-    logger.error('Login API error:', error);
+    console.error('Login API error:', error);
     throw error;
   }
 }
@@ -46,7 +45,7 @@ const useLoginGoogle = async (token: string) => {
   try {
     return await apiClient(`/auth/google?id_token=${token}`, 'GET');
   } catch (error) {
-    logger.error('Login API error:', error);
+    console.error('Login API error:', error);
     throw error;
   }
 }

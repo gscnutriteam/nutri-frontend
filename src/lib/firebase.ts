@@ -22,4 +22,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const storage = getStorage(app);
 
+// Function to upload an image to Firebase Storage
+
+
 export { auth, storage };

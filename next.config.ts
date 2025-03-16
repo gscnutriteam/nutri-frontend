@@ -7,9 +7,13 @@ const nextConfig: NextConfig = {
       hmrRefreshes: true,
     },
   },
-  experimental: {
-    serverComponentsExternalPackages: ["pino", "pino-pretty"],
-  },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "firebasestorage.googleapis.com",
+      }
+    ]
+  }
 };
 
 export default nextConfig;

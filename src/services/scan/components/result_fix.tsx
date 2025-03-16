@@ -1,13 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CalendarIcon, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import type { z } from "zod";
 import {
   Form,
   FormControl,
@@ -18,15 +18,58 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-
-// Form schema for meal tracking
-const mealTrackingSchema = z.object({
-  title: z.string().min(1, { message: "Nama makanan tidak boleh kosong" }),
-  eatingTime: z.string().min(1, { message: "Waktu makan harus diisi" }),
-  eatingDate: z.string().min(1, { message: "Tanggal makan harus diisi" }),
-});
+import { mealTrackingSchema } from "../schema/form_schema";
+import { useScanStore } from "../store/scan_store";
+import { useAppRouter } from "@/hooks/useAppRouter";
 
 const FoodTrackingResult = () => {
+  const { scanResult, scanImageLink } = useScanStore();
+  const router = useAppRouter();
+
+  if (!scanResult) {
+    router.push('/scan');
+    return null;
+  }
+  
+  // Calculate totals from added foods
+  const [nutritionTotals, setNutritionTotals] = useState({
+    calories: 0,
+    protein: 0,
+    fat: 0,
+    carbo: 0
+  });
+
+  console.log(scanResult);
+
+
+
+  // Calculate total nutrition values from added foods
+  useEffect(() => {
+    if (scanResult?.foods) {
+      // Filter only added foods
+      const addedFoods = scanResult.foods.filter(food => 
+        Object.prototype.hasOwnProperty.call(food, 'isAdded') ? (food as any).isAdded === true : true
+      );
+      
+      // Calculate totals
+      const totals = addedFoods.reduce((acc, food) => {
+        return {
+          calories: acc.calories + food.calorie,
+          protein: acc.protein + food.protein,
+          fat: acc.fat + food.fat,
+          carbo: acc.carbo + food.carbo
+        };
+      }, {
+        calories: 0,
+        protein: 0,
+        fat: 0,
+        carbo: 0
+      });
+      
+      setNutritionTotals(totals);
+    }
+  }, [scanResult]);
+
   const form = useForm<z.infer<typeof mealTrackingSchema>>({
     resolver: zodResolver(mealTrackingSchema),
     defaultValues: {
@@ -38,50 +81,45 @@ const FoodTrackingResult = () => {
 
   function onSubmit(values: z.infer<typeof mealTrackingSchema>) {
     console.log(values);
-    // Handle form submission
+    // Navigate to the app after submitting
+    router.push('/app');
   }
 
   return (
     <div className="flex flex-col min-h-screen relative">
-        <div className="absolute bottom-0 left-0">
-            <div className="w-16 h-12 relative">
-              <Image
-                fill
-                src="/assets/img/nubo_alert.png"
-                alt="Food Cart Icon"
-                className="absolute bottom-0 left-0"
-              />
-            </div>
-          </div>
       {/* Main Content */}
-      <div className="flex-1 p-4 pb-20 relative">
-        {/* Meal Summary */}
-        <div className="flex justify-center mb-6">
-          <div className="relative w-full">
-            {/* Food Image */}
-            <div className="w-[180px] h-[180px] bg-white rounded-full border-2 border-border shadow-md overflow-hidden flex items-center justify-center">
-              <div className="w-[95%] h-[95%] rounded-full bg-[#f5f5f5] flex items-center justify-center relative">
-                <Image
-                  fill
-                  src="/assets/img/nasi.png"
-                  alt="Food Bowl"
-                  className="rounded-full object-cover"
-                />
+      <div className="flex-1 p-4 pb-24 relative">
+        {/* Meal Summary - Modified for side-by-side layout */}
+        <div className="mb-8">
+          <div className="relative flex flex-row items-center">
+            {/* Food Image - Positioned on the left */}
+            <div className="relative z-10 w-[150px] h-[150px] mr-3 flex-shrink-0">
+              <div className="w-full h-full bg-white rounded-full border-2 border-border shadow-md overflow-hidden">
+                <div className="w-[95%] h-[95%] mx-auto my-auto rounded-full bg-[#f5f5f5] flex items-center justify-center relative">
+                  <Image
+                    fill
+                    src={scanImageLink || "/assets/img/nasi.png"}
+                    alt="Food Image"
+                    className="rounded-full object-cover"
+                    sizes="150px"
+                    priority
+                  />
+                </div>
               </div>
             </div>
 
-            {/* Calorie Box */}
-            <div className="absolute -z-10 right-[0px] top-[20%] w-full flex justify-end ">
+            {/* Calorie Box - Next to the image */}
+            <div className="flex-1">
               <Card
                 variant="default"
-                className="bg-[#FFEB3B] border-2 w-full flex justify-end border-black p-2"
+                className="bg-[#FFEB3B] border-2 border-black p-2 shadow-md h-full"
               >
                 <CardContent className="p-2">
-                  <div className="text-xs font-medium text-black">
+                  <div className=" font-medium text-black">
                     Estimasi total kalori
                   </div>
                   <div className="text-3xl font-bold text-black">
-                    170 <span className="text-sm font-normal">kcal</span>
+                    {Math.round(nutritionTotals.calories)} <span className="font-sm text-sm font-normal">kkal</span>
                   </div>
                 </CardContent>
               </Card>
@@ -91,15 +129,9 @@ const FoodTrackingResult = () => {
 
         {/* Nutrition Stats */}
         <div className="grid grid-cols-3 gap-3 mb-6">
-          {/* Protein */}
-          <NutritionStats title="protein" value={10} unit="gram" />
-         
-
-          {/* Fat */}
-          <NutritionStats title="lemak" value={10} unit="gram" />
-
-          {/* Carbs */}
-          <NutritionStats title="karbohidrat" value={20} unit="gram" />
+          <NutritionStats title="protein" value={Math.round(nutritionTotals.protein)} unit="gram" />
+          <NutritionStats title="lemak" value={Math.round(nutritionTotals.fat)} unit="gram" />
+          <NutritionStats title="karbohidrat" value={Math.round(nutritionTotals.carbo)} unit="gram" />
         </div>
 
         {/* Meal Details Form */}
@@ -199,33 +231,35 @@ const FoodTrackingResult = () => {
         {/* Done Button */}
         <Button
           variant="default"
-          className="w-full text-white border-2 border-black py-3 font-medium"
+          className="w-full text-white border-2 border-black py-3 font-semibold shadow-md transition-all hover:shadow-lg active:translate-y-0.5"
           onClick={form.handleSubmit(onSubmit)}
         >
           Done
         </Button>
       </div>
 
-      {/* Bottom Warning */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-b from-transparent to-[#B2DFDB]">
-        <div className="relative">
-          <div className="absolute bottom-0 left-0">
-            <div className="w-20 h-16 relative">
-              <Image
-                fill
-                src="/assets/img/nubo_alert.png"
-                alt="Food Cart Icon"
-                className="absolute bottom-0 -left-5"
-              />
-            </div>
+      {/* Bottom Warning - Improved positioning and responsiveness */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-b from-transparent via-[rgba(178,223,219,0.5)] to-[#B2DFDB] pt-10">
+        <div className="relative max-w-md mx-auto">
+          {/* Character Image - Properly positioned and sized */}
+          <div className="absolute bottom-0 left-0 z-10 w-20 h-16">
+            <Image
+              src="/assets/img/nubo_alert.png"
+              alt="Character"
+              width={64}
+              height={64}
+              className="absolute bottom-0 -left-2"
+            />
           </div>
+          
+          {/* Recommendation Card - Better shaped and positioned */}
           <Card
             variant="default"
-            className="bg-danger text-white border-2 border-black py-1 pl-16 pr-4 !rounded-tl-full rounded-md"
+            className="bg-main text-white border-2 border-black py-2 pl-14 pr-4 rounded-tr-md rounded-br-md rounded-bl-md shadow-md"
           >
             <CardContent className="p-1">
-              <p className="text-sm font-medium">
-                Kamu perlu makan lebih bergizi dan seimbang
+              <p className="font-sm text-sm font-medium">
+                {scanResult?.recomendation || "Kamu perlu makan lebih bergizi dan seimbang"}
               </p>
             </CardContent>
           </Card>
@@ -247,11 +281,11 @@ const NutritionStats = ({
   unit: string;
 }) => {
   return (
-    <div className="bg-primary aspect-square border-2 border-black rounded-base text-white">
+    <div className="bg-primary aspect-square border-2 border-black rounded-lg text-white shadow-md transition-transform hover:scale-[1.02]">
       <CardContent className="p-3 flex flex-col items-center h-full justify-between">
-        <div className=" w-full">Estimasi total {title}</div>
-        <div className="text-2xl font-bold flex w-full justify-left items-center gap-1">
-          {value} <span className=" font-normal">{unit}</span>
+        <div className="font-sm font-medium w-full">Estimasi total {title}</div>
+        <div className="text-2xl font-bold flex w-full justify-start items-baseline gap-1">
+          {value} <span className="font-sm font-normal font-sm">{unit}</span>
         </div>
       </CardContent>
     </div>

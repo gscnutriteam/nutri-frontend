@@ -1,7 +1,6 @@
 'use server'
 
 import { apiClient } from "@/lib/api_instance";
-import { logger } from "@/lib/logger";
 
 interface LogoutRequest {
     refresh_token: string;
@@ -23,7 +22,7 @@ const useLogoutAPI = async (data: LogoutRequest) => {
     try {
         return await apiClient('/auth/logout', 'POST', data);
     } catch (error) {
-        logger.error('Logout API error:', error);
+        console.error('Logout API error:', error);
         throw error;
     }
 }
