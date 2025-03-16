@@ -1,3 +1,4 @@
+import type { PhsyicalActivity } from '@/services/auth/store/register_store';
 import { jwtVerify, createRemoteJWKSet, jwtDecrypt } from 'jose';
 
 // For server-side verification
@@ -44,14 +45,15 @@ interface UserData {
   gender: string;
   height: number;
   weight: number;
-  birth_date: string;
-  activity_level: string;
+  birth_date: Date;
+  activity_level: PhsyicalActivity;
   medical_history: string;
   verified_email: boolean;
   isProductTokenVerified: boolean;
+  profile_picture?: string;
 }
 
-interface JWTPayload {
+export interface JWTPayload {
   exp: number;
   iat: number;
   sub: string;

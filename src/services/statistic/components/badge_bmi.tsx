@@ -13,7 +13,7 @@ const BadgeBMI = ({ bmi, className }: { bmi: number, className?: string }) => {
   return (
     <div className={cn(" border-2 border-black rounded-xl px-3 py-0 scale-[0.8]", statusColor, className)}>
       <span
-        className={`text-white font-semibold`}
+        className={"text-white font-semibold"}
       >
         {status}
       </span>

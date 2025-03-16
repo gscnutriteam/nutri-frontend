@@ -1,10 +1,12 @@
+import type { JWTPayload } from "@/lib/jwt";
+import { getBMI } from "@/lib/utils";
 import { Gender, PhsyicalActivity } from "@/services/auth/store/register_store";
 import Home, { metadataHome } from "@/services/home/pages/home_page";
 import { getUserData } from "@/services/profile/api/getUser";
-import Profile, { metadataProfile } from "@/services/profile/pages/profile_info";
+import EditProfile, { metadataEditProfile } from "@/services/profile/pages/edit_profile";
 import type { ProfileProps } from "@/services/profile/type/types";
 import { JWTUserTOProfileProps } from "@/services/profile/util/util";
-export const metadata = metadataProfile;
+export const metadata = metadataEditProfile;
 
 const dummyUser: ProfileProps = {
     id: '1',
@@ -25,5 +27,6 @@ const dummyUser: ProfileProps = {
 export default async function Page() {
     const user = await getUserData();
     if (!user) return null;
-    return <Profile {...JWTUserTOProfileProps(user)} />;
+    return <EditProfile {...JWTUserTOProfileProps(user)} />;
 }
+

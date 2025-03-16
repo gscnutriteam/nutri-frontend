@@ -6,6 +6,7 @@ import BMIStats from '../components/BMI_stats';
 import MenuGrid from '../components/menu_grid';
 import Head from 'next/head';
 import type { Metadata } from 'next';
+import { getDetailUser, getUserData } from '@/services/profile/api/getUser';
 
 export const metadataHome: Metadata = {
   title: 'Home | NutriBox',
@@ -31,8 +32,7 @@ interface Props {
   };
 }
 
-export default function Home({
-  user = { name: 'Murdi' },
+export default async function Home({
   healthData = {
     bmi: 7.8,
     weight: 48,
@@ -40,6 +40,7 @@ export default function Home({
     healthScore: 20,
   },
 }: Props) {
+  const user = (await getDetailUser());
   return (
     <AppMobileLayout>
       <Head  >
@@ -48,9 +49,10 @@ export default function Home({
       <div className="w-full relative flex flex-col outfit-font pb-20">
         <div className="relative z-10">
           <UserProfile
-            name={user.name}
-            isPro={user.isPro}
-            points={user.points}
+            name={user?.name || 'No Data'}
+            isPro={user?.isProductTokenVerified || false}
+            points={10}
+            bmi={user?.bmi}
           />
         </div>
         <div className="relative z-20">

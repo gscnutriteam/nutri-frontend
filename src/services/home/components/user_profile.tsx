@@ -4,6 +4,8 @@ import type React from 'react';
 import BMIStats from './BMI_stats';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
+import { getBMIStatus } from '@/services/info_kesehatan/util/util';
+import { trimString } from '@/services/profile/util/util';
 
 interface UserProfileProps {
   name: string;
@@ -32,7 +34,7 @@ const UserProfile: React.FC<UserProfileProps> = ({
           <span className="text-lg">
             <User className="fill-black" />
           </span>
-          <span className="font-medium">{name}</span>
+          <span className="font-medium">{trimString(name, 20)}</span>
         </div>
         <div className="flex items-center gap-4 ">
           <div className="flex items-center bg-white py-1 px-3 border-2 border-black rounded-full">
@@ -53,19 +55,19 @@ const UserProfile: React.FC<UserProfileProps> = ({
           <p className='' >BMI</p>
           <div className='flex w-full items-center gap-2 my-2'>
             <div className='flex flex-col items-center justify-center'>
-              <h1 className='text-3xl font-bold'>7.8</h1>
-              <Badge variant="default">Normal</Badge>
+              <h1 className='text-3xl font-bold'>{bmi}</h1>
+              <Badge variant="default">{getBMIStatus(bmi)[0]}</Badge>
             </div>
             <div>
-              <p>Berat: 48kg</p>
-              <p>Tinggi: 160cm</p>
+              <p>Berat: {weight}kg</p>
+              <p>Tinggi: {height}cm</p>
             </div>
           </div>
           <div>
             <p className='text-sm'>Poin Hidup Sehat</p>
             <div className='flex items-center gap-2'>
-            <Progress value={50} />
-            <p>20</p>
+            <Progress value={points} />
+            <p>{points}</p>
             <Star className="size-6 fill-[#E6C64F]" />
             </div>
           </div>
