@@ -31,11 +31,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import useLogoutAPI from "@/services/auth/api/logout";
 
 // Mock API function - replace with your actual API call
 const updateProfile = async (data: z.infer<typeof editProfileSchema>) => {
-  // Simulate API request
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  // Get Refresh Token
+
   return { success: true };
 };
 

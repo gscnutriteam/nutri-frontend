@@ -12,8 +12,6 @@ export const ButtonLogout = () => {
     const mutation = useMutation({
         mutationFn: useLogoutAPI,
         onSuccess: (response) => {
-            // Redirect to login page
-            console.log(response);
 
             if (!response.success) {
                 throw new Error(
@@ -23,7 +21,7 @@ export const ButtonLogout = () => {
 
             Cookies.remove("access_token");
             Cookies.remove("refresh_token");
-            // router.push("/auth/login");
+            router.push("/login");
         },
         onError: (error: Error) => {
             toast.error(error.message || "Logout failed. Please try again.");
