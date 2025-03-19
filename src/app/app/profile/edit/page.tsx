@@ -27,6 +27,7 @@ const dummyUser: ProfileProps = {
 export default async function Page() {
     const user = await getUserData();
     if (!user) return null;
+    console.log(user)
     return <EditProfile {...JWTUserTOProfileProps(user)} />;
 }
 
