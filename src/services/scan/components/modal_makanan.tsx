@@ -9,63 +9,26 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import type { z } from "zod";
-import { BadgeMakanan } from "./badge_makanan";
-import type { BadgeMakananProps } from "../types/type";
-import { confirmMakananSchema } from "../schema/form_schema";
-import { FooterImage } from "@/services/statistic/components/footer_image";
-import { Check, Plus, Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useScanStore } from "../store/scan_store";
-import { useState } from "react";
+import type { BadgeMakananProps } from "../types/type";
+import { FooterImage } from "@/services/statistic/components/footer_image";
+import { Check, Plus } from "lucide-react";
+import { useMakananForm } from "../hooks/useMakananForm";
+import MakananForm from "./forms/MakananForm";
 
 export const ModalConfirmMakanan = ({
   title,
   estimations,
   isAdded = false,
 }: BadgeMakananProps) => {
-  const { setFoodAdded, isFoodAdded } = useScanStore();
-  const [open, setOpen] = useState(false);
-
-  // Check if this food is already added from the store state
-  const foodIsAdded = isAdded || isFoodAdded(title);
-
-  const form = useForm<z.infer<typeof confirmMakananSchema>>({
-    resolver: zodResolver(confirmMakananSchema),
-    defaultValues: {
-      title: title,
-      calorieEstimation: estimations?.calorieEstimation,
-      carboEstimation: estimations?.carboEstimation,
-      proteinEstimation: estimations?.proteinEstimation,
-      fatEstimation: estimations?.fatEstimation,
-    },
-  });
-
-  function onSubmit(values: z.infer<typeof confirmMakananSchema>) {
-    // Mark the food as added in the store
-    setFoodAdded(values.title, true);
-
-    // Close the dialog
-    setOpen(false);
-  }
-
-  function handleRemove() {
-    // Remove the food from tracking
-    setFoodAdded(title, false);
-    // Close the dialog
-    setOpen(false);
-  }
+  const { 
+    form, 
+    open, 
+    setOpen, 
+    foodIsAdded, 
+    onSubmit, 
+    handleRemove 
+  } = useMakananForm({ title, estimations, isAdded });
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -100,100 +63,14 @@ export const ModalConfirmMakanan = ({
             Pilih makanan yang sesuai dengan yang kamu makan
           </DialogDescription>
         </DialogHeader>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="font-semibold space-y-4"
-          >
-            <FormField
-              control={form.control}
-              name="title"
-              disabled
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-semibold">
-                    Nama Makananmu
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="Telur Goreng" type="text" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="calorieEstimation"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-semibold">
-                    Estimasi Kalori (kkal)
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="400" type="number" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="carboEstimation"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-semibold">
-                    Estimasi Karbohidrat (g)
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="400" type="number" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="proteinEstimation"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-semibold">
-                    Estimasi Protein (g)
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="400" type="number" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="fatEstimation"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="font-semibold">
-                    Estimasi Lemak (g)
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="400" type="number" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <div className="flex gap-3 w-full">
-              <Button type="submit" className="flex-1">
-                {foodIsAdded ? "Update Makanan" : "Add Makanan"}
-              </Button>
-              
-              {foodIsAdded && (
-                <Button type="button" variant="danger" onClick={handleRemove}>
-                  <Trash2 size={16} />
-                </Button>
-              )}
-            </div>
-          </form>
-        </Form>
+        
+        <MakananForm 
+          form={form} 
+          onSubmit={onSubmit} 
+          onRemove={handleRemove}
+          isAdded={foodIsAdded}
+        />
+        
         <DialogFooter>
           <FooterImage />
         </DialogFooter>

@@ -8,7 +8,7 @@ import { useAppRouter } from "@/hooks/useAppRouter";
 import { useEffect, useState } from "react";
 
 export const ListMakanan = () => {
-  const { scanResult } = useScanStore();
+  const { scanResult, reset } = useScanStore();
   const router = useAppRouter();
   const [shouldRender, setShouldRender] = useState(false);
 
@@ -20,7 +20,8 @@ export const ListMakanan = () => {
 
   useEffect(() => {
     if (noResults) {
-      router.push('/app/scan');
+      // reset();
+      window.location.href = '/app/scan';
     }
     if (!noResults) {
       setShouldRender(true);

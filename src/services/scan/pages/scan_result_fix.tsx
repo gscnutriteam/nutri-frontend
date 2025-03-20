@@ -1,7 +1,9 @@
 import AppMobileLayout from "@/layout/app_mobile_layout";
 import type { Metadata } from "next";
-import FoodTrackingResult from "../components/result_fix";
+// import FoodTrackingResult from "../components/result_fix";
 import { Toaster } from "sonner";
+import FoodTrackingResult from "../components/result_fix";
+// import { FoodTrackingResult } from "../components";
 
 export default function ScanDetailResult() {
   return (
