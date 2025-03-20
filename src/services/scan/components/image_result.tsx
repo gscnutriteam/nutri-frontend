@@ -18,20 +18,29 @@ const ImageResult = ({
   const { scanImageLink } = useScanStore();
   const router = useAppRouter();
 
+  // Remove the redirection - use the default image if scanImageLink is empty
+  // if (!scanImageLink) {
+  //   router.push("/app/scan");
+  //   return;
+  // }
+
+  // Use for debugging
   useEffect(() => {
-    if (!scanImageLink) {
-      router.push("/app/scan");
-    }
+    // Log the image source being used
+    console.log("Image source:", scanImageLink || image);
     setIsLoaded(true);
     return () => setIsLoaded(false);
-  }, [scanImageLink]);
+  }, [scanImageLink, image]);
 
   const openLightbox = () => setIsLightboxOpen(true);
   const closeLightbox = () => setIsLightboxOpen(false);
 
+  // Use the actual image source or fall back to the default
+  const imageSource = scanImageLink || image;
+
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-xl mx-auto p-4">
-      <div className="relative w-full flex justify-center">
+      {scanImageLink && <div className="relative w-full flex justify-center">
         {/* Fixed size container for the image and animations */}
         <div
           className={`relative flex items-center justify-center transition-all duration-1000 aspect-square w-[70%] ${
@@ -43,7 +52,7 @@ const ImageResult = ({
             className="rounded-full w-[50%] border-border border-2 relative aspect-square overflow-hidden shadow-lg z-10 cursor-pointer hover:opacity-90 transition-opacity"
             onClick={openLightbox}
           >
-            <Image src={scanImageLink ?? image} alt={alt} fill className="object-cover" />
+            <Image src={imageSource} alt={alt} fill className="object-cover" />
           </div>
 
           {/* First border set - dark teal */}
@@ -61,7 +70,7 @@ const ImageResult = ({
             <div className="absolute inset-0 rounded-full border-2 border-cyan-100 opacity-0 pulse-border-3" />
           </div>
         </div>
-      </div>
+      </div>}
 
       {/* Lightbox Modal */}
       {isLightboxOpen && (
@@ -83,7 +92,7 @@ const ImageResult = ({
               onClick={(e) => e.stopPropagation()}
             >
               <Image 
-                src={scanImageLink} 
+                src={imageSource} 
                 alt={alt} 
                 className="object-contain max-h-full rounded-lg animate-scale-in shadow-2xl" 
                 width={1200}

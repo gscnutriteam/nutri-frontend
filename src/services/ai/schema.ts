@@ -3,7 +3,7 @@ import { z } from "zod";
 const aiResultSchema = z.object({
 	foods: z.array(
 		z.object({
-			name: z.string().describe("Nama makanan dengan bahasa indonesia"),
+			name: z.string().describe("Nama makanan dengan bahasa indonesia. Judulnya saja (contoh: Nasi Goreng, Ayam Bakar, Sate Ayam, dll.)"),
 			calorie: z
 				.number()
 				.describe(
