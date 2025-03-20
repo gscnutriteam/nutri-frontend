@@ -15,6 +15,7 @@ import Statistic from '../icons/statistic';
 import Book from '../icons/book';
 import Track from '../icons/track';
 import Link from 'next/link';
+import LinkAPP from '@/components/util/link';
 
 interface MenuItem {
   icon: React.ReactNode;
@@ -33,31 +34,31 @@ const menuItems: MenuItem[] = [
   {
     icon: <Diamond className="w-12 h-12" />,
     label: 'Chat Nubo',
-    href: '/chat',
+    href: '/chat-nubo',
     variant: 'default',
   },
   {
     icon: <BookOpen className="w-12 h-12" />,
     label: 'Info Kesehatan',
-    href: '/info',
+    href: '/info-kesehatan',
     variant: 'default',
   },
   {
     icon: <Statistic className="w-12 h-12" />,
     label: 'Statistik',
-    href: '/stats',
+    href: '/statistic',
     variant: 'primary',
   },
   {
     icon: <Book className="w-12 h-12" />,
     label: 'Resep Makanan',
-    href: '/recipes',
+    href: '/resep-makanan',
     variant: 'primary',
   },
   {
     icon: <Track className="w-12 h-12" />,
     label: 'Track Berat Badan',
-    href: '/weight',
+    href: '/statistic/berat',
     variant: 'default',
   },
 ];
@@ -66,7 +67,7 @@ const MenuGrid = () => {
   return (
     <div className="grid grid-cols-2 gap-5 p-4">
       {menuItems.map((item, index) => (
-        <Link
+        <LinkAPP
           key={index}
           href={item.href}
         >
@@ -77,7 +78,7 @@ const MenuGrid = () => {
             {item.icon}
             <span className="font-semibold text-start mt-2 text-2xl">{item.label}</span>
           </Card>
-        </Link>
+        </LinkAPP>
       ))}
     </div>
   );

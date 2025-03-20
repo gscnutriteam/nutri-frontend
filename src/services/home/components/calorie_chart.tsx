@@ -78,7 +78,7 @@ const CalorieChart: React.FC = () => {
         className="w-full"
       >
         <SwiperSlide>
-          <div className="px-4">
+          <div className="px-4 pb-8">
             <Chart
               title={`Kalori ${getCalorieTitle()}`}
               data={getCalorieData()}
@@ -91,7 +91,7 @@ const CalorieChart: React.FC = () => {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="px-4">
+          <div className="px-4 pb-8">
             <Chart
               title={`Berat ${getWeightTitle()}`}
               data={getWeightData()}
