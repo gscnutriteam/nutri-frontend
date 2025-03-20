@@ -3,13 +3,14 @@ export interface CardBeratProps {
     berat: number;
     bmi: number;
     tanggal: Date;
-    id: number;
+    id: string;
 }
 
 export interface ModalEditBeratProps {
     tinggi: number;
     berat: number;
-    id: number;
+    id: string;
+    tanggal: Date;
 }
 
 export interface CardCalorieProps {

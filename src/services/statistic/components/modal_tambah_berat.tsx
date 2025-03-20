@@ -21,25 +21,47 @@ import {
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { z } from "zod";
-import { editBeratBadanSchema } from "../schema/form_schema";
+import { editBeratBadanSchema, tambahBeratSchema } from "../schema/form_schema";
 import { FooterImage } from "./footer_image";
-import { PlusCircleIcon } from "lucide-react";
+import { PlusCircleIcon, Loader2 } from "lucide-react";
+import { addWeightHeight } from "../api/addWeightHeight";
+import { useState } from "react";
+import { toast } from "sonner";
 
-export const ModalTambahBerat2 = () => {
-  const form = useForm<z.infer<typeof editBeratBadanSchema>>({
-    resolver: zodResolver(editBeratBadanSchema),
+interface ModalTambahBeratProps {
+  onSuccess?: () => void;
+}
+
+export const ModalTambahBerat2 = ({ onSuccess }: ModalTambahBeratProps) => {
+  const form = useForm<z.infer<typeof tambahBeratSchema>>({
+    resolver: zodResolver(tambahBeratSchema),
   });
+  const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  function onSubmit(values: z.infer<typeof editBeratBadanSchema>) {
-    // set({
-    //   name: values.name,
-    //   email: values.email,
-    //   password: values.password,
-    // });
-    // router.replace(registerInfoUrl);
+  async function onSubmit(values: z.infer<typeof tambahBeratSchema>) {
+    try {
+      setIsLoading(true);
+      const response = await addWeightHeight(values.berat, values.tinggi);
+      if (!response.success) {
+        console.log(response)
+        toast.error("Terjadi kesalahan saat menambahkan data");
+        return;
+      }
+      toast.success("Data berat dan tinggi badan berhasil ditambahkan");
+      form.reset();
+      setOpen(false);
+      if (onSuccess) {
+        onSuccess();
+      }
+    } catch (error) {
+      toast.error("Terjadi kesalahan saat menambahkan data");
+    } finally {
+      setIsLoading(false);
+    }
   }
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant={"neutral"}>
           <PlusCircleIcon size={24} className="mr-1" />
@@ -104,7 +126,9 @@ export const ModalTambahBerat2 = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" disabled={isLoading} onClick={() => {
+            }}>
+              {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
               Submit
             </Button>
           </form>

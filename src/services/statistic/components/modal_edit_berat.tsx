@@ -25,26 +25,55 @@ import type { z } from "zod";
 import { editBeratBadanSchema } from "../schema/form_schema";
 import type { ModalEditBeratProps } from "../types/berat";
 import { FooterImage } from "./footer_image";
+import { editWeightHeight } from "../api/editWeightHeight";
+import { useState } from "react";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
-export const ModalEditlBerat = ({ berat, tinggi }: ModalEditBeratProps) => {
+interface ModalEditlBeratProps extends ModalEditBeratProps {
+  onSuccess?: () => void;
+}
+
+export const ModalEditlBerat = ({ berat, tinggi, tanggal, id, onSuccess }: ModalEditlBeratProps) => {
+  const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<z.infer<typeof editBeratBadanSchema>>({
     resolver: zodResolver(editBeratBadanSchema),
     defaultValues: {
       berat: berat,
       tinggi: tinggi,
+      recorded_at: tanggal,
     },
   });
 
-  function onSubmit(values: z.infer<typeof editBeratBadanSchema>) {
-    // set({
-    //   name: values.name,
-    //   email: values.email,
-    //   password: values.password,
-    // });
-    // router.replace(registerInfoUrl);
+  async function onSubmit(values: z.infer<typeof editBeratBadanSchema>) {
+    try {
+      console.log(id)
+      setIsLoading(true);
+      const response = await editWeightHeight(String(id), {
+        weight: values.berat,
+        height: values.tinggi,
+        recorded_at: values.recorded_at.toISOString(),
+      });
+      console.log(response);
+      
+      toast.success("Data berat dan tinggi badan berhasil diperbarui");
+      form.reset();
+      setOpen(false);
+      if (onSuccess) {
+        onSuccess();
+      }
+    } catch (error) {
+      toast.error("Terjadi kesalahan saat memperbarui data");
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   }
+  
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <ButtonIcon variant="edit" />
       </DialogTrigger>
@@ -67,7 +96,17 @@ export const ModalEditlBerat = ({ berat, tinggi }: ModalEditBeratProps) => {
                 <FormItem>
                   <FormLabel className="font-semibold">Berat</FormLabel>
                   <FormControl>
-                    <Input placeholder="60" type="number" {...field} />
+                    <Input 
+                      placeholder="60" 
+                      type="number" 
+                      {...field}
+                      onChange={(e) =>
+                        field.onChange(
+                          e.target.value ? Number(e.target.value) : 0
+                        )
+                      }
+                      value={field.value || ""}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -80,13 +119,45 @@ export const ModalEditlBerat = ({ berat, tinggi }: ModalEditBeratProps) => {
                 <FormItem>
                   <FormLabel className="font-semibold">Tinggi</FormLabel>
                   <FormControl>
-                    <Input placeholder="170" type="number" {...field} />
+                    <Input 
+                      placeholder="170" 
+                      type="number" 
+                      {...field}
+                      onChange={(e) =>
+                        field.onChange(
+                          e.target.value ? Number(e.target.value) : 0
+                        )
+                      }
+                      value={field.value || ""}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full">
+            <FormField
+              control={form.control}
+              name="recorded_at"
+              render={({ field }) => (
+                <FormItem className="relative">
+                  <FormLabel className="font-semibold">Tanggal</FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="date"
+                      {...field}
+                      value={field.value instanceof Date ? field.value.toISOString().split('T')[0] : ''}
+                      onChange={(e) => {
+                        const date = new Date(e.target.value);
+                        field.onChange(date);
+                      }}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
               Submit
             </Button>
           </form>

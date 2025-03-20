@@ -6,12 +6,14 @@ import { StatisticKalori } from "./statistic_kalori_statistic";
 import { CardKalori } from "./card_kalori";
 import { CalorieSkeleton } from "./calorie_skeleton";
 import { useCalorieData } from "../hooks/useCalorieData";
+import { Toaster } from "sonner";
 
 export default function StatisticsKaloriSection() {
   const { calorieData, isLoading, hasMore, lastItemRef, resetAndRefetch } = useCalorieData();
 
   return (
     <AppMobileLayout>
+      <Toaster position="top-center" richColors />
       <div className="bg-white max-h-[90vh] flex flex-col w-full overflow-auto">
         <HeaderFeature
           title="Kalori"

@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const editBeratBadanSchema = z.object({
+const tambahBeratSchema = z.object({
   berat: z
     .number({
       required_error: "Berat badan wajib diisi",
@@ -23,6 +23,32 @@ const editBeratBadanSchema = z.object({
     }),
 });
 
+const editBeratBadanSchema = z.object({
+  berat: z
+    .number({
+      required_error: "Berat badan wajib diisi",
+    })
+    .min(1, {
+      message: "Berat badan tidak valid",
+    })
+    .max(500, {
+      message: "Berat badan tidak valid",
+    }),
+  tinggi: z
+    .number({
+      required_error: "Tinggi badan wajib diisi",
+    })
+    .min(1, {
+      message: "Tinggi badan tidak valid",
+    })
+    .max(300, {
+      message: "Tinggi badan tidak valid",
+    }),
+  recorded_at: z.date({
+    required_error: "Tanggal wajib diisi",
+  }),
+});
+
 const targetBeratBadanSchema = z.object({
   target: z
     .number({
@@ -39,4 +65,4 @@ const targetBeratBadanSchema = z.object({
   }),
 });
 
-export { editBeratBadanSchema, targetBeratBadanSchema };
+export { editBeratBadanSchema, targetBeratBadanSchema, tambahBeratSchema };

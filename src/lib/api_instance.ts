@@ -59,6 +59,7 @@ async function apiClient<T, R>(endpoint: string, method: string, data?: T, inclu
 	  console.error(`API Call to ${endpoint}`, {
 		errorMessage: error instanceof Error ? error.message : String(error)
 	  });
+	  
 	  return {
 		success: false,
 		status: 500,
