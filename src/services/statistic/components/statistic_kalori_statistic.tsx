@@ -5,26 +5,32 @@ import { cn } from "@/lib/utils";
 import { BMIChart } from "./bmi_chart";
 import { BadgeKalori } from "./badge_kalori";
 import { KaloriChart } from "./kalori_chart";
+import { useState } from "react";
+import type { Period } from "@/services/home/types/chart";
+import { useCalorieStats } from "../hooks/useCalorieStats";
 
 export const StatisticKalori = () => {
+  const [period, setPeriod] = useState<Period>("daily");
+  const { todayCalories, totalCalories, isLoading } = useCalorieStats(period);
+
   return (
     <div className="px-5">
       <div className="bg-pr10 rounded-lg border-2 border-black p-4 w-full flex flex-col">
         <div className="flex w-full justify-between items-center">
           <div className="flex flex-col">
-            <p className="text-4xl text-primaryText font-semibold">
-              -1445 <span className="text-lg">kkal</span>
+            <p className="text-4xl text-primaryText font-semibold mb-2">
+              {todayCalories} <span className="text-lg">kkal</span>
             </p>
+            <BadgeKalori kalori={todayCalories} />
           </div>
           <div className="flex flex-col text-end">
             <p className="font-semibold text-sm text-primaryText">Total dikonsumsi</p>
             <div className="flex gap-1">
-                <p className="text-lg">525 kkal</p>
-                <BadgeKalori kalori={545} />
+              <p className="text-lg">{totalCalories} kkal</p>
             </div>
           </div>
         </div>
-        <KaloriChart className="mt-4" />
+        <KaloriChart className="mt-2" period={period} onPeriodChange={setPeriod} />
       </div>
     </div>
   );

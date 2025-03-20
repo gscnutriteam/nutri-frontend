@@ -8,6 +8,7 @@ interface AddMealRequest {
   protein: number;
   fat: number;
   carbs: number;
+  meal_image: string;
   comment: string;
   recommendation: string;
 }
@@ -30,7 +31,6 @@ export interface AddMealResponse {
 
 const useAddMeal = async (data: AddMealRequest) => {
   try {
-    console.log(data);
     return await apiClient(
       "/meals",
       "POST",

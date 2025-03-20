@@ -15,8 +15,10 @@ export interface ModalEditBeratProps {
 export interface CardCalorieProps {
     tanggal: Date;
     calorie: number;
-    id: number;
+    id: string;
     carbs: number;
     protein: number;
     fat: number;
+    title: string;
+    image: string;
 }

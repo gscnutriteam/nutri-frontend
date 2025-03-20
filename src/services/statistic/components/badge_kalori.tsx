@@ -10,7 +10,7 @@ const BadgeKalori = ({ kalori, className }: { kalori: number, className?: string
   const [status, statusColor] = getKaloriStatus(kalori);
 
   return (
-    <div className={cn(" border-2 border-black rounded-xl px-3 py-0 scale-[0.8]", statusColor, className)}>
+    <div className={cn(" border-2 border-black rounded-xl px-3 py-0 scale-[0.8] w-fit", statusColor, className)}>
       <span
         className={`text-white font-semibold`}
       >

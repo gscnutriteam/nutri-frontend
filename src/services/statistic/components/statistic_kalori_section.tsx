@@ -1,10 +1,15 @@
+"use client";
+
 import { HeaderFeature } from "@/components/ui/header_feature";
 import AppMobileLayout from "@/layout/app_mobile_layout";
 import { StatisticKalori } from "./statistic_kalori_statistic";
 import { CardKalori } from "./card_kalori";
-import { dummyCalorieCardsData } from "../db/dummyCalorie";
+import { CalorieSkeleton } from "./calorie_skeleton";
+import { useCalorieData } from "../hooks/useCalorieData";
 
 export default function StatisticsKaloriSection() {
+  const { calorieData, isLoading, hasMore, lastItemRef, resetAndRefetch } = useCalorieData();
+
   return (
     <AppMobileLayout>
       <div className="bg-white max-h-[90vh] flex flex-col w-full overflow-auto">
@@ -15,9 +20,34 @@ export default function StatisticsKaloriSection() {
         />
         <StatisticKalori />
         <div className="flex w-full px-5 flex-col mt-4 gap-4">
-          {dummyCalorieCardsData.map((data, index) => (
-            <CardKalori key={index} {...data} />
+          {calorieData.map((data, index) => (
+            <div
+              key={index}
+              ref={index === calorieData.length - 1 ? lastItemRef : null}
+            >
+              <CardKalori {...data} onDelete={resetAndRefetch} />
+            </div>
           ))}
+          
+          {isLoading && (
+            <>
+              {[...Array(3)].map((_, index) => (
+                <CalorieSkeleton key={`skeleton-${index}`} />
+              ))}
+            </>
+          )}
+          
+          {!hasMore && calorieData.length > 0 && (
+            <div className="text-center text-gray-500 py-4">
+              No more data to load
+            </div>
+          )}
+          
+          {!isLoading && calorieData.length === 0 && (
+            <div className="text-center text-gray-500 py-4">
+              No calorie data available
+            </div>
+          )}
         </div>
       </div>
     </AppMobileLayout>

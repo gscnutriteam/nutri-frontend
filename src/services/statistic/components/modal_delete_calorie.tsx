@@ -1,3 +1,5 @@
+"use client";
+
 import {
     AlertDialog,
     AlertDialogAction,
@@ -12,8 +14,26 @@ import {
 import { ButtonIcon } from "./button_icon";
 import { Trash } from "lucide-react";
 import { FooterImage } from "./footer_image";
+import deleteCalorie from "../api/deleteCalorie";
+import { toast } from "sonner";
 
-export const ModalDeleteCalorie = ({ id }: { id: number }) => {
+interface ModalDeleteCalorieProps {
+  id: string;
+  onDelete: () => void;
+}
+
+export const ModalDeleteCalorie = ({ id, onDelete }: ModalDeleteCalorieProps) => {
+  const handleDelete = async () => {
+    try {
+      await deleteCalorie(id);
+      toast.success("Data berhasil dihapus");
+      onDelete();
+    } catch (error) {
+      console.error("Failed to delete calorie:", error);
+      toast.error("Gagal menghapus data");
+    }
+  };
+
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -27,7 +47,7 @@ export const ModalDeleteCalorie = ({ id }: { id: number }) => {
           <AlertDialogDescription>
             Data yang telah dihapus tidak dapat dikembalikan
           </AlertDialogDescription>
-          <AlertDialogAction className="bg-danger">
+          <AlertDialogAction className="bg-danger" onClick={handleDelete}>
             <Trash size={16} className="text-white" />
             Hapus
           </AlertDialogAction>

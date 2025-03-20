@@ -11,7 +11,10 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         hostname: "firebasestorage.googleapis.com",
-      }
+      },
+      {
+        hostname: "example.com",
+      },
     ]
   }
 };

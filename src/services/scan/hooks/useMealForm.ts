@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { useAppRouter } from "@/hooks/useAppRouter";
 
 export const useMealForm = () => {
-  const { scanResult, reset } = useScanStore();
+  const { scanResult, reset, scanImageLink } = useScanStore();
   const router = useAppRouter();
   
   // Calculate totals from added foods
@@ -117,6 +117,7 @@ export const useMealForm = () => {
       carbs: nutritionTotals.carbo,
       comment: scanResult.comment || "",
       recommendation: scanResult.recomendation || "",
+      meal_image: scanImageLink || "",
     });
   };
 
