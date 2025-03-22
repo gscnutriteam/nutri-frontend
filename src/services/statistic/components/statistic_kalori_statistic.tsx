@@ -8,10 +8,15 @@ import { KaloriChart } from "./kalori_chart";
 import { useState } from "react";
 import type { Period } from "@/services/home/types/chart";
 import { useCalorieStats } from "../hooks/useCalorieStats";
+import { StatisticKaloriSkeleton } from "./statistic_kalori_skeleton";
 
 export const StatisticKalori = () => {
   const [period, setPeriod] = useState<Period>("daily");
-  const { todayCalories, totalCalories, isLoading } = useCalorieStats(period);
+  const { todayCalories, totalCalories, isLoading, chartData } = useCalorieStats(period);
+
+  if (isLoading && chartData.length === 0) {
+    return <StatisticKaloriSkeleton />;
+  }
 
   return (
     <div className="px-5">
@@ -25,8 +30,8 @@ export const StatisticKalori = () => {
           </div>
           <div className="flex flex-col text-end">
             <p className="font-semibold text-sm text-primaryText">Total dikonsumsi</p>
-            <div className="flex gap-1">
-              <p className="text-lg">{totalCalories} kkal</p>
+            <div className="flex gap-1 text-end justify-end">
+              <p className="text-lg text-end">{totalCalories} kkal</p>
             </div>
           </div>
         </div>

@@ -21,6 +21,7 @@ export default function StatisticsKaloriSection() {
           className="text-center w-full py-3"
         />
         <StatisticKalori />
+        
         <div className="flex w-full px-5 flex-col mt-4 gap-4">
           {calorieData.map((data, index) => (
             <div

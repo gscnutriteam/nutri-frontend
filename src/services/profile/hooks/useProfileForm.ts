@@ -31,6 +31,7 @@ export const useProfileForm = (user: ProfileProps) => {
       gender: user.gender as "Male" | "Female",
       height: user.height || undefined,
       weight: user.weight || undefined,
+      profilePicture: user.profile_picture || " ",
       physicalActivity: (() => {
         switch(user.physical_activity) {
           case PhsyicalActivity.low: return "Light";

@@ -48,7 +48,5 @@ export const editProfileSchema = z.object({
     medicalHistory: z.string({
       required_error: "Riwayat penyakit wajib diisi",
     }),
-    profilePicture: z.string({
-      required_error: "Foto profil wajib diisi",
-    }),
+    profilePicture: z.string().optional(),
 });
