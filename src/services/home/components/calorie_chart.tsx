@@ -6,40 +6,47 @@ import { Pagination } from 'swiper/modules';
 import Chart from './chart';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import type { Period } from '../types/chart';
-import {
-  dailyCalorieData,
-  weeklyCalorieData,
-  monthlyCalorieData,
-  dailyWeightData,
-  weeklyWeightData,
-  monthlyWeightData,
-} from '../data/chart_data';
+import type { Period, ChartData } from '../types/chart';
+import { useCalorieStats } from "@/services/statistic/hooks/useCalorieStats";
+import { useWeightHeightData } from "@/services/statistic/hooks/useWeightHeightData";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const CalorieChart: React.FC = () => {
   const [caloriePeriod, setCaloriePeriod] = useState<Period>('daily');
   const [weightPeriod, setWeightPeriod] = useState<Period>('daily');
 
-  const getCalorieData = () => {
-    switch (caloriePeriod) {
-      case 'daily':
-        return dailyCalorieData;
-      case 'weekly':
-        return weeklyCalorieData;
-      case 'monthly':
-        return monthlyCalorieData;
-    }
-  };
+  // Fetch calorie data using the custom hook
+  const { chartData: calorieData, isLoading: calorieLoading } = useCalorieStats(caloriePeriod);
+  
+  // Fetch weight data using the custom hook
+  const { chartData: weightChartData, isLoading: weightLoading } = useWeightHeightData();
 
-  const getWeightData = () => {
+  // Format weight data for the chart
+  const getWeightData = (): ChartData[] => {
+    if (!weightChartData) return [];
+    
+    let data = [] as any[];
+    
     switch (weightPeriod) {
-      case 'daily':
-        return dailyWeightData;
-      case 'weekly':
-        return weeklyWeightData;
-      case 'monthly':
-        return monthlyWeightData;
+      case "daily":
+        data = weightChartData.daily;
+        break;
+      case "weekly":
+        data = weightChartData.weekly;
+        break;
+      case "monthly":
+        data = weightChartData.monthly;
+        break;
+      default:
+        data = [];
     }
+    
+    // Transform the data to match the expected format
+    return data.map((item) => ({
+      day: item.date,
+      weight: item.weight,
+      bmi: item.bmi
+    }));
   };
 
   const getCalorieTitle = () => {
@@ -79,28 +86,40 @@ const CalorieChart: React.FC = () => {
       >
         <SwiperSlide>
           <div className="px-4 pb-8">
-            <Chart
-              title={`Kalori ${getCalorieTitle()}`}
-              data={getCalorieData()}
-              period={caloriePeriod}
-              onPeriodChange={setCaloriePeriod}
-              metricKey="calories"
-              metricLabel="Kalori"
-              metricColor="#53C2C6"
-            />
+            {calorieLoading ? (
+              <div className="w-full">
+                <Skeleton className="h-80 w-full rounded-xl" />
+              </div>
+            ) : (
+              <Chart
+                title={`Kalori ${getCalorieTitle()}`}
+                data={calorieData}
+                period={caloriePeriod}
+                onPeriodChange={setCaloriePeriod}
+                metricKey="calories"
+                metricLabel="Kalori"
+                metricColor="#53C2C6"
+              />
+            )}
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className="px-4 pb-8">
-            <Chart
-              title={`Berat ${getWeightTitle()}`}
-              data={getWeightData()}
-              period={weightPeriod}
-              onPeriodChange={setWeightPeriod}
-              metricKey="weight"
-              metricLabel="Berat"
-              metricColor="#53C2C6"
-            />
+            {weightLoading ? (
+              <div className="w-full">
+                <Skeleton className="h-80 w-full rounded-xl" />
+              </div>
+            ) : (
+              <Chart
+                title={`Berat ${getWeightTitle()}`}
+                data={getWeightData()}
+                period={weightPeriod}
+                onPeriodChange={setWeightPeriod}
+                metricKey="weight"
+                metricLabel="Berat"
+                metricColor="#53C2C6"
+              />
+            )}
           </div>
         </SwiperSlide>
       </Swiper>

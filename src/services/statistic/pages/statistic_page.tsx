@@ -2,18 +2,12 @@
 import { useState } from "react";
 import AppMobileLayout from "@/layout/app_mobile_layout";
 import Chart from "../../home/components/chart";
-import {
-  dailyCalorieData,
-  weeklyCalorieData,
-  monthlyCalorieData,
-} from "../../home/data/chart_data";
-import {
-  dailyWeightData,
-  weeklyWeightData,
-  monthlyWeightData,
-} from "../../home/data/chart_data";
 import Head from "next/head";
 import { BackButton } from "@/services/auth/components/back_button";
+import { useWeightHeightData } from "../hooks/useWeightHeightData";
+import { useCalorieStats } from "../hooks/useCalorieStats";
+import type { Period, ChartData } from "@/services/home/types/chart";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface Props {
   user?: {
@@ -24,33 +18,41 @@ interface Props {
 }
 
 export default function Statistics({ user }: Props) {
-  const [caloriePeriod, setCaloriePeriod] = useState<
-    "daily" | "weekly" | "monthly"
-  >("daily");
-  const [weightPeriod, setWeightPeriod] = useState<
-    "daily" | "weekly" | "monthly"
-  >("daily");
+  const [caloriePeriod, setCaloriePeriod] = useState<Period>("daily");
+  const [weightPeriod, setWeightPeriod] = useState<Period>("daily");
+  
+  // Fetch weight data using the custom hook
+  const { chartData: weightChartData, isLoading: weightLoading } = useWeightHeightData();
+  
+  // Fetch calorie data using the custom hook
+  const { chartData: calorieData, isLoading: calorieLoading } = useCalorieStats(caloriePeriod);
 
-  const getCalorieData = () => {
-    switch (caloriePeriod) {
-      case "daily":
-        return dailyCalorieData;
-      case "weekly":
-        return weeklyCalorieData;
-      case "monthly":
-        return monthlyCalorieData;
-    }
-  };
-
-  const getWeightData = () => {
+  // Format weight data for the chart
+  const getWeightData = (): ChartData[] => {
+    if (!weightChartData) return [];
+    
+    let data = [] as any[];
+    
     switch (weightPeriod) {
       case "daily":
-        return dailyWeightData;
+        data = weightChartData.daily;
+        break;
       case "weekly":
-        return weeklyWeightData;
+        data = weightChartData.weekly;
+        break;
       case "monthly":
-        return monthlyWeightData;
+        data = weightChartData.monthly;
+        break;
+      default:
+        data = [];
     }
+    
+    // Transform the data to match the expected format
+    return data.map((item) => ({
+      day: item.date,
+      weight: item.weight,
+      bmi: item.bmi
+    }));
   };
 
   const getCalorieTitle = () => {
@@ -87,32 +89,46 @@ export default function Statistics({ user }: Props) {
           alt="pattern"
         />
         <BackButton className="ms-8 mt-4 z-10" variant="white" />
-        <div className="w-full p-4">
-          <div className="rounded-xl px-4 shadow-sm">
-            <Chart
-              title={`Kalori ${getCalorieTitle()}`}
-              data={getCalorieData()}
-              period={caloriePeriod}
-              onPeriodChange={setCaloriePeriod}
-              metricKey="calories"
-              metricLabel="Kalori"
-              metricColor="#53C2C6"
-              isDetail
-            />
-          </div>
+        <div className="w-full px-2 md:px-4">
+          {calorieLoading ? (
+            <div className="rounded-xl shadow-sm w-full">
+              <Skeleton className="h-80 w-full rounded-xl" />
+            </div>
+          ) : (
+            <div className="w-full rounded-xl shadow-sm">
+              <Chart
+                title={`Kalori ${getCalorieTitle()}`}
+                data={calorieData}
+                period={caloriePeriod}
+                onPeriodChange={setCaloriePeriod}
+                metricKey="calories"
+                metricLabel="Kalori"
+                metricColor="#53C2C6"
+                isDetail
+              />
+            </div>
+          )}
 
-          <div className="rounded-xl p-4 shadow-sm">
-            <Chart
-              title={`Berat ${getWeightTitle()}`}
-              data={getWeightData()}
-              period={weightPeriod}
-              onPeriodChange={setWeightPeriod}
-              metricKey="weight"
-              metricLabel="Berat"
-              metricColor="#53C2C6"
-              isDetail
-            />
-          </div>
+          <div className="mt-8"></div>
+
+          {weightLoading ? (
+            <div className="rounded-xl shadow-sm w-full">
+              <Skeleton className="h-80 w-full rounded-xl" />
+            </div>
+          ) : (
+            <div className="w-full rounded-xl shadow-sm">
+              <Chart
+                title={`Berat ${getWeightTitle()}`}
+                data={getWeightData()}
+                period={weightPeriod}
+                onPeriodChange={setWeightPeriod}
+                metricKey="weight"
+                metricLabel="Berat"
+                metricColor="#53C2C6"
+                isDetail
+              />
+            </div>
+          )}
         </div>
       </div>
     </AppMobileLayout>
