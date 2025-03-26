@@ -21,45 +21,72 @@ import {
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import type { z } from "zod";
-import { editBeratBadanSchema, tambahBeratSchema } from "../schema/form_schema";
+import { tambahBeratSchema } from "../schema/form_schema";
 import { FooterImage } from "./footer_image";
 import { PlusCircleIcon, Loader2 } from "lucide-react";
 import { addWeightHeight } from "../api/addWeightHeight";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { useQueryClient } from "@tanstack/react-query";
+import { WEIGHT_QUERY_KEYS } from "../hooks/useWeightHeightData";
 
 interface ModalTambahBeratProps {
   onSuccess?: () => void;
+  latestHeight?: number;
 }
 
-export const ModalTambahBerat2 = ({ onSuccess }: ModalTambahBeratProps) => {
+export const ModalTambahBerat2 = ({ onSuccess, latestHeight }: ModalTambahBeratProps) => {
   const form = useForm<z.infer<typeof tambahBeratSchema>>({
     resolver: zodResolver(tambahBeratSchema),
+    defaultValues: {
+      berat: 0,
+      tinggi: latestHeight || 0
+    }
   });
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const queryClient = useQueryClient();
+
+  // Update height value when latestHeight changes
+  useEffect(() => {
+    if (latestHeight) {
+      form.setValue('tinggi', latestHeight);
+    }
+  }, [latestHeight, form]);
 
   async function onSubmit(values: z.infer<typeof tambahBeratSchema>) {
     try {
       setIsLoading(true);
+      
       const response = await addWeightHeight(values.berat, values.tinggi);
+      
       if (!response.success) {
-        console.log(response)
         toast.error("Terjadi kesalahan saat menambahkan data");
         return;
       }
+      
       toast.success("Data berat dan tinggi badan berhasil ditambahkan");
-      form.reset();
+      form.reset({ berat: 0, tinggi: latestHeight || 0 });
       setOpen(false);
+      
+      // Invalidate all queries to refresh data everywhere
+      queryClient.invalidateQueries({ queryKey: [WEIGHT_QUERY_KEYS.weightHeightData] });
+      queryClient.invalidateQueries({ queryKey: [WEIGHT_QUERY_KEYS.currentWeight] });
+      queryClient.invalidateQueries({ queryKey: [WEIGHT_QUERY_KEYS.targetWeight] });
+      queryClient.invalidateQueries({ queryKey: [WEIGHT_QUERY_KEYS.weightChartData] });
+      
+      // Trigger additional custom refresh if provided
       if (onSuccess) {
         onSuccess();
       }
     } catch (error) {
+      console.error('Exception during submit:', error);
       toast.error("Terjadi kesalahan saat menambahkan data");
     } finally {
       setIsLoading(false);
     }
   }
+  
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
@@ -85,7 +112,7 @@ export const ModalTambahBerat2 = ({ onSuccess }: ModalTambahBeratProps) => {
               name="berat"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-semibold">Berat</FormLabel>
+                  <FormLabel className="font-semibold">Berat (kg)</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="60"
@@ -108,7 +135,7 @@ export const ModalTambahBerat2 = ({ onSuccess }: ModalTambahBeratProps) => {
               name="tinggi"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="font-semibold">Tinggi</FormLabel>
+                  <FormLabel className="font-semibold">Tinggi (cm)</FormLabel>
                   <FormControl>
                     <Input
                       placeholder="170"
@@ -126,8 +153,7 @@ export const ModalTambahBerat2 = ({ onSuccess }: ModalTambahBeratProps) => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full" disabled={isLoading} onClick={() => {
-            }}>
+            <Button type="submit" className="w-full" disabled={isLoading}>
               {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
               Submit
             </Button>

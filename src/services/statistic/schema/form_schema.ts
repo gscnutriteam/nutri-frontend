@@ -50,18 +50,10 @@ const editBeratBadanSchema = z.object({
 });
 
 const targetBeratBadanSchema = z.object({
-  target: z
-    .number({
-      required_error: "Target berat badan wajib diisi",
-    })
-    .min(1, {
-      message: "Target berat badan tidak valid",
-    })
-    .max(500, {
-      message: "Target berat badan tidak valid",
-    }),
+  target: z.number().min(1, "Target berat harus diisi"),
+  height: z.number().min(1, "Tinggi badan harus diisi"),
   tanggal: z.date({
-    required_error: "Tanggal wajib diisi",
+    required_error: "Tanggal harus diisi",
   }),
 });
 

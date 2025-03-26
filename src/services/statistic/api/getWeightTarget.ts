@@ -2,31 +2,34 @@
 
 import { apiClient } from "@/lib/api_instance";
 
-export interface WeightHeight {
+export interface WeightTarget {
   height: number;
+  height_history: number;
   id: string;
-  recorded_at: string;
+  record_date: string;
+  target_date: string;
   user_id: string;
   weight: number;
+  weight_history: number;
 }
 
-export interface WeightHeightResponse {
-  data: WeightHeight[];
+export interface WeightTargetResponse {
+  data: WeightTarget[];
   message: string;
   status: string;
 }
 
-export const getWeightHeight = async () => {
+export const getWeightTarget = async () => {
   try {
-    console.log('📡 Calling getWeightHeight API');
-    const response = await apiClient("/weight-height", "GET");
-    console.log('📡 getWeightHeight response:', response);
-
+    console.log('📡 Calling getWeightTarget API');
+    const response = await apiClient("/weight-height/target", "GET");
+    console.log('📡 getWeightTarget response:', response);
+    
     // Handle response with type assertion
     const responseData = response as any;
     
     // Check if response.data is an array directly or nested
-    let data: WeightHeight[] = [];
+    let data: WeightTarget[] = [];
     
     if (responseData.data) {
       if (Array.isArray(responseData.data)) {
@@ -36,10 +39,10 @@ export const getWeightHeight = async () => {
       }
     }
     
-    console.log('📡 getWeightHeight processed data:', data);
+    console.log('📡 getWeightTarget processed data:', data);
     return data;
   } catch (error) {
-    console.error('❌ getWeightHeight error:', error);
+    console.error('❌ getWeightTarget error:', error);
     throw error;
   }
-}
+}; 

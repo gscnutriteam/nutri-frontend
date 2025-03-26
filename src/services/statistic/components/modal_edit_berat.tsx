@@ -29,6 +29,8 @@ import { editWeightHeight } from "../api/editWeightHeight";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
+import { useQueryClient } from "@tanstack/react-query"; 
+import { WEIGHT_QUERY_KEYS } from "../hooks/useWeightHeightData";
 
 interface ModalEditlBeratProps extends ModalEditBeratProps {
   onSuccess?: () => void;
@@ -37,6 +39,7 @@ interface ModalEditlBeratProps extends ModalEditBeratProps {
 export const ModalEditlBerat = ({ berat, tinggi, tanggal, id, onSuccess }: ModalEditlBeratProps) => {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const queryClient = useQueryClient();
 
   const form = useForm<z.infer<typeof editBeratBadanSchema>>({
     resolver: zodResolver(editBeratBadanSchema),
@@ -49,18 +52,25 @@ export const ModalEditlBerat = ({ berat, tinggi, tanggal, id, onSuccess }: Modal
 
   async function onSubmit(values: z.infer<typeof editBeratBadanSchema>) {
     try {
-      console.log(id)
       setIsLoading(true);
       const response = await editWeightHeight(String(id), {
         weight: values.berat,
         height: values.tinggi,
         recorded_at: values.recorded_at.toISOString(),
       });
-      console.log(response);
       
       toast.success("Data berat dan tinggi badan berhasil diperbarui");
       form.reset();
       setOpen(false);
+      
+      // Invalidate all weight-related queries to ensure everything is refreshed
+      queryClient.invalidateQueries({ queryKey: [WEIGHT_QUERY_KEYS.weightHeightData] });
+      queryClient.invalidateQueries({ queryKey: [WEIGHT_QUERY_KEYS.currentWeight] });
+      queryClient.invalidateQueries({ queryKey: [WEIGHT_QUERY_KEYS.targetWeight] });
+      queryClient.invalidateQueries({ queryKey: [WEIGHT_QUERY_KEYS.statistics] });
+      queryClient.invalidateQueries({ queryKey: [WEIGHT_QUERY_KEYS.weightChartData] });
+      
+      // Call onSuccess callback if provided
       if (onSuccess) {
         onSuccess();
       }
