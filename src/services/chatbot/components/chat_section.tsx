@@ -6,7 +6,7 @@ export default function ChatSection() {
     const { messages, input, handleInputChange, handleSubmit, stop, append, error } = useChat()
     const [isLoading, setIsLoading] = useState(false)
     useEffect(() => {
-        console.log("Messages", messages)
+        // console.log("Messages", messages)
         console.log("Error", error)
     }
     , [messages, error])

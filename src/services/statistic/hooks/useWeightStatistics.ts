@@ -45,7 +45,6 @@ export const useWeightStatistics = () => {
   
   if (targetData && Array.isArray(targetData) && targetData.length > 0) {
     // Debug log the raw target data
-    console.log("Processing target data:", targetData);
     
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -57,8 +56,6 @@ export const useWeightStatistics = () => {
         const targetDate = new Date(target.target_date);
         return targetDate >= today;
       });
-      
-      console.log("Future targets:", futureTargets);
 
       // Find the most recently created target
       if (targetData.length > 0) {
@@ -66,8 +63,6 @@ export const useWeightStatistics = () => {
         newestTargetRecord = [...targetData].sort((a, b) => 
           new Date(b.record_date).getTime() - new Date(a.record_date).getTime()
         )[0];
-        
-        console.log("Newest target record:", newestTargetRecord);
       }
 
       // If there are future targets, get the earliest one
@@ -76,11 +71,9 @@ export const useWeightStatistics = () => {
           new Date(a.target_date).getTime() - new Date(b.target_date).getTime()
         )[0];
         
-        console.log("Selected future target:", targetWeight);
       } else if (newestTargetRecord) {
         // If no future targets, use the newest recorded target
-        targetWeight = newestTargetRecord;
-        console.log("Using newest target as active:", targetWeight);
+          targetWeight = newestTargetRecord;
       }
     } catch (error) {
       console.error('Error processing targets:', error);
@@ -97,7 +90,6 @@ export const useWeightStatistics = () => {
   
   // Make sure the activeTarget actually has a valid id for proper edit mode detection
   const activeTarget = targetWeight && targetWeight.id ? targetWeight : null;
-  console.log("Final active target:", activeTarget);
   
   // Prepare return values
   const returnValues = {

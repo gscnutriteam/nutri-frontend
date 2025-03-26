@@ -34,20 +34,7 @@ export const StatisticBerat = () => {
     return calculateBMI(currentWeight, latestHeight);
   }, [currentWeight, latestHeight]);
 
-  useEffect(() => {
-    console.log('🖥️ StatisticBerat rendered with:');
-    console.log('- currentWeight:', currentWeight);
-    console.log('- targetWeight:', targetWeight);
-    console.log('- historyWeight:', historyWeight);
-    console.log('- isDietTurun:', isDietTurun);
-    console.log('- loading:', loading);
-    console.log('- error:', error);
-    console.log('- latestHeight:', latestHeight);
-    console.log('- calculated BMI:', bmi);
-  }, [currentWeight, targetWeight, historyWeight, isDietTurun, loading, error, latestHeight, bmi]);
-
   if (loading || dataLoading) {
-    console.log('🔄 Rendering loading state');
     return (
       <div className="px-5">
         <div className="bg-pr10 rounded-lg border-2 border-black p-4 w-full flex flex-col">
@@ -63,7 +50,6 @@ export const StatisticBerat = () => {
   }
 
   if (error) {
-    console.log('❌ Rendering error state:', error);
     return (
       <div className="px-5">
         <div className="bg-pr10 rounded-lg border-2 border-black p-4 w-full">
@@ -75,7 +61,6 @@ export const StatisticBerat = () => {
 
   // If we don't have any weight data yet
   if (!currentWeight && !weightHeightData.length) {
-    console.log('⚠️ No weight data available');
     return (
       <div className="px-5">
         <div className="bg-pr10 rounded-lg border-2 border-black p-4 w-full">
@@ -85,7 +70,6 @@ export const StatisticBerat = () => {
     );
   }
 
-  console.log('✅ Rendering success state with weight:', currentWeight);
   
   return (
     <div className="px-5">
@@ -133,9 +117,7 @@ const SelisihBeratTarget = ({
   current: number;
   isDietTurun: boolean;
 }) => {
-  console.log('📊 SelisihBeratTarget rendered with:', { from, target, current, isDietTurun });
   const difference = Math.abs(from - current);
-  console.log('- difference calculated:', difference);
 
   const getStyleAndIcon = () => {
     if (isDietTurun) {
@@ -163,7 +145,6 @@ const SelisihBeratTarget = ({
   };
 
   const { textColor, Icon } = getStyleAndIcon();
-  console.log('- style calculated:', { textColor, Icon: Icon.name });
 
   return (
     <>

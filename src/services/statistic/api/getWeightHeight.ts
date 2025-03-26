@@ -18,9 +18,7 @@ export interface WeightHeightResponse {
 
 export const getWeightHeight = async () => {
   try {
-    console.log('📡 Calling getWeightHeight API');
     const response = await apiClient("/weight-height", "GET");
-    console.log('📡 getWeightHeight response:', response);
 
     // Handle response with type assertion
     const responseData = response as any;
@@ -36,7 +34,6 @@ export const getWeightHeight = async () => {
       }
     }
     
-    console.log('📡 getWeightHeight processed data:', data);
     return data;
   } catch (error) {
     console.error('❌ getWeightHeight error:', error);

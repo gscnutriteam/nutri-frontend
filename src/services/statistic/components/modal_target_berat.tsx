@@ -48,15 +48,6 @@ export const ModalTargetBerat2 = ({ onSuccess, latestHeight, existingTarget }: M
   
   // Check if we have an active target - to determine if we're editing or creating
   const isEditMode = Boolean(existingTarget && existingTarget.id);
-  
-  // Debug log for dev troubleshooting
-  useEffect(() => {
-    console.log('ModalTargetBerat mounted with:', { 
-      existingTarget, 
-      isEditMode,
-      latestHeight
-    });
-  }, [existingTarget, isEditMode, latestHeight]);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(targetBeratBadanSchema),
@@ -136,10 +127,6 @@ export const ModalTargetBerat2 = ({ onSuccess, latestHeight, existingTarget }: M
     <Dialog open={isOpen} onOpenChange={(open) => {
       if (!isSubmitting) {
         setIsOpen(open);
-        if (open) {
-          // When opening, log for additional debugging
-          console.log('Opening modal with edit mode:', isEditMode);
-        }
       }
     }}>
       <DialogTrigger asChild>
