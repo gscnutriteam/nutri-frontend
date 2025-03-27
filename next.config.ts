@@ -15,6 +15,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "example.com",
       },
+      {
+        hostname: "placehold.co",
+      },
     ]
   }
 };

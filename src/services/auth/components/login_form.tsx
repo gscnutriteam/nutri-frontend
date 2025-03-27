@@ -20,6 +20,7 @@ import { Loader2 } from "lucide-react";
 import { saveAuthTokens } from "../util/util";
 import { useMutation } from "@tanstack/react-query";
 import { getPayloadFromToken, verifyJWT } from "@/lib/jwt";
+import LoginGoogleButton from "./login_google_button";
 
 export const LoginForm = () => {
   const router = useAppRouter();
@@ -134,6 +135,10 @@ export const LoginForm = () => {
             "Login"
           )}
         </Button>
+        <p className="text-center mt-4 font-normal text-sm">
+          Atau lanjutkan dengan
+        </p>
+        <LoginGoogleButton />
       </form>
     </Form>
   );

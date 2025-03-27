@@ -1,20 +1,22 @@
-import { dataInfoKesehatanCards } from "../data/dummy";
-import { CardInfoKesehatan } from "./card-info-kesehatan";
+// Server Component
+import { getRecommendedArticles } from "../api/articleService";
+import { Article } from "../api/articleService";
+import { CardInfoKesehatanProps } from "../types/types";
+import { RecommendationClient } from "./recommendation-client";
 
-export const Recomendation = () => {
-  return (
-    <>
-      <div className="flex flex-col mt-5 w-full">
-        <div className="flex w-full justify-between items-center">
-          <p className="text-lg font-semibold">Rekomendasi</p>
-          <p className="text-primary cursor-pointer">Selengkapnya</p>
-        </div>
-        <div className="flex w-full flex-col mt-5 gap-3">
-            {dataInfoKesehatanCards.map((data, index) => (
-                <CardInfoKesehatan key={index} {...data} />
-            ))}
-        </div>
-      </div>
-    </>
-  );
-};
+export async function RecommendationServer() {
+  const data = await getRecommendedArticles();
+  
+  // Map API data to component props
+  const articles = data.map((article: Article) => ({
+    tanggal: new Date(article.published_at),
+    title: article.title,
+    category: article.category_name,
+    image: article.image,
+    link: `/app/info-kesehatan/${article.id}`,
+    id: article.id,
+    slug: article.slug
+  }));
+
+  return <RecommendationClient articles={articles} />;
+}

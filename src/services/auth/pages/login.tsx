@@ -27,12 +27,9 @@ export default function Login() {
         />
         <h1 className="text-3xl mt-5 text-center font-semibold">Login</h1>
         <p className="text-center mt-2 text-sm">
-          Masukkan akun anda di bawah ini
-        </p>
-        <LoginForm />
-        <p className="text-center mt-4 text-sm">
           Belum punya akun? <LinkAPP href="/register" className="text-button underline">Register</LinkAPP>
         </p>
+        <LoginForm />
       </div>
     </>
   );

@@ -16,6 +16,7 @@ import { registerUserSchema } from "../schema/form_schema";
 import { useRegisterStore } from "../store/register_store";
 import { useRouter } from "next/navigation";
 import { useAppRouter } from "@/hooks/useAppRouter";
+import LoginGoogleButton from "./login_google_button";
 
 export const RegisterUserForm = () => {
   const { name, email, password, set } = useRegisterStore();
@@ -44,7 +45,7 @@ export const RegisterUserForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="font-semibold space-y-4 mt-6"
+        className="font-semibold space-y-4 mt-2"
       >
         <FormField
           control={form.control}
@@ -107,6 +108,10 @@ export const RegisterUserForm = () => {
         <Button type="submit" className="w-full">
           Next
         </Button>
+        <p className="text-center mt-4 font-normal text-sm">
+          Atau lanjutkan dengan
+        </p>
+        <LoginGoogleButton />
       </form>
     </Form>
   );

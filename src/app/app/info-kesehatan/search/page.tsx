@@ -1,6 +1,5 @@
-import InfoKesehatanSearch, { metadataInfoKesehatanSearch } from "@/services/info_kesehatan/pages/info_kesehatan_search";
+import InfoKesehatanSearch from "@/services/info_kesehatan/pages/info_kesehatan_search";
 
-export const metadata = metadataInfoKesehatanSearch;
-export default function Page() {
-  return <InfoKesehatanSearch />;
+export default function Page({ searchParams }: { searchParams: { q?: string } }) {
+  return <InfoKesehatanSearch searchParams={searchParams} />;
 }

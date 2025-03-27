@@ -26,7 +26,6 @@ export default function Welcome() {
         <LinkAPP className='w-full' href={"login"}>
           <Button className='mt-4 w-full' size={'lg'} variant={'neutral'}>Saya sudah punya akun</Button>
         </LinkAPP>
-        <LoginGoogleButton />
       </div>
       </>
   );

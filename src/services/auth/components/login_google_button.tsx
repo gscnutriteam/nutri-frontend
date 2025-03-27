@@ -8,7 +8,7 @@ export default function LoginGoogleButton() {
         await signInWithGoogle()
     }
     return (
-        <Button onClick={handleLoginGoogle} className='mt-4' size={'lg'} variant={'neutral'}>
+        <Button onClick={handleLoginGoogle} className='mt-3 w-full' size={'lg'} variant={'neutral'}>
           <img src="/assets/icon/google.svg" alt="Google Icon" className="w-6 h-6 inline-block" />
           Lanjutkan dengan Google
         </Button>
