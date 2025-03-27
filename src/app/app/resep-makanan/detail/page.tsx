@@ -1,8 +1,7 @@
-import ResepMakananDetail, {
-    metadataResepDetail,
-} from "@/services/resep_makanan/pages/resep_detail";
+import ResepMakananDetail, { generateMetadata } from "@/services/resep_makanan/pages/resep_detail";
 
-export const metadata = metadataResepDetail;
-export default function Page() {
-  return <ResepMakananDetail />;
+export { generateMetadata };
+
+export default function Page({ params }: { params: { slug: string } }) {
+  return <ResepMakananDetail params={params} />;
 }
