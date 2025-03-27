@@ -135,10 +135,6 @@ export const LoginForm = () => {
             "Login"
           )}
         </Button>
-        <p className="text-center mt-4 font-normal text-sm">
-          Atau lanjutkan dengan
-        </p>
-        <LoginGoogleButton />
       </form>
     </Form>
   );

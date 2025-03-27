@@ -7,7 +7,17 @@ import { Cookie, Loader2, LogOutIcon } from "lucide-react";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
 
-export const ButtonLogout = () => {
+interface ButtonLogoutProps {
+    variant?: "default" | "danger" | "noShadow" | "neutral" | "reverse" | "neutralNoShadow";
+    className?: string;
+    iconOnly?: boolean;
+}
+
+export const ButtonLogout = ({ 
+    variant = "danger", 
+    className = "w-full mt-2", 
+    iconOnly = false 
+}: ButtonLogoutProps) => {
     const router = useAppRouter();
     const mutation = useMutation({
         mutationFn: useLogoutAPI,
@@ -33,8 +43,9 @@ export const ButtonLogout = () => {
         mutation.mutate({ refresh_token: refresh_token ?? "" });
     }
 	return (
-		<Button onClick={handleOnClick} variant={"danger"} disabled={mutation.isPending || mutation.isSuccess} className="w-full mt-2">
-			{mutation.isPending ? <Loader2 className="animate-spin" /> : <LogOutIcon className="mr-2" />} Logout
+		<Button onClick={handleOnClick} variant={variant} disabled={mutation.isPending || mutation.isSuccess} className={className}>
+			{mutation.isPending ? <Loader2 className="animate-spin" /> : <LogOutIcon className={iconOnly ? "" : "mr-2"} />}
+            {!iconOnly && "Logout"}
 		</Button>
 	);
 };

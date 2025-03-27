@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { LoginForm } from "../components/login_form";
 import LinkAPP from "@/components/util/link";
 import { Toaster } from "sonner";
+import LoginGoogleButton from "../components/login_google_button";
 
 export const metadataLoginUser: Metadata = {
   title: 'Login | NutriBox',
@@ -29,7 +30,18 @@ export default function Login() {
         <p className="text-center mt-2 text-sm">
           Belum punya akun? <LinkAPP href="/register" className="text-button underline">Register</LinkAPP>
         </p>
-        <LoginForm />
+        <div className="px-6">
+          <LoginForm />
+          <div className="relative my-4">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="bg-white px-2 text-gray-500">Atau</span>
+            </div>
+          </div>
+          <LoginGoogleButton isFromRegister={false} />
+        </div>
       </div>
     </>
   );

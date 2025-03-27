@@ -108,10 +108,6 @@ export const RegisterUserForm = () => {
         <Button type="submit" className="w-full">
           Next
         </Button>
-        <p className="text-center mt-4 font-normal text-sm">
-          Atau lanjutkan dengan
-        </p>
-        <LoginGoogleButton />
       </form>
     </Form>
   );

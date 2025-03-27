@@ -13,12 +13,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { registerTokenSchema } from "../schema/form_schema";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
 import { useAppRouter } from "@/hooks/useAppRouter";
 import { useMutation } from "@tanstack/react-query";
 import useTokenAPI from "../api/token";
+import { getUserData } from "@/services/profile/api/getUser";
+import Cookies from "js-cookie";
 
 export const RegisterTokenForm = () => {
 	const form = useForm<z.infer<typeof registerTokenSchema>>({
@@ -32,7 +34,7 @@ export const RegisterTokenForm = () => {
 	// React Query mutation
 	const tokenMutation = useMutation({
 		mutationFn: useTokenAPI,
-		onSuccess: (data) => {
+		onSuccess: async (data) => {
 			if (!data.success) {
 				throw new Error(
 					(data.data as { message?: string })?.message || "Invalid token",
@@ -40,10 +42,35 @@ export const RegisterTokenForm = () => {
 			}
 			toast.success("Token validated successfully!");
 
-			// Redirect to the next step
-			setTimeout(() => {
-				router.push("/auth/register");
-			}, 1000);
+			// Check user profile to determine next step
+			try {
+				const userData = await getUserData();
+				if (userData && userData.userData) {
+					// Check if profile is incomplete (missing height or weight)
+					if (!userData.userData.height || !userData.userData.weight) {
+						// Redirect to profile completion
+						setTimeout(() => {
+							router.push("/app/profile/complete");
+						}, 1000);
+					} else {
+						// Profile is complete, go to home
+						setTimeout(() => {
+							router.push("/app");
+						}, 1000);
+					}
+				} else {
+					// Fallback to registration if user data can't be fetched
+					setTimeout(() => {
+						router.push("/register");
+					}, 1000);
+				}
+			} catch (error) {
+				console.error("Error fetching user data:", error);
+				// Fallback to registration
+				setTimeout(() => {
+					router.push("/register");
+				}, 1000);
+			}
 		},
 		onError: (error: Error) => {
 			const errorMessage = error?.message || "Token validation failed";

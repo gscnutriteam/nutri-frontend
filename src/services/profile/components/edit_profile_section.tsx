@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import type { ProfileProps } from "../type/types";
 import { useProfileForm } from "../hooks/useProfileForm";
 import ProfilePhotoUploader from "./ProfilePhotoUploader";
@@ -7,6 +7,7 @@ import ProfileForm from "./ProfileForm";
 
 const EditProfileSection = (user: ProfileProps) => {
   const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
+  const [profilePictureError, setProfilePictureError] = useState<string | undefined>(undefined);
   
   const {
     form,
@@ -16,6 +17,12 @@ const EditProfileSection = (user: ProfileProps) => {
     handleProfilePictureChange,
     formatDateForInput
   } = useProfileForm(user);
+
+  // Get profile picture error message when form validation runs
+  useEffect(() => {
+    const errorMessage = form.formState.errors.profilePicture?.message as string | undefined;
+    setProfilePictureError(errorMessage);
+  }, [form.formState.errors.profilePicture]);
 
   return (
     <div className="px-4 pt-20 pb-10">
@@ -29,6 +36,7 @@ const EditProfileSection = (user: ProfileProps) => {
               handleProfilePictureChange(url);
               setIsUploadingPhoto(false);
             }}
+            errorMessage={profilePictureError}
           />
         </div>
       </div>
