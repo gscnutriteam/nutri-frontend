@@ -105,6 +105,7 @@ export default function Statistics({ user }: Props) {
                 metricLabel="Kalori"
                 metricColor="#53C2C6"
                 isDetail
+                linkDetail="/statistic/kalori"
               />
             </div>
           )}
@@ -126,6 +127,7 @@ export default function Statistics({ user }: Props) {
                 metricLabel="Berat"
                 metricColor="#53C2C6"
                 isDetail
+                linkDetail="/statistic/berat"
               />
             </div>
           )}

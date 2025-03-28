@@ -35,11 +35,12 @@ const BottomBar: React.FC = () => {
       </LinkAPP>
 
       {/* Statistik */}
+      <LinkAPP href="/app/statistic" className={`flex flex-col gap-1 items-center p-2 ${path.startsWith("/app/statistic") ? classActive : classDefault}`}>
       <div className={`flex flex-col gap-1 items-center p-2 ${path.startsWith("/app/statistic") ? classActive : classDefault}`}>
         <BarChart2 className={`w-6 h-6 ${path.startsWith("/app/statistic") ? iconActive : "text-white"}`} />
         <span className={`font-medium ${path.startsWith("/app/statistic") ? textActive : "text-white"}`}>Statistik</span>
       </div>
-
+      </LinkAPP>
       {/* Scan */}
       <LinkAPP href="/scan" className="flex flex-col gap-1 items-center -mt-10">
         <div className="bg-bg-selected p-3 rounded-full border-[3px] border-black cursor-pointer">

@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import type { Period } from '@/services/home/types/chart';
+import LinkAPP from '@/components/util/link';
 
 interface ChartProps {
   title: string;
@@ -35,6 +36,7 @@ interface ChartProps {
   metricColor: string;
   hideTitle?: boolean;
   isDetail?: boolean;
+  linkDetail?: string;
 }
 
 const Chart: React.FC<ChartProps> = ({
@@ -47,6 +49,7 @@ const Chart: React.FC<ChartProps> = ({
   metricColor,
   hideTitle = false,
   isDetail = false,
+  linkDetail = "/app/statistic",
 }) => {
   const chartConfig = {
     [metricKey]: {
@@ -140,15 +143,14 @@ const Chart: React.FC<ChartProps> = ({
       </CardContent>
       {isDetail && (
         <CardFooter className="flex w-full justify-end">
-          {/* <Button variant="neutral" className="text-sm">
-            Tambah Data
-          </Button> */}
-          <Button
-            variant="default"
-            className="text-sm"
+          <LinkAPP href={linkDetail} className="w-full flex justify-end">
+            <Button
+              variant="default"
+              className="text-sm"
           >
             Selengkapnya
           </Button>
+          </LinkAPP>
         </CardFooter>
       )}
     </Card>
