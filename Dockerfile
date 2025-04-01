@@ -4,9 +4,12 @@ FROM node:20-alpine AS base
 FROM base AS deps
 WORKDIR /app
 
+# Install necessary build dependencies
+RUN apk add --no-cache libc6-compat python3 make g++
+
 # Install dependencies based on the preferred package manager
 COPY package.json package-lock.json* ./
-RUN npm ci
+RUN npm ci --omit=dev --ignore-scripts
 
 # Rebuild the source code only when needed
 FROM base AS builder
