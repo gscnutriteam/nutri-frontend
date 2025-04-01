@@ -19,8 +19,23 @@ import { Loader2 } from "lucide-react";
 import { useAppRouter } from "@/hooks/useAppRouter";
 import { useMutation } from "@tanstack/react-query";
 import useTokenAPI from "../api/token";
+import useRefreshAPI from "../api/refresh";
 import { getUserData } from "@/services/profile/api/getUser";
 import Cookies from "js-cookie";
+import { removeAuthTokens, saveTokensFromApi } from "../util/util";
+import { getPayloadFromToken, verifyJWT } from "@/lib/jwt";
+
+// Definisikan interface untuk respons token API
+interface TokensResponse {
+	access: {
+		token: string;
+		expires: string;
+	};
+	refresh: {
+		token: string;
+		expires: string;
+	};
+}
 
 export const RegisterTokenForm = () => {
 	const form = useForm<z.infer<typeof registerTokenSchema>>({
@@ -31,6 +46,35 @@ export const RegisterTokenForm = () => {
 	});
 	const router = useAppRouter();
 
+	// Fungsi untuk mendapatkan token dari /auth/refresh-tokens
+	const fetchTokensWithRefresh = async () => {
+		try {
+			// Dapatkan refresh token yang mungkin ada dari cookies
+			const refreshToken = Cookies.get('refresh_token');
+			
+			if (!refreshToken) {
+				console.error("No refresh token available");
+				return null;
+			}
+			
+			// Hit API refresh token
+			const response = await useRefreshAPI({ refresh_token: refreshToken });
+			console.log("Refresh API response:", response);
+			
+			// @ts-ignore - ignoring type check
+			if (response.success && response.data && response.data.tokens) {
+				// @ts-ignore - ignoring type check
+				return response.data.tokens;
+			} else {
+				console.error("Failed to refresh tokens:", response);
+				return null;
+			}
+		} catch (error) {
+			console.error("Error refreshing tokens:", error);
+			return null;
+		}
+	};
+
 	// React Query mutation
 	const tokenMutation = useMutation({
 		mutationFn: useTokenAPI,
@@ -40,36 +84,57 @@ export const RegisterTokenForm = () => {
 					(data.data as { message?: string })?.message || "Invalid token",
 				);
 			}
-			toast.success("Token validated successfully!");
-
-			// Check user profile to determine next step
-			try {
-				const userData = await getUserData();
-				if (userData && userData.userData) {
-					// Check if profile is incomplete (missing height or weight)
-					if (!userData.userData.height || !userData.userData.weight) {
-						// Redirect to profile completion
-						setTimeout(() => {
-							router.push("/app/profile/complete");
+			
+			console.log("Token API response data:", data.data);
+			
+			// @ts-ignore - ignoring type check
+			if (data.data && data.data.status === "success") {
+				toast.success("Token produk berhasil divalidasi!");
+				
+				// @ts-ignore - ignoring type check
+				const hasTokens = data.data.tokens !== undefined;
+				
+				// Token produk valid, sekarang hit API refresh token untuk mendapatkan token auth
+				if (!hasTokens) {
+					// Jika tidak ada tokens di response, coba get dari refresh API
+					try {
+						// Tunggu sebentar untuk memastikan token produk sudah diproses di server
+						setTimeout(async () => {
+							const authTokens = await fetchTokensWithRefresh();
+							
+							if (authTokens) {
+								console.log("Tokens from refresh API:", authTokens);
+								// Hapus token lama (jika ada)
+								removeAuthTokens();
+								// Simpan token baru
+								saveTokensFromApi(authTokens);
+								
+								// Redirect ke home page
+								router.push("/");
+							} else {
+								console.error("Failed to get tokens from refresh API");
+								toast.error("Gagal mendapatkan token. Silakan coba lagi.");
+							}
 						}, 1000);
-					} else {
-						// Profile is complete, go to home
-						setTimeout(() => {
-							router.push("/app");
-						}, 1000);
+					} catch (error) {
+						console.error("Error getting tokens:", error);
+						toast.error("Terjadi kesalahan. Silakan coba lagi.");
 					}
 				} else {
-					// Fallback to registration if user data can't be fetched
+					// Jika sudah ada tokens di response, gunakan saja
+					// @ts-ignore - ignoring type check
+					console.log("Tokens from product API:", data.data.tokens);
+					removeAuthTokens();
+					// @ts-ignore - ignoring type check
+					saveTokensFromApi(data.data.tokens);
+					
+					// Redirect ke home page
 					setTimeout(() => {
-						router.push("/register");
+						router.push("/");
 					}, 1000);
 				}
-			} catch (error) {
-				console.error("Error fetching user data:", error);
-				// Fallback to registration
-				setTimeout(() => {
-					router.push("/register");
-				}, 1000);
+			} else {
+				toast.error("Validasi token gagal. Silakan coba lagi.");
 			}
 		},
 		onError: (error: Error) => {

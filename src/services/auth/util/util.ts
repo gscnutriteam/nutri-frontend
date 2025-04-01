@@ -36,6 +36,39 @@ export const saveAuthTokens = (tokens: LoginResponse['tokens']) => {
       expires: refreshExpires 
     });
   };
+
+/**
+ * Remove authentication tokens from cookies
+ */
+export const removeAuthTokens = () => {
+  Cookies.remove('access_token');
+  Cookies.remove('refresh_token');
+}
+
+
+/**
+ * Store authentication tokens from the token API response
+ * Can be used with any API that returns tokens in the same format
+ */
+export const saveTokensFromApi = (tokens: AuthTokens) => {
+    const accessExpires = new Date(tokens.access.expires);
+    const refreshExpires = new Date(tokens.refresh.expires);
+    
+    const cookieOptions = { 
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict' as const
+    };
+    
+    Cookies.set('access_token', tokens.access.token, { 
+      ...cookieOptions, 
+      expires: accessExpires 
+    });
+    
+    Cookies.set('refresh_token', tokens.refresh.token, { 
+      ...cookieOptions, 
+      expires: refreshExpires 
+    });
+};
   
 /**
  * Transforms the user registration data from our application's format
