@@ -20,9 +20,24 @@ COPY . .
 # Set environment variables
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Use our custom Next.js config for Docker builds
+RUN cp next.config.docker.js next.config.js
+
 # Build the application with ESLint and TypeScript checking disabled
 ENV NEXT_LINT=false
 ENV NEXT_SKIP_TYPE_CHECK=true
+ENV NODE_ENV=production
+
+# Add empty Firebase credentials to prevent build errors
+ENV NEXT_PUBLIC_FIREBASE_API_KEY="placeholder"
+ENV NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN="placeholder"
+ENV NEXT_PUBLIC_FIREBASE_PROJECT_ID="placeholder"
+ENV NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET="placeholder"
+ENV NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID="placeholder"
+ENV NEXT_PUBLIC_FIREBASE_APP_ID="placeholder"
+ENV NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID="placeholder"
+
+# Run the build
 RUN npm run build
 
 # Production image, copy all the files and run next

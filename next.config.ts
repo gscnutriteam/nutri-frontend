@@ -21,6 +21,10 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  experimental: {
+    serverComponentsExternalPackages: ["firebase"],
+  },
+  staticPageGenerationTimeout: 600,
   eslint: {
     ignoreDuringBuilds: true,
   },
