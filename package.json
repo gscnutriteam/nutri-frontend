@@ -55,6 +55,7 @@
     "remeda": "^2.20.2",
     "shiki": "^3.0.0",
     "sonner": "^2.0.1",
+    "styled-components": "^5.3.11",
     "swiper": "^11.2.4",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",

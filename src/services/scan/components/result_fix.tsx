@@ -43,10 +43,10 @@ const FoodTrackingResult = () => {
           variant="default"
           className="w-full text-white border-2 border-black py-3 font-semibold shadow-md transition-all hover:shadow-lg active:translate-y-0.5"
           onClick={form.handleSubmit(onSubmit)}
-          disabled={addMealMutation.isPending}
+          disabled={addMealMutation.isPending || addMealMutation.isSuccess || addMealMutation.isError}
         >
-          {addMealMutation.isPending ? "Loading..." : "Done"}
-          {addMealMutation.isPending && (
+          {addMealMutation.isPending || addMealMutation.isSuccess ? "Loading..." : "Done"}
+          {(addMealMutation.isPending || addMealMutation.isSuccess) && (
             <Loader2 className="w-4 h-4 ml-2 animate-spin" />
           )}
         </Button>
