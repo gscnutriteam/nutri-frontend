@@ -11,7 +11,7 @@ import {
 
 import * as React from 'react'
 
-import { Label } from '@/Components/ui/label'
+import { Label } from '@/components/ui/label'
 
 import { cn } from '@/lib/utils'
 

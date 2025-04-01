@@ -95,13 +95,19 @@ export async function middleware(request: NextRequest) {
 // Configure specific paths that will trigger middleware
 export const config = {
   matcher: [
-    // Match all routes in authRoutes and guestRoutes
-    ...authRoutes.map(route => `${route}/:path*`),
-    ...guestRoutes.map(route => `${route}/:path*`),
-    ...memberUserRoutes.map(route => `${route}/:path*`),
-    // Also match the exact routes without trailing paths
-    ...authRoutes,
-    ...guestRoutes,
-    ...memberUserRoutes,
-  ],
+    // Match routes without spread operator
+    '/app/token/:path*',
+    '/app/login/:path*',
+    '/app/register/:path*',
+    '/app/forgot-password/:path*',
+    '/app/scan/:path*',
+    '/app/info-kesehatan/:path*',
+    '/app/token',
+    '/app/login',
+    '/app/register',
+    '/app/forgot-password',
+    '/app/scan',
+    '/app/info-kesehatan',
+    '/app'
+  ]
 };

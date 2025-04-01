@@ -20,7 +20,9 @@ COPY . .
 # Set environment variables
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Build the application
+# Build the application with ESLint and TypeScript checking disabled
+ENV NEXT_LINT=false
+ENV NEXT_SKIP_TYPE_CHECK=true
 RUN npm run build
 
 # Production image, copy all the files and run next

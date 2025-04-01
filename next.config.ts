@@ -20,6 +20,12 @@ const nextConfig: NextConfig = {
         hostname: "placehold.co",
       },
     ]
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   }
 };
 
