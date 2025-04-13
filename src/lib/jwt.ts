@@ -1,20 +1,6 @@
 import type { PhsyicalActivity } from '@/services/auth/store/register_store';
 import { jwtVerify, createRemoteJWKSet, jwtDecrypt } from 'jose';
-
-// For server-side verification
-export async function verifyJWT(token: string): Promise<boolean> {
-  try {
-    // For verification with your own secret
-    const secret = new TextEncoder().encode(process.env.JWT_SECRET || 'your-fallback-secret');
-    
-    await jwtVerify(token, secret);
-    return true;
-  } catch (error) {
-    console.error('JWT verification error:', error);
-    return false;
-  }
-}
-
+export * from './jwt_server';
 // For client-side basic verification (checks expiration without signature verification)
 export function isJwtExpired(token: string): boolean {
   try {
