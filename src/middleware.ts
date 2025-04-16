@@ -89,6 +89,27 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // Only apply to debug routes, but skip the auth page
+  if (pathname.startsWith('/debug') && pathname !== '/debug/auth') {
+    // Check if debug mode is enabled
+    const isDebugEnabled = process.env.APP_DEBUG === 'true'
+    if (!isDebugEnabled) {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
+
+    // Get the debug PIN from environment variable
+    const correctPin = process.env.DEBUG_PIN
+    if (!correctPin) {
+      return NextResponse.redirect(new URL('/', request.url))
+    }
+
+    // Check if user is authenticated for debug
+    const debugSession = request.cookies.get('debug_session')
+    if (!debugSession || debugSession.value !== correctPin) {
+      return NextResponse.redirect(new URL('/debug/auth', request.url))
+    }
+  }
+
   return NextResponse.next();
 }
 
@@ -108,6 +129,7 @@ export const config = {
     '/app/forgot-password',
     '/app/scan',
     '/app/info-kesehatan',
-    '/app'
+    '/app',
+    '/debug/:path*'
   ]
 };
