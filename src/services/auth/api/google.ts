@@ -38,7 +38,7 @@ export async function signInWithGoogle(isFromRegister = false) {
 				
 				if (!isProductTokenVerified) {
 					// If product token is not verified, redirect to token input page
-					window.location.href = '/app/register-token';
+					window.location.href = '/app/register/token';
 					return response;
 				}
 				
