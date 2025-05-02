@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { getBMIStatus } from '@/services/info_kesehatan/util/util';
 import { trimString } from '@/services/profile/util/util';
+import LinkAPP from '@/components/util/link';
 
 interface UserProfileProps {
   name: string;
@@ -37,10 +38,10 @@ const UserProfile: React.FC<UserProfileProps> = ({
           <span className="font-medium">{trimString(name, 20)}</span>
         </div>
         <div className="flex items-center gap-4 ">
-          <div className="flex items-center bg-white py-1 px-3 border-2 border-black rounded-full">
+          <LinkAPP href='/app/premium' className="flex items-center bg-white py-1 px-3 border-2 border-black rounded-full">
             <span>Try</span>
             {isPro && <span className="font-medium ml-1">Pro</span>}
-          </div>
+          </LinkAPP>
           <div className="flex items-center gap-1 bg-white py-1 px-3 border-2 border-black rounded-full">
             <span>
               <Star className="size-4 fill-[#E6C64F]" />
