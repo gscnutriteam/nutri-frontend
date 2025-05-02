@@ -10,6 +10,8 @@ const cardVariants = cva(
         default: 'bg-main text-black',
         primary: 'bg-primary text-white',
         neutral: 'bg-white text-black',
+        yellow: 'bg-yellow-300 text-black',
+        mint: 'bg-[#DEF5E0] text-black',
       },
     },
     defaultVariants: {
