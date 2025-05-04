@@ -11,17 +11,17 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          'text-mtext bg-button text-white border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
+          'text-mtext bg-button text-white border-2 border-black shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
         noShadow:
-          'text-mtext bg-main border-2 border-border',
+          'text-mtext bg-main border-2 border-black',
         neutral:
-          'bg-bw text-text border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
+          'bg-bw text-text border-2 border-black shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
         reverse:
-          'text-mtext bg-main border-2 border-border hover:translate-x-reverseBoxShadowX hover:translate-y-reverseBoxShadowY hover:shadow-shadow',
+          'text-mtext bg-main border-2 border-black hover:translate-x-reverseBoxShadowX hover:translate-y-reverseBoxShadowY hover:shadow-shadow',
         neutralNoShadow:
-          'bg-bw text-text border-2 border-border',
+          'bg-bw text-text border-2 border-black',
         danger:
-          'text-mtext text-white bg-danger border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
+          'text-mtext text-white bg-danger border-2 border-black shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none',
 
       },
       size: {

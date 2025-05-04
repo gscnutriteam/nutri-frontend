@@ -1,17 +1,23 @@
+import { Metadata } from 'next';
 import React from 'react';
-import { Navbar } from '@/services/landing_page/components/navbar';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-interface LandingPageLayoutProps {
+export const metadata: Metadata = {
+  title: 'NutriPlate - Portioning Precision Health in Every Division',
+  description: 'NutriPlate - SmartPlate Berbasis QR Code untuk Porsi Makan Terklasifikasi',
+};
+
+export default function LandingPageLayout({
+  children,
+}: {
   children: React.ReactNode;
-}
-
-export default function LandingPageLayout({ children }: LandingPageLayoutProps) {
+}) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <>
       <Navbar />
-      <main className="flex-grow">
-        {children}
-      </main>
-    </div>
+      {children}
+      <Footer />
+    </>
   );
 } 

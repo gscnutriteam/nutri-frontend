@@ -52,7 +52,7 @@ export const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 px-4 md:px-8",
         isScrolled 
-          ? "bg-white shadow-md backdrop-blur-md bg-opacity-90" 
+          ? "bg-white border-b-4 border-black" 
           : "bg-transparent"
       )}
     >
@@ -73,10 +73,10 @@ export const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/features">Features</NavLink>
-          <NavLink href="/blog">Blog</NavLink>
+          <NavLink href="/" className="text-black font-bold hover:text-[#53C2C6]">Home</NavLink>
+          <NavLink href="/about" className="text-black font-bold hover:text-[#53C2C6]">About</NavLink>
+          <NavLink href="/features" className="text-black font-bold hover:text-[#53C2C6]">Features</NavLink>
+          <NavLink href="/blog" className="text-black font-bold hover:text-[#53C2C6]">Blog</NavLink>
         </nav>
 
         {/* Action Buttons */}
@@ -85,7 +85,7 @@ export const Navbar = () => {
             asChild 
             variant="default" 
             size="default" 
-            className="bg-primary text-white rounded-base border-2 border-black shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
+            className="bg-[#53C2C6] text-black rounded-lg text-base font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
           >
             <Link href="/products" className="flex items-center gap-2">
               Dapatkan Produk
@@ -97,7 +97,7 @@ export const Navbar = () => {
             asChild 
             variant="neutralNoShadow" 
             size="default" 
-            className="rounded-base hover:bg-gray-100 transition-colors border-2 border-black"
+            className="bg-white text-black rounded-lg border-4 border-black hover:bg-[#FFDC58] transition-colors"
           >
             <Link href="/login">Login</Link>
           </Button>
@@ -106,7 +106,7 @@ export const Navbar = () => {
             asChild 
             variant="neutralNoShadow" 
             size="default" 
-            className="rounded-base hover:bg-gray-100 transition-colors border-2 border-black"
+            className="bg-[#FFDC58] text-black rounded-lg border-4 border-black hover:bg-white transition-colors"
           >
             <Link href="/register">Sign Up</Link>
           </Button>
@@ -115,7 +115,7 @@ export const Navbar = () => {
         {/* Mobile Menu Button */}
         <button 
           onClick={toggleMobileMenu} 
-          className="md:hidden p-2 text-gray-800 hover:text-primary focus:outline-none transition-colors"
+          className="md:hidden p-2 text-black bg-white rounded-lg border-4 border-black"
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -130,20 +130,20 @@ export const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg z-50 overflow-hidden"
+            className="md:hidden absolute top-full left-0 right-0 bg-white border-t-4 border-b-4 border-black z-50 overflow-hidden"
           >
             <div className="flex flex-col p-6 space-y-4">
-              <NavLink href="/" className="text-lg py-2">Home</NavLink>
-              <NavLink href="/about" className="text-lg py-2">About</NavLink>
-              <NavLink href="/features" className="text-lg py-2">Features</NavLink>
-              <NavLink href="/blog" className="text-lg py-2">Blog</NavLink>
+              <NavLink href="/" className="text-lg py-2 font-bold">Home</NavLink>
+              <NavLink href="/about" className="text-lg py-2 font-bold">About</NavLink>
+              <NavLink href="/features" className="text-lg py-2 font-bold">Features</NavLink>
+              <NavLink href="/blog" className="text-lg py-2 font-bold">Blog</NavLink>
               
-              <div className="flex flex-col space-y-3 pt-4 border-t border-gray-200">
+              <div className="flex flex-col space-y-3 pt-4 border-t-4 border-black">
                 <Button 
                   asChild 
                   variant="default" 
                   size="default" 
-                  className="w-full bg-primary text-white rounded-base border-2 border-black shadow-shadow"
+                  className="w-full bg-[#53C2C6] text-black rounded-lg text-base font-bold border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
                 >
                   <Link href="/products" className="flex items-center justify-center gap-2">
                     Dapatkan Produk
@@ -155,7 +155,7 @@ export const Navbar = () => {
                   asChild 
                   variant="neutralNoShadow" 
                   size="default" 
-                  className="w-full rounded-base border-2 border-black"
+                  className="w-full bg-white text-black rounded-lg border-4 border-black hover:bg-[#FFDC58] transition-colors"
                 >
                   <Link href="/login">Login</Link>
                 </Button>
@@ -164,7 +164,7 @@ export const Navbar = () => {
                   asChild 
                   variant="neutralNoShadow" 
                   size="default" 
-                  className="w-full rounded-base border-2 border-black"
+                  className="w-full bg-[#FFDC58] text-black rounded-lg border-4 border-black hover:bg-white transition-colors" 
                 >
                   <Link href="/register">Sign Up</Link>
                 </Button>
