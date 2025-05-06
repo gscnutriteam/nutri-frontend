@@ -89,6 +89,14 @@ export default {
   					transform: 'translateY(-0.25rem)'
   				}
   			},
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
         'wiggle': {
           '0%, 100%': { transform: 'rotate(0deg)' },
           '25%': { transform: 'rotate(-5deg)' },
@@ -143,7 +151,9 @@ export default {
         'pulse-slow': 'pulse-slow 7s ease-in-out infinite',
         'fade-in-slide-up': 'fade-in-slide-up 0.7s ease-out forwards',
         'grow-from-bottom': 'grow-from-bottom 1s ease-out forwards',
-        'rotate-y': 'rotate-y 0.7s ease-in-out forwards'
+        'rotate-y': 'rotate-y 0.7s ease-in-out forwards',
+        marquee: "marquee var(--duration) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
   		}
   	}
   },

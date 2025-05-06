@@ -4,6 +4,23 @@
   position: relative;
 }
 
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
 /* Animations for floating elements */
 .floatingSlow {
   animation: floatSlow 5s ease-in-out infinite;

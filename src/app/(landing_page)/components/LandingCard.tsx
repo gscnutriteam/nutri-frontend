@@ -43,7 +43,7 @@ export const LandingCard: React.FC<LandingCardProps> = ({
     >
       {isRecommended && (
         <div className="absolute -top-3 left-0 right-0 flex justify-center">
-          <div className="bg-primary text-black font-bold px-4 py-1 rounded-full border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+          <div className="bg-button text-white font-bold px-4 py-1 rounded-full border-2 border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
             BEST VALUE
           </div>
         </div>
@@ -87,8 +87,8 @@ export const LandingFeatureCard: React.FC<
         className={cn(
           'mt-4 inline-flex items-center justify-center whitespace-nowrap rounded-base text-sm px-4 py-2 border-2 border-black transition-all',
           buttonVariant === 'default' 
-            ? 'bg-primary text-white shadow-shadow hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none' 
-            : 'bg-white text-black hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-shadow'
+            ? 'bg-button text-white shadow-shadow hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none' 
+            : 'bg-secondary shadow-shadow text-black hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none'
         )}
       >
         Pelajari Lebih Lanjut

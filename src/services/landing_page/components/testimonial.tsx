@@ -76,85 +76,75 @@ export const TestimonialCard = ({
  
 const testimonials = [
   {
-    name: "Alex Rivera",
-    role: "CTO at InnovateTech",
+    name: "Dr. Andi Wijaya",
+    role: "Ahli Gizi",
     img: "https://randomuser.me/api/portraits/men/91.jpg",
     description: (
       <p>
-        The AI-driven analytics from #QuantumInsights have revolutionized our
-        product development cycle.
+        NutriPlate sangat membantu pasien saya dalam mengontrol porsi makan.
         <Highlight>
-          Insights are now more accurate and faster than ever.
+          Hasilnya terlihat dalam 3 bulan pertama penggunaan.
         </Highlight>{" "}
-        A game-changer for tech companies.
+        Rekomendasi untuk semua yang ingin hidup sehat.
       </p>
     ),
   },
   {
-    name: "Samantha Lee",
-    role: "Marketing Director at NextGen Solutions",
+    name: "Siti Rahayu",
+    role: "Pengguna NutriPlate",
     img: "https://randomuser.me/api/portraits/women/12.jpg",
     description: (
       <p>
-        Implementing #AIStream's customer prediction model has drastically
-        improved our targeting strategy.
-        <Highlight>Seeing a 50% increase in conversion rates!</Highlight> Highly
-        recommend their solutions.
+        Setelah menggunakan NutriPlate, berat badan saya turun 8kg dalam 6 bulan.
+        <Highlight>Porsi makan jadi lebih terkontrol!</Highlight> Terima kasih NutriPlate.
       </p>
     ),
   },
   {
-    name: "Raj Patel",
-    role: "Founder & CEO at StartUp Grid",
+    name: "Budi Santoso",
+    role: "Penderita Diabetes",
     img: "https://randomuser.me/api/portraits/men/45.jpg",
     description: (
       <p>
-        As a startup, we need to move fast and stay ahead. #CodeAI's automated
-        coding assistant helps us do just that.
-        <Highlight>Our development speed has doubled.</Highlight> Essential tool
-        for any startup.
+        Diabetes saya lebih terkontrol berkat NutriPlate.
+        <Highlight>Gula darah stabil dan porsi makan tepat.</Highlight> Sangat membantu!
       </p>
     ),
   },
   {
-    name: "Emily Chen",
-    role: "Product Manager at Digital Wave",
+    name: "Maya Indira",
+    role: "Ibu Rumah Tangga",
     img: "https://randomuser.me/api/portraits/women/83.jpg",
     description: (
       <p>
-        #VoiceGen's AI-driven voice synthesis has made creating global products
-        a breeze.
-        <Highlight>Localization is now seamless and efficient.</Highlight> A
-        must-have for global product teams.
+        Memasak untuk keluarga jadi lebih mudah dengan panduan porsi dari NutriPlate.
+        <Highlight>Anak-anak juga suka dengan piringnya yang colorful.</Highlight>
       </p>
     ),
   },
   {
-    name: "Michael Brown",
-    role: "Data Scientist at FinTech Innovations",
+    name: "Denny Prakoso",
+    role: "Atlet",
     img: "https://randomuser.me/api/portraits/men/1.jpg",
     description: (
       <p>
-        Leveraging #DataCrunch's AI for our financial models has given us an
-        edge in predictive accuracy.
+        Sebagai atlet, nutrisi sangat penting. NutriPlate membantu saya mengatur porsi protein dan karbohidrat.
         <Highlight>
-          Our investment strategies are now powered by real-time data analytics.
-        </Highlight>{" "}
-        Transformative for the finance industry.
+          Performa olahraga meningkat signifikan.
+        </Highlight>
       </p>
     ),
   },
   {
-    name: "Linda Wu",
-    role: "VP of Operations at LogiChain Solutions",
+    name: "Dr. Linda Kusuma",
+    role: "Dokter Spesialis Gizi",
     img: "https://randomuser.me/api/portraits/women/5.jpg",
     description: (
       <p>
-        #LogiTech's supply chain optimization tools have drastically reduced our
-        operational costs.
+        NutriPlate adalah inovasi yang sangat membantu dalam edukasi gizi.
         <Highlight>
-          Efficiency and accuracy in logistics have never been better.
-        </Highlight>{" "}
+          Pasien lebih mudah memahami porsi yang tepat.
+        </Highlight>
       </p>
     ),
   },
@@ -263,7 +253,7 @@ export function SocialProofTestimonials() {
       <div className="py-14">
         <div className="container mx-auto px-4 md:px-8">
           <h3 className="text-center text-sm font-semibold text-gray-500">
-            TESTIMONIALS
+            {/* TESTIMONIALS */}
           </h3>
           <div className="relative mt-6 max-h-[650px] overflow-hidden">
             <div className="gap-4 md:columns-2 xl:columns-3 2xl:columns-4">
