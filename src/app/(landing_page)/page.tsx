@@ -10,6 +10,7 @@ import { getAllSubscriptionPlans } from '@/services/premium/api/subscriptions-cl
 import type { SubscriptionPlan } from '@/services/premium/api/subscriptions-client';
 import styles from './landing.module.css';
 import { LandingCard, LandingCardContent, LandingFeatureCard } from './components/LandingCard';
+import { InstallPrompt, PushNotificationManager } from '@/components/util/PushNotificationManaget';
 
 // Pricing section component with client-side data fetching
 function PricingSection() {
@@ -92,6 +93,7 @@ function PricingSection() {
         <h2 className="text-3xl md:text-5xl font-bold text-black text-center mb-10">
           PAKET <span className="text-primary">BERLANGGANAN</span>
         </h2>
+        
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {subscriptionPlans.map((plan, i) => (
@@ -182,6 +184,30 @@ export default function LandingPage() {
     setActiveFoods(foods);
     setSelectedFoodItem(null);
   };
+
+  const [prompt, setState] = React.useState(null);
+
+
+  useEffect(() => {
+    // console.log("beforeinstallprompt", prompt); 
+    const ready = (e) => {
+      // console.log("beforeinstallpromptaa", e);  
+      if (e) {
+        e.prompt();
+        e.preventDefault();
+      }
+     
+      console.log("beforeinstallprompt", e);  
+    };
+
+    window.addEventListener('beforeinstallprompt', ready);
+
+    // console.log("beforeinstallprompt", prompt);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', ready);
+    };
+    
+  }, []);
 
   // Handle food selection
   const handleFoodSelect = (food: string) => {

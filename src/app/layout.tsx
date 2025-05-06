@@ -8,6 +8,12 @@ const outfitSans = Outfit({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: 'NutriFe',
+  description: 'Your personal nutrition and fitness companion',
+  themeColor: '#ffffff',
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,6 +26,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
           rel="stylesheet"
         />
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body
         className={`${outfitSans} antialiased`}
