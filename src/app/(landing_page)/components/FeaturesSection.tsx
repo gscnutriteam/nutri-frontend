@@ -3,76 +3,70 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { QrCode, LineChart, Calendar, UserCircle } from 'lucide-react';
+import styles from '@/app/(landing_page)/landing.module.css';
+import { fadeInUp, staggerChildren, useAnimationContext, viewportConfig } from './AnimationProvider';
+import { LandingFeatureCard } from './LandingCard';
 
 const features = [
   {
-    icon: QrCode,
+    icon: <QrCode size={24} />,
     title: "Pemindaian QR Code",
     description: "Cukup pindai QR code pada piring untuk mendapatkan rekomendasi porsi makanan secara instan",
-    color: "bg-gradient-to-br from-teal-400 to-emerald-500",
-    delay: 0.1
+    iconClass: styles.primaryIcon
   },
   {
-    icon: LineChart,
+    icon: <LineChart size={24} />,
     title: "Analisis Nutrisi Real-time",
     description: "Dapatkan informasi nutrisi lengkap dari makanan yang Anda konsumsi dalam hitungan detik",
-    color: "bg-gradient-to-br from-amber-400 to-orange-500",
-    delay: 0.2
+    iconClass: styles.secondaryIcon
   },
   {
-    icon: Calendar,
+    icon: <Calendar size={24} />,
     title: "Pelacakan Pola Makan",
     description: "Monitor kebiasaan makan harian dan lihat tren kesehatan Anda dari waktu ke waktu",
-    color: "bg-gradient-to-br from-blue-400 to-cyan-500",
-    delay: 0.3
+    iconClass: styles.primaryIcon
   },
   {
-    icon: UserCircle,
+    icon: <UserCircle size={24} />,
     title: "Rekomendasi Personalisasi",
     description: "Terima saran makanan yang disesuaikan berdasarkan kebutuhan dan tujuan kesehatan Anda",
-    color: "bg-gradient-to-br from-purple-400 to-pink-500",
-    delay: 0.4
+    iconClass: styles.secondaryIcon
   }
 ];
 
 export function FeaturesSection() {
-  return (
-    <section className="py-16 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            FITUR <span className="text-primary">APLIKASI</span>
-          </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Nikmati berbagai fitur canggih untuk membantu Anda mencapai gaya hidup sehat
-          </p>
-        </div>
+  const { controls, isMobile } = useAnimationContext();
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: feature.delay }}
-              className="relative group"
-            >
-              <div className="bg-white rounded-2xl p-6 shadow-neobrutalism hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all border-2 border-black">
-                <div className={`w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center mb-4 shadow-neobrutalism-sm`}>
-                  <feature.icon className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            </motion.div>
+  return (
+    <motion.section 
+      className="py-16 relative bg-primary/10"
+      initial="initial"
+      animate={isMobile ? controls : undefined}
+      whileInView={!isMobile ? "animate" : undefined}
+      viewport={viewportConfig}
+      variants={staggerChildren}
+    >
+      <div className="container px-4 mx-auto relative z-10 max-w-6xl">
+        <motion.h2 
+          className="text-3xl md:text-5xl font-bold text-black text-center mb-10"
+          variants={fadeInUp}
+        >
+          FITUR <span className="text-primary">APLIKASI</span>
+        </motion.h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {features.map((feature, i) => (
+            <LandingFeatureCard
+              key={i}
+              title={feature.title}
+              description={feature.description}
+              icon={feature.icon}
+              iconClass={feature.iconClass}
+              buttonVariant={i % 2 === 0 ? 'default' : 'reverse'}
+            />
           ))}
         </div>
-
-        {/* Decorative elements */}
-        <div className="absolute top-20 left-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-20 right-0 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -z-10" />
       </div>
-    </section>
+    </motion.section>
   );
 } 

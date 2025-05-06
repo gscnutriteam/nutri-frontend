@@ -1,8 +1,12 @@
+"use client";
+
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-import { ChevronRight, HeartHandshake } from "lucide-react";
+import Link from 'next/link';
+import { ChevronRight, HeartHandshake, ArrowRight } from "lucide-react";
 import { Marquee } from "@/components/magicui/marquee";
+import { motion } from 'framer-motion';
+import { fadeInUp, useAnimationContext, viewportConfig } from './AnimationProvider';
 
 const reviews = [
   {
@@ -82,8 +86,17 @@ const ReviewCard = ({
 };
 
 export function CallToAction() {
+  const { controls, isMobile } = useAnimationContext();
+  
   return (
-    <section id="cta" className="">
+    <motion.section 
+      className="py-20 bg-gradient-to-br from-primary/20 to-secondary/20"
+      initial="initial"
+      animate={isMobile ? controls : undefined}
+      whileInView={!isMobile ? "animate" : undefined}
+      viewport={viewportConfig}
+      variants={fadeInUp}
+    >
       <div className="py-14">
         <div className="flex w-full flex-col items-center justify-center p-4">
           <div className="container relative flex w-full flex-col items-center justify-center overflow-hidden rounded-[2rem] border p-10 py-14">
@@ -149,6 +162,6 @@ export function CallToAction() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
