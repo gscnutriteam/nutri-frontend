@@ -10,6 +10,7 @@ import { PricingWrapper } from '@/app/(landing_page)/components/PricingWrapper';
 import { PartnersSection } from '@/app/(landing_page)/components/PartnersSection';
 import { TestimonialsSection } from '@/app/(landing_page)/components/TestimonialsSection';
 import { CallToAction } from '@/app/(landing_page)/components/cta';
+import { Chatbot } from '@/app/(landing_page)/components/Chatbot';
 
 export default function LandingPage() {
   return (
@@ -22,6 +23,7 @@ export default function LandingPage() {
         <PartnersSection />
         <TestimonialsSection />
         <CallToAction />
+        <Chatbot />
       </main>
     </AnimationProvider>
   );
