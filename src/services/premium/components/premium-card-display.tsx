@@ -33,7 +33,6 @@ const PremiumCardDisplay = ({
   isActive = false,
   endDate = ''
 }: PremiumCardDisplayProps) => {
-    console.log(endDate)
   const hasValidSubscription = Boolean(endDate && new Date(endDate) > new Date());
   
   return (

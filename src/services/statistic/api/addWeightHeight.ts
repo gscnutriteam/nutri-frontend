@@ -8,7 +8,6 @@ export const addWeightHeight = async (weight: number, height: number) => {
     const response = await apiClient("/weight-height", "POST", { weight, height, recorded_at: recordedAt });
     return response;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 };

@@ -34,7 +34,6 @@ interface PatchUserResponse {
 }
 
 const usePatchUser = async (data: PatchUserRequest) => {
-    console.log(data)
     try {
         const jsonToFormData = (data: PatchUserRequest) => {
             const formData = new FormData();
@@ -49,7 +48,6 @@ const usePatchUser = async (data: PatchUserRequest) => {
             if (data.profile_picture) formData.append('profile_picture', data.profile_picture);
             return formData;
         }
-        console.log(jsonToFormData(data));
         return await apiClient(`/users/${data.id}`, 'PATCH', jsonToFormData(data), true, true);
     } catch (error) {
         console.error('Edit user API error:', error);

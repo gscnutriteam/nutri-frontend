@@ -9,7 +9,6 @@ interface LoginGoogleButtonProps {
 
 export default function LoginGoogleButton({ isFromRegister = false, className = '' }: LoginGoogleButtonProps) {
     const handleLoginGoogle = async () => {
-        console.log('Login with Google');
         await signInWithGoogle(isFromRegister)
     }
     return (

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { getPayloadFromToken, verifyJWT } from './lib/jwt';
+import { getPayloadFromToken, verifyJWT, hasFeatureAccess } from './lib/jwt';
 
 // Define auth and guest routes
 const baseURL = '/app';
@@ -10,6 +10,16 @@ let guestRoutes = ['/login', '/register', '/forgot-password'];
 authRoutes = authRoutes.map(route => `${baseURL}${route}`);
 guestRoutes = guestRoutes.map(route => `${baseURL}${route}`);
 memberUserRoutes = memberUserRoutes.map(route => `${baseURL}${route}`);
+
+// Define feature-protected routes with the required feature for each route
+const featureRoutes = {
+  [`${baseURL}/scan`]: 'scan_ai',
+  [`${baseURL}/info-kesehatan`]: 'health_info',
+  [`${baseURL}/resep-makanan`]: 'health_info',
+  [`${baseURL}/statistic`]: 'weight_tracking',
+  [`${baseURL}/chat-nubo`]: 'chatbot',
+  [`${baseURL}/bmi`]: 'bmi_check'
+};
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -62,6 +72,31 @@ export async function middleware(request: NextRequest) {
       const payload = getPayloadFromToken(accessToken);
       if (!isValid || !payload?.userData.isProductTokenVerified) {
         return NextResponse.redirect(new URL('/app/token', request.url));
+      }
+    }
+  }
+
+  // Check feature access for protected routes
+  for (const [routePath, requiredFeature] of Object.entries(featureRoutes)) {
+    if (pathname.startsWith(routePath)) {
+      if (!accessToken) {
+        return NextResponse.redirect(new URL('/app/login', request.url));
+      }
+
+      const isValid = await verifyJWT(accessToken);
+      if (!isValid) {
+        const response = NextResponse.redirect(new URL('/app/login', request.url));
+        response.cookies.delete('access_token');
+        response.cookies.delete('refresh_token');
+        return response;
+      }
+
+      // Check if user has the required feature
+
+      const hasAccess = hasFeatureAccess(accessToken, requiredFeature);
+      if (!hasAccess) {
+        // Redirect to subscription page if they don't have access to the feature
+        return NextResponse.redirect(new URL('/app/subscription', request.url));
       }
     }
   }
@@ -129,6 +164,12 @@ export const config = {
     '/app/forgot-password',
     '/app/scan',
     '/app/info-kesehatan',
+    '/app/resep-makanan/:path*',
+    '/app/bmi/:path*',
+    '/app/bmi',
+    '/app/tracking/:path*',
+    '/app/tracking',
+    '/app/chat-nubo',
     '/app',
     '/debug/:path*'
   ]

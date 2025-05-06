@@ -2,6 +2,8 @@
 
 import { apiClient } from "@/lib/api_instance";
 import { cache } from 'react';
+import { cookies } from 'next/headers';
+import { hasFeatureAccess } from '@/lib/jwt';
 
 export interface SubscriptionPlan {
   id: string;
@@ -35,6 +37,37 @@ export interface ApiResponse<T> {
   data: T;
   message: string;
   status: string;
+}
+
+/**
+ * Helper function to extract feature access directly from JWT token
+ */
+function extractFeatureAccessFromToken(token: string, feature: string): boolean {
+  try {
+    // Parse the JWT payload
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split('')
+        .map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`)
+        .join('')
+    );
+
+    const payload = JSON.parse(jsonPayload);
+    const userData = payload.userData;
+    
+    // Check if the userData has subscriptionFeatures
+    if (!userData || !userData.subscriptionFeatures) {
+      return false;
+    }
+    
+    // Return if the feature is enabled
+    return !!userData.subscriptionFeatures[feature];
+  } catch (error) {
+    console.error(`Error extracting feature access for ${feature}:`, error);
+    return false;
+  }
 }
 
 /**
@@ -122,9 +155,24 @@ export async function purchaseSubscription(
 
 /**
  * Check if user has access to a feature - cached with React cache
+ * Uses JWT token directly to avoid API call, falls back to API if useApi is true
  */
-export const checkFeatureAccess = cache(async (feature: string): Promise<boolean> => {
+export const checkFeatureAccess = cache(async (feature: string, useApi: boolean = false): Promise<boolean> => {
   try {
+    if (!useApi) {
+      // Get access token from cookies
+      const cookieStore = await cookies();
+      const accessToken = cookieStore.get('access_token')?.value;
+      
+      // Use direct token extraction if token is available
+      if (accessToken) {
+        return extractFeatureAccessFromToken(accessToken, feature);
+      }
+      
+      // If no token is available, fall back to API
+    }
+    
+    // API Fallback - use when JWT might not be updated with latest subscription data
     const response = await apiClient<null, ApiResponse<{ access: boolean; feature: string }>>(
       `/subscriptions/check-feature?feature=${feature}`, 
       "GET"

@@ -22,7 +22,6 @@ const InstallButton = () => {
       const { outcome } = await (deferredPrompt as any).userChoice;
       setDeferredPrompt(null);
       setIsInstallable(false);
-      console.log(`User response to the install prompt: ${outcome}`);
     }
   };
 

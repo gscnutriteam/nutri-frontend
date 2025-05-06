@@ -29,10 +29,6 @@ async function SubscriptionPlansServer() {
   const userSubscription = await getUserSubscription();
   const hasActiveSubscription = userSubscription?.is_active || false;
   const activePlanId = userSubscription?.plan?.id || null;
-  console.log(plans)
-
-  console.log(userSubscription)
-  console.log(hasActiveSubscription)
 
   // If API returned no plans, provide fallback data
   const fallbackPlans = [

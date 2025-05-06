@@ -21,7 +21,6 @@ export const uploadImage = async (imageData: string, source: 'camera' | 'upload'
       
       // Save the image URL to the scan store
       setScanImageLink(downloadURL);
-      console.log(`Image uploaded from ${source}:`, downloadURL);
       
       // Second phase: Detecting/Analyzing
       setPhase(ScanPhase.DETECTING);

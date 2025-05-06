@@ -90,7 +90,6 @@ export const useProfileForm = (user: ProfileProps) => {
     mutationFn: updateProfile,
     onSuccess: async(data) => {
       if (!data.success) {
-        console.log("error during profile update:", data);
         
         // If we get Forbidden, try to refresh the token and retry
         if (data.statusText === 'Forbidden') {
@@ -128,7 +127,6 @@ export const useProfileForm = (user: ProfileProps) => {
       const response = await useRefreshAPI({ refresh_token: refresh_token ?? "" });
       
       if (!response.success) {
-        console.log("error", response);
         toast.error("Failed to update profile. Please try again.");
         return;
       }

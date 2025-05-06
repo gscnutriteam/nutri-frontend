@@ -59,7 +59,7 @@ export const RegisterTokenForm = () => {
 			
 			// Hit API refresh token
 			const response = await useRefreshAPI({ refresh_token: refreshToken });
-			console.log("Refresh API response:", response);
+		
 			
 			// @ts-ignore - ignoring type check
 			if (response.success && response.data && response.data.tokens) {
@@ -85,7 +85,6 @@ export const RegisterTokenForm = () => {
 				);
 			}
 			
-			console.log("Token API response data:", data.data);
 			
 			// @ts-ignore - ignoring type check
 			if (data.data && data.data.status === "success") {
@@ -103,7 +102,6 @@ export const RegisterTokenForm = () => {
 							const authTokens = await fetchTokensWithRefresh();
 							
 							if (authTokens) {
-								console.log("Tokens from refresh API:", authTokens);
 								// Hapus token lama (jika ada)
 								removeAuthTokens();
 								// Simpan token baru
@@ -122,8 +120,6 @@ export const RegisterTokenForm = () => {
 					}
 				} else {
 					// Jika sudah ada tokens di response, gunakan saja
-					// @ts-ignore - ignoring type check
-					console.log("Tokens from product API:", data.data.tokens);
 					removeAuthTokens();
 					// @ts-ignore - ignoring type check
 					saveTokensFromApi(data.data.tokens);

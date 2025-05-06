@@ -24,7 +24,6 @@ export async function signInWithGoogle(isFromRegister = false) {
 			
 			// Ensure we've received tokens in the expected format
 			if (responseData && responseData.tokens) {
-				console.log("Saving auth tokens", responseData.tokens);
 				saveAuthTokens(responseData.tokens);
 				
 				// Check if user profile is complete

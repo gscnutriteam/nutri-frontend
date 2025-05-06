@@ -37,6 +37,15 @@ interface UserData {
   verified_email: boolean;
   isProductTokenVerified: boolean;
   profile_picture?: string;
+  subscriptionFeatures?: {
+    bmi_check?: boolean;
+    scan_ai?: boolean;
+    scan_calorie?: boolean;
+    health_info?: boolean;
+    chatbot?: boolean;
+    weight_tracking?: boolean;
+    [key: string]: boolean | undefined;
+  } | null;
 }
 
 export interface JWTPayload {
@@ -76,5 +85,31 @@ export function getPayloadFromToken(token: string): JWTPayload | null {
   } catch (error) {
     console.error('Error decoding token payload:', error);
     return null;
+  }
+}
+
+/**
+ * Check if user has access to a specific feature directly from the JWT token
+ * @param token - JWT token string
+ * @param feature - Feature name to check
+ * @returns boolean indicating whether the user has access to the feature
+ */
+export function hasFeatureAccess(token: string | null | undefined, feature: string): boolean {
+  if (!token) return false;
+  
+  try {
+    const payload = getPayloadFromToken(token);
+    if (!payload) return false;
+    
+    const { userData } = payload;
+    
+    // If user doesn't have a subscription features object or it's null, deny access
+    if (!userData.subscriptionFeatures) return false;
+    
+    // Check if the specific feature exists and is true
+    return !!userData.subscriptionFeatures[feature];
+  } catch (error) {
+    console.error(`Error checking feature access for ${feature}:`, error);
+    return false;
   }
 }

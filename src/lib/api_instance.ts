@@ -38,8 +38,6 @@ async function apiClient<T, R>(endpoint: string, method: string, data?: T, inclu
 		headers,
 		body
 	  });
-
-	  console.log("response: ", response.body);
 	  
 	  console.info(`API Call to ${endpoint}`, {
 		status: response.status,
