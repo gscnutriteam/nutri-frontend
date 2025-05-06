@@ -185,30 +185,6 @@ export default function LandingPage() {
     setSelectedFoodItem(null);
   };
 
-  const [prompt, setState] = React.useState(null);
-
-
-  useEffect(() => {
-    // console.log("beforeinstallprompt", prompt); 
-    const ready = (e) => {
-      // console.log("beforeinstallpromptaa", e);  
-      if (e) {
-        e.prompt();
-        e.preventDefault();
-      }
-     
-      console.log("beforeinstallprompt", e);  
-    };
-
-    window.addEventListener('beforeinstallprompt', ready);
-
-    // console.log("beforeinstallprompt", prompt);
-    return () => {
-      window.removeEventListener('beforeinstallprompt', ready);
-    };
-    
-  }, []);
-
   // Handle food selection
   const handleFoodSelect = (food: string) => {
     setSelectedFoodItem(food);
