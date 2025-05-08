@@ -1,0 +1,35 @@
+{
+    "company_name": "NutriPlate",
+    "tagline": "Portioning Precision, Health in Every Division!",
+    "industry": "Teknologi Kesehatan",
+    "about": "NutriPlate berasal dari kata 'Nutrition' yang berarti gizi dan 'Plate' yang berarti piring. NutriPlate adalah piring pemorsian cerdas yang dirancang berdasarkan pedoman 'Isi Piringku' dari Kementerian Kesehatan Indonesia untuk membantu masyarakat menerapkan pola makan seimbang dengan lebih mudah dan mencegah Penyakit Tidak Menular (PTM).",
+    "vision": "Menjadi pelopor piring pemorsian terbaik di Indonesia dengan menyediakan solusi praktis pemorsian berdasarkan kondisi kesehatan individu, mencapai jangkauan seluruh lapisan masyarakat di Indonesia, memberikan kontribusi dan dampak positif bagi masyarakat Indonesia, dan mencapai tingkat pengembalian modal yang superior disertai proyeksi keuangan yang positif",
+    "mission": [
+      "Meningkatkan kesadaran masyarakat tentang pentingnya pola makan sehat melalui edukasi berbasis data dan teknologi",
+      "Menyediakan solusi inovatif berupa piring pintar yang dapat membantu pengguna mengontrol porsi dan keseimbangan gizi sesuai kebutuhan individu",
+      "Mengembangkan ekosistem digital yang memungkinkan pengguna memantau pola makan mereka secara real-time melalui integrasi dengan aplikasi mobile",
+      "Bekerja sama dengan tenaga medis, ahli gizi, dan institusi kesehatan untuk memberikan rekomendasi gizi yang lebih akurat dan personal",
+      "Menciptakan produk yang dapat diakses oleh semua lapisan masyarakat, baik untuk individu sehat, penderita penyakit tertentu, maupun atlet"
+    ],
+    "business_goals": [
+      "Mengembangkan produk yang dapat membantu pengguna mengontrol pola makan",
+      "Memperluas pasar dan menjangkau lebih banyak pengguna di berbagai segmen",
+      "Menghasilkan keuntungan yang berkelanjutan melalui penjualan perangkat dan layanan tambahan"
+    ],
+    "target_market": ["Individu yang peduli dengan kesehatan", "Pelaku diet", "Atlet", "Keluarga muda"],
+    "partners": [
+      "Gizi Gama",
+      "Health Promoting University UGM",
+      "Zen porcelain tableware",
+      "Awan Mbengi Resto",
+      "Ceramik",
+      "Medstore Fakultas Kedokteran UGM", 
+      "Pegadaian Sociopreneurship",
+      "Belmawa"
+    ],
+    "contact": {
+      "shopee": "http://shopee.co.id/nutriplateugm",
+      "tokopedia": "https://tokopedia.link/hnQeydRQ5Kb",
+      "whatsapp": "https://api.whatsapp.com/send/?phone=6285717035472&text&type=phone_number&app_absent=0"
+    }
+  }

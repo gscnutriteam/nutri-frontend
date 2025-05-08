@@ -1,0 +1,48 @@
+{
+    "product_name": "NutriPlate",
+    "product_type": "Piring pemorsian cerdas",
+    "product_description": "NutriPlate merupakan sebuah piring pemorsian terklasifikasi dilengkapi dengan teknologi Artificial Intelligence (AI) untuk mengidentifikasi jenis makanan serta menghitung kandungan gizi dalam setiap porsi.",
+    "key_features": [
+      "Teknologi sensor gizi",
+      "Koneksi ke web app", 
+      "Desain ergonomis",
+      "Personalisasi untuk berbagai kondisi kesehatan",
+      "QR code terintegrasi dengan website NutriPlate"
+    ],
+    "materials": "Keramik porselen food grade",
+    "variants": [
+      {
+        "name": "NutriPlate Normal",
+        "description": "Dirancang untuk individu dengan kondisi kesehatan normal"
+      },
+      {
+        "name": "NutriPlate Obesitas", 
+        "description": "Disesuaikan untuk membantu kontrol porsi bagi penderita obesitas"
+      },
+      {
+        "name": "NutriPlate Diabetes",
+        "description": "Dirancang khusus dengan pemorsian yang tepat untuk penderita diabetes"
+      },
+      {
+        "name": "NutriPlate Atlet",
+        "description": "Menyediakan pemorsian yang optimal untuk kebutuhan gizi atlet"
+      }
+    ],
+    "packaging": "Produk NutriPlate sebelum dipasarkan akan dilakukan quality control untuk menjamin kualitas terbaik. Pengemasan menggunakan bubble wrap dan kardus yang telah didesain khusus untuk melindungi produk.",
+    "package_contents": [
+      "Piring Pemorsian",
+      "Gantungan Kunci",
+      "Buku Panduan Penggunaan dengan token produk",
+      "Bubble Wrap",
+      "Stiker"
+    ],
+    "usage_instructions": [
+      "Unboxing Kemasan",
+      "Dapatkan token produk pada sisi belakang buku panduan",
+      "Scan QR code pada depan piring",
+      "Kunjungi halaman website pada qr code piring",
+      "Daftar Akun / Register",
+      "Masukkan produk token",
+      "Akses Fitur-fitur nutriplate"
+    ]
+  }

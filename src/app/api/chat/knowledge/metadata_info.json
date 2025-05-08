@@ -1,0 +1,53 @@
+{
+    "intents": {
+      "company_info": [
+        "tentang perusahaan", "visi misi", "tentang nutriplate", "sejarah", 
+        "partner", "kerjasama", "tujuan bisnis", "tagline", "pendiri", 
+        "kontak", "hubungi", "lokasi"
+      ],
+      "product_info": [
+        "produk", "spesifikasi", "bahan", "material", "varian", "jenis piring", 
+        "cara pakai", "penggunaan", "isi paket", "package", "kemasan"
+      ],
+      "platform_features": [
+        "fitur", "aplikasi", "website", "platform", "digital", "scan makanan", 
+        "tracking", "asisten", "nubo", "resep", "artikel", "informasi kesehatan"
+      ],
+      "pricing": [
+        "harga", "paket", "promo", "diskon", "early bird", "premium", 
+        "berlangganan", "subscription", "biaya", "bayar"
+      ],
+      "faq": [
+        "pertanyaan", "faq", "tanya jawab", "bantuan", "dukungan", "support", 
+        "konsultasi", "pengiriman", "garansi", "masa pakai"
+      ],
+      "comparison": {
+        "product_faq": ["tentang produk", "tentang piring", "perbedaan", "tagline"],
+        "feature_faq": ["cara kerja", "akurasi", "makanan tradisional", "ai", "nubo"],
+        "purchase_faq": ["pembelian", "beli", "dapatkan", "akses", "diskon"],
+        "usage_faq": ["aktivasi", "microwave", "dishwasher", "masa pakai", "internet"],
+        "support_faq": ["masalah", "konsultasi", "qr code rusak", "pengiriman"]
+      }
+    },
+    "response_types": {
+      "general_info": "Informasi umum tentang NutriPlate",
+      "specific_detail": "Detail spesifik tentang produk atau layanan",
+      "instruction": "Langkah-langkah penggunaan produk atau platform",
+      "recommendation": "Rekomendasi berdasarkan pertanyaan pengguna",
+      "redirection": "Mengarahkan pengguna ke saluran bantuan yang tepat"
+    },
+    "tone_guidelines": {
+      "friendly": "Gunakan bahasa yang ramah dan personal",
+      "helpful": "Berikan informasi yang membantu secara langsung",
+      "concise": "Jawaban singkat dan langsung ke inti",
+      "professional": "Tetap profesional terutama untuk topik kesehatan",
+      "enthusiastic": "Tunjukkan antusiasme tentang produk dan manfaatnya"
+    },
+    "entity_definitions": {
+      "NutriPlate": "Brand piring pemorsian cerdas berbasis AI",
+      "Isi Piringku": "Pedoman gizi seimbang dari Kementerian Kesehatan Indonesia",
+      "Food Scanning": "Fitur pengenalan makanan dan analisis nutrisi melalui foto",
+      "Nubo": "Asisten nutrisi AI dalam platform NutriPlate",
+      "Early Bird": "Periode promosi awal dengan benefit khusus"
+    }
+  }

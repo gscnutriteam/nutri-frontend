@@ -20,9 +20,10 @@ export function ChatbotPanel({ isOpen }: ChatbotPanelProps) {
       {
         id: "welcome-message",
         role: "assistant",
-        content: "Halo! Saya Nutri, asisten virtual Nutriplate. Ada yang bisa saya bantu terkait produk dan layanan kami?"
+        content: "Halo! Saya Nubo, asisten virtual Nutriplate. Ada yang bisa saya bantu terkait produk dan layanan kami?"
       }
     ],
+    api: '/api/chat/home',
     body: {
       botName: "Nubo"  // Set the bot name to Nubo
     }

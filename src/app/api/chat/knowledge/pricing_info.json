@@ -1,0 +1,57 @@
+{
+    "pricing_packages": [
+      {
+        "name": "Paket NutriPlate Single",
+        "price": 175000,
+        "currency": "IDR",
+        "description": "1 Piring Pintar + Akses Premium",
+        "contents": [
+          "1x NutriPlate Smart Plate",
+          "Akses premium GRATIS selama periode early bird",
+          "Scan AI makanan tanpa batas",
+          "Estimasi kalori otomatis",
+          "Pemantauan BMI",
+          "Konsultasi dengan AI Nutritionist",
+          "Tracking berat badan",
+          "Akses artikel kesehatan premium"
+        ]
+      },
+      {
+        "name": "Paket NutriPlate Couple",
+        "price": 300000,
+        "original_price": 350000,
+        "savings": 50000,
+        "currency": "IDR",
+        "description": "2 Piring Pintar + Akses Premium",
+        "contents": [
+          "2x NutriPlate Smart Plate",
+          "Akses premium GRATIS selama periode early bird",
+          "Scan AI makanan tanpa batas",
+          "Estimasi kalori otomatis",
+          "Pemantauan BMI",
+          "Konsultasi dengan AI Nutritionist",
+          "Tracking berat badan",
+          "Akses artikel kesehatan premium"
+        ]
+      },
+      {
+        "name": "Paket Premium App Only",
+        "price": 99000,
+        "price_period": "bulan",
+        "currency": "IDR",
+        "description": "Langganan Bulanan Tanpa Piring",
+        "contents": [
+          "Tanpa Smart Plate",
+          "Akses semua fitur premium",
+          "Scan AI makanan tanpa batas",
+          "Estimasi kalori otomatis",
+          "Pemantauan BMI",
+          "Konsultasi dengan AI Nutritionist",
+          "Tracking berat badan",
+          "Akses artikel kesehatan premium"
+        ]
+      }
+    ],
+    "standard_price": 150000,
+    "additional_info": "Pada masa early bird, pembelian piring gratis subscription premium website nutriplate selama masa early bird (sebulannya 99.000 jika tidak membeli piring)"
+  }

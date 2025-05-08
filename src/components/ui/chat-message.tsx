@@ -111,10 +111,6 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
     })
   }, [experimental_attachments])
 
-  if (toolInvocations && toolInvocations.length > 0) {
-    return <ToolCall toolInvocations={toolInvocations} />
-  }
-
   const isUser = role === "user"
 
   const formattedTime = createdAt?.toLocaleTimeString("en-US", {

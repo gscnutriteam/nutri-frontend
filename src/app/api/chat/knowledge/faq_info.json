@@ -1,0 +1,92 @@
+{
+    "product_faqs": [
+      {
+        "question": "Apa itu NutriPlate?",
+        "answer": "NutriPlate adalah piring pemorsian cerdas yang dilengkapi teknologi AI untuk membantu Anda mengatur porsi makan sesuai dengan pedoman 'Isi Piringku'. Produk ini menggabungkan piring fisik berkualitas dengan platform digital yang menyediakan berbagai fitur untuk mendukung gaya hidup sehat Anda."
+      },
+      {
+        "question": "Bagaimana NutriPlate berbeda dari piring biasa?",
+        "answer": "NutriPlate bukan sekadar piring biasa. Ini adalah solusi kesehatan terintegrasi yang menggabungkan piring fisik dengan pembagian ruang sesuai pedoman gizi dan platform digital dengan teknologi AI yang dapat menganalisis makanan, melacak nutrisi, dan memberikan saran personal untuk kebutuhan diet Anda."
+      },
+      {
+        "question": "Apa arti dari tagline 'Portioning Precision, Health in Every Division'?",
+        "answer": "Tagline kami menekankan keunggulan NutriPlate dalam membantu Anda mengatur porsi makanan dengan presisi tinggi, sehingga setiap bagian pada piring berkontribusi pada kesehatan optimal Anda. Setiap pembagian ruang pada piring dirancang dengan cermat untuk menciptakan keseimbangan nutrisi."
+      },
+      {
+        "question": "Apa saja varian NutriPlate yang tersedia?",
+        "answer": "NutriPlate tersedia dalam empat varian: Normal (untuk kebutuhan sehari-hari), Obesitas (untuk program penurunan berat badan), Diabetes (untuk mengontrol gula darah), dan Atlet (untuk mendukung kebutuhan nutrisi tinggi). Masing-masing memiliki pola pemorsian yang berbeda sesuai kebutuhan."
+      }
+    ],
+    "feature_faqs": [
+      {
+        "question": "Bagaimana cara kerja fitur Food Scanning?",
+        "answer": "Cukup ambil foto makanan Anda melalui aplikasi NutriPlate, dan AI kami akan secara otomatis mengidentifikasi jenis makanan serta menghitung kandungan kalori dan nutrisinya. Semudah itu, Anda mendapatkan informasi lengkap tentang apa yang Anda konsumsi!"
+      },
+      {
+        "question": "Seberapa akurat teknologi AI NutriPlate dalam mengenali makanan?",
+        "answer": "Teknologi AI kami terus belajar dan berkembang dengan database makanan yang luas. Tingkat akurasi sangat baik untuk makanan umum dan terus meningkat seiring waktu. Untuk makanan yang sangat spesifik, Anda juga dapat melakukan penyesuaian manual jika diperlukan."
+      },
+      {
+        "question": "Bisakah NutriPlate mengenali makanan tradisional Indonesia?",
+        "answer": "Tentu saja! NutriPlate dirancang dengan mempertimbangkan beragam makanan Indonesia. Database kami mencakup berbagai makanan tradisional dan terus diperluas untuk meningkatkan akurasi pengenalan."
+      },
+      {
+        "question": "Apa itu Nubo, asisten nutrisi AI yang disebutkan?",
+        "answer": "Nubo adalah asisten nutrisi berbasis AI yang ramah yang dapat Anda ajak berdiskusi tentang kebutuhan nutrisi, rekomendasi makanan, substitusi bahan, dan berbagai pertanyaan seputar kesehatan. Nubo memberikan saran yang dipersonalisasi berdasarkan profil dan tujuan kesehatan Anda."
+      }
+    ],
+    "purchase_faqs": [
+      {
+        "question": "Apa saja yang saya dapatkan ketika membeli NutriPlate?",
+        "answer": "Setiap pembelian NutriPlate mencakup piring pemorsian berkualitas, gantungan kunci eksklusif, buku panduan penggunaan dengan token akses premium, kemasan bubble wrap untuk keamanan produk, dan stiker NutriPlate."
+      },
+      {
+        "question": "Apakah saya harus membeli piring untuk mengakses fitur digital NutriPlate?",
+        "answer": "Tidak harus. Kami menyediakan opsi berlangganan Premium App Only seharga Rp99.000/bulan tanpa perlu membeli piring fisik. Namun, pengalaman terbaik didapatkan dengan kombinasi piring fisik dan platform digital."
+      },
+      {
+        "question": "Berapa lama masa akses premium gratis jika saya membeli piring?",
+        "answer": "Pengguna yang membeli piring NutriPlate selama periode early bird akan mendapatkan akses premium gratis selama masa early bird tersebut. Setelahnya, Anda dapat memilih untuk berlangganan dengan harga normal."
+      },
+      {
+        "question": "Apakah ada diskon untuk pembelian dalam jumlah banyak?",
+        "answer": "Ya, kami menawarkan paket Couple dengan harga Rp300.000 untuk dua piring (hemat Rp50.000). Untuk pembelian dalam jumlah lebih besar, silakan hubungi tim kami untuk penawaran khusus."
+      }
+    ],
+    "usage_faqs": [
+      {
+        "question": "Bagaimana cara mengaktifkan akses premium NutriPlate?",
+        "answer": "Setelah membeli piring NutriPlate, Anda akan menemukan token produk di sisi belakang buku panduan. Scan QR code pada piring, daftar akun di website NutriPlate, masukkan token produk, dan Anda akan langsung mendapatkan akses ke semua fitur premium."
+      },
+      {
+        "question": "Apakah piring NutriPlate aman untuk microwave atau dishwasher?",
+        "answer": "NutriPlate terbuat dari keramik porselen food grade yang aman untuk digunakan di microwave. Untuk perawatan optimal dan menjaga kualitas QR code, kami sarankan untuk mencuci piring secara manual dengan sabun lembut."
+      },
+      {
+        "question": "Berapa lama masa pakai NutriPlate?",
+        "answer": "Dengan perawatan yang baik, piring NutriPlate dapat bertahan selama bertahun-tahun. Bahan keramik porselen kami dipilih karena kualitas dan ketahanannya yang tinggi."
+      },
+      {
+        "question": "Bisakah saya menggunakan NutriPlate tanpa koneksi internet?",
+        "answer": "Piring fisik NutriPlate tentu dapat digunakan tanpa internet sebagai panduan pemorsian visual. Namun, untuk mengakses fitur digital seperti Food Scanning, Nutrition Tracking, dan AI Assistant, Anda memerlukan koneksi internet."
+      }
+    ],
+    "support_faqs": [
+      {
+        "question": "Bagaimana jika saya mengalami masalah dengan produk atau akun NutriPlate?",
+        "answer": "Tim dukungan pelanggan kami siap membantu. Anda dapat menghubungi kami melalui WhatsApp di 085717035472 atau melalui email di support@nutriplate.com."
+      },
+      {
+        "question": "Apakah NutriPlate menyediakan layanan konsultasi dengan ahli gizi?",
+        "answer": "Ya, setiap pembelian produk NutriPlate mendapatkan akses ke layanan konsultasi diet. Detail lebih lanjut dapat ditemukan di buku panduan atau di platform digital kami."
+      },
+      {
+        "question": "Bagaimana jika QR code pada piring saya rusak atau tidak terbaca?",
+        "answer": "Jangan khawatir! Token produk yang Anda dapatkan di buku panduan tetap dapat digunakan untuk mengakses akun premium. Jika mengalami kesulitan, silakan hubungi tim dukungan kami untuk mendapatkan bantuan."
+      },
+      {
+        "question": "Apakah NutriPlate tersedia untuk pengiriman ke seluruh Indonesia?",
+        "answer": "Ya, kami melayani pengiriman ke seluruh wilayah Indonesia melalui berbagai jasa ekspedisi terpercaya yang tersedia di platform e-commerce kami."
+      }
+    ]
+  }

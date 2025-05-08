@@ -1,0 +1,69 @@
+{
+    "welcome_flow": {
+      "greeting": "Halo! Selamat datang di layanan chatbot NutriPlate. Saya siap membantu Anda mengenai piring pemorsian cerdas kami dan platform digital nutrisi.",
+      "quick_options": [
+        "Tentang NutriPlate",
+        "Fitur dan Teknologi",
+        "Paket dan Harga",
+        "Bantuan Pembelian",
+        "FAQ"
+      ]
+    },
+    "recommended_flows": {
+      "new_user": {
+        "introduction": "NutriPlate adalah piring pemorsian cerdas dengan teknologi AI yang membantu Anda mengatur pola makan seimbang.",
+        "suggested_path": ["tentang_produk", "fitur_utama", "paket_harga", "cara_pembelian"],
+        "follow_up_question": "Apakah Anda tertarik untuk mengetahui lebih lanjut tentang varian produk kami?"
+      },
+      "purchase_inquiry": {
+        "introduction": "Kami memiliki beberapa paket NutriPlate yang bisa disesuaikan dengan kebutuhan Anda.",
+        "suggested_path": ["paket_harga", "promo_berlangsung", "cara_pembelian", "metode_pembayaran"],
+        "follow_up_question": "Apakah Anda ingin mengetahui detail paket tertentu atau ingin langsung diarahkan ke halaman pembelian?"
+      },
+      "product_usage": {
+        "introduction": "Penggunaan NutriPlate sangat mudah dan intuitif.",
+        "suggested_path": ["cara_penggunaan", "aktivasi_premium", "fitur_platform", "tips_pemorsian"],
+        "follow_up_question": "Apakah ada fitur spesifik yang ingin Anda ketahui cara penggunaannya?"
+      },
+      "technical_support": {
+        "introduction": "Kami siap membantu jika Anda mengalami kendala dengan produk NutriPlate.",
+        "suggested_path": ["faq_umum", "masalah_umum", "kontak_support"],
+        "follow_up_question": "Bisakah Anda menjelaskan masalah yang Anda alami agar kami dapat memberikan solusi yang tepat?"
+      }
+    },
+    "contextual_suggestions": {
+      "after_product_info": [
+        "Fitur-fitur platform digital",
+        "Harga dan paket",
+        "Varian produk"
+      ],
+      "after_pricing_info": [
+        "Cara pembelian",
+        "Perbandingan paket",
+        "Promo yang sedang berlangsung"
+      ],
+      "after_feature_info": [
+        "Cara penggunaan fitur",
+        "Tips memaksimalkan manfaat",
+        "Informasi berlangganan premium"
+      ],
+      "after_support_query": [
+        "FAQ lainnya",
+        "Kontak dukungan langsung",
+        "Tutorial penggunaan"
+      ]
+    },
+    "conversation_ending": {
+      "satisfaction_check": "Apakah informasi yang saya berikan membantu?",
+      "positive_closing": "Senang bisa membantu! Jika ada pertanyaan lain, jangan ragu untuk bertanya kembali.",
+      "redirect_options": "Untuk bantuan lebih lanjut, Anda dapat menghubungi tim kami melalui WhatsApp di 085717035472 atau mengunjungi website kami.",
+      "feedback_request": "Kami menghargai masukan Anda untuk meningkatkan layanan kami. Apakah Anda bersedia memberikan penilaian untuk interaksi ini?"
+    },
+    "implementation_notes": {
+      "intent_detection": "Gunakan metadata_info.json untuk mendeteksi intent dari pertanyaan pengguna",
+      "context_awareness": "Simpan history percakapan untuk memberikan jawaban yang kontekstual",
+      "dynamic_loading": "Hanya load JSON yang relevan dengan pertanyaan untuk mengurangi beban data",
+      "fallback_strategy": "Jika intent tidak jelas, tampilkan menu utama atau tawarkan untuk terhubung dengan manusia",
+      "personalization": "Simpan preferensi user jika memungkinkan untuk personalisasi respons di masa depan"
+    }
+  }
