@@ -53,8 +53,8 @@ async function SubscriptionPlansServer() {
     },
     {
       id: "2",
-      name: "Paket Sehat",
-      price: 30000,
+      name: "Early Bird",
+      price: 99000,
       price_formatted: "Rp. 30000",
       description: "Paket terbaik untuk kesehatan",
       ai_scan_limit: 10,
@@ -71,6 +71,24 @@ async function SubscriptionPlansServer() {
     },
     {
       id: "3",
+      name: "Paket Sehat",
+      price: 30000,
+      price_formatted: "Rp. 30000",
+      description: "Paket terbaik untuk kesehatan",
+      ai_scan_limit: 10,
+      validity_days: 90,
+      features: {
+        scan_ai: true,
+        scan_estimasi_kalori: true,
+        bmi_check: true,
+        chatbot: true,
+        weight_tracking: false,
+        health_info: false,
+      },
+      is_recommended: false
+    },
+    {
+      id: "4",
       name: "Paket Sultan",
       price: 120000,
       price_formatted: "Rp. 120000",
@@ -94,6 +112,7 @@ async function SubscriptionPlansServer() {
   
   // Format the feature data to match our component's expected structure
   const formattedPlans = await Promise.all(subscriptionPlans.map(async (plan, index) => {
+    console.log(plan);
     // Check if this plan is currently active
     const isActive = hasActiveSubscription && plan.id === activePlanId;
     // Get the end date if this plan is active
@@ -111,7 +130,7 @@ async function SubscriptionPlansServer() {
 
     // Determine card variant - second card (index 1) always gets mint variant
     let cardVariant: "yellow" | "mint" = "yellow";
-    if (index === 1) {
+    if (index % 2 === 1) {
       cardVariant = "mint";
     }
 

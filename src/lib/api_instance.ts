@@ -53,10 +53,24 @@ async function apiClient<T, R>(endpoint: string, method: string, data?: T, inclu
 		data: responseData as R
 	  };
 	} catch (error) {
-		console.log(error)
-	  console.error(`API Call to ${endpoint}`, {
-		errorMessage: error instanceof Error ? error.message : String(error)
-	  });
+		console.log(error);
+		console.error(`API Call to ${endpoint}`, {
+			errorMessage: error instanceof Error ? error.message : String(error)
+		});
+		
+		// Handle 401 Unauthorized errors
+		if (error instanceof Response && error.status === 401) {
+			// Delete auth cookies
+			if (typeof document !== 'undefined') {
+				document.cookie = 'access_token=; Max-Age=0; path=/; domain=' + window.location.hostname;
+				document.cookie = 'refresh_token=; Max-Age=0; path=/; domain=' + window.location.hostname;
+			}
+			
+			// Redirect to login page
+			if (typeof window !== 'undefined') {
+				window.location.href = '/app/login';
+			}
+		}
 	  
 	  return {
 		success: false,

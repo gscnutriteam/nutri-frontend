@@ -7,6 +7,7 @@ import { handleFeatureRoutes } from './handlers/featureRouteHandler';
 import { handleTokenPage } from './handlers/tokenPageHandler';
 import { handleDashboardPage } from './handlers/dashboardHandler';
 import { handleDebugPages } from './handlers/debugPageHandler';
+import { handleTokenRefresh } from './handlers/tokenRefreshHandler';
 import { middlewareConfig } from './config/routes';
 
 /**
@@ -22,35 +23,39 @@ export async function middleware(request: NextRequest) {
   response = await handleDebugPages(request, pathname);
   if (response) return response;
   
-  // 2. Handle authenticated routes
+  // 2. Try to refresh tokens if access token is expired but refresh token is valid
+  response = await handleTokenRefresh(request);
+  if (response) return response;
+  
+  // 3. Handle authenticated routes
   if (isAuthRoute(pathname)) {
     response = await handleAuthRoutes(request, pathname);
     if (response) return response;
   }
   
-  // 3. Handle guest routes
+  // 4. Handle guest routes
   if (isGuestRoute(pathname)) {
     response = await handleGuestRoutes(request);
     if (response) return response;
   }
   
-  // 4. Handle member routes
+  // 5. Handle member routes
   if (isMemberRoute(pathname)) {
     response = await handleMemberRoutes(request);
     if (response) return response;
   }
   
-  // 5. Handle feature-protected routes
+  // 6. Handle feature-protected routes
   response = await handleFeatureRoutes(request, pathname);
   if (response) return response;
   
-  // 6. Special handlers for specific pages
+  // 7. Special handlers for specific pages
   
-  // 6.1 Token page handler
+  // 7.1 Token page handler
   response = await handleTokenPage(request, pathname);
   if (response) return response;
   
-  // 6.2 Dashboard page handler
+  // 7.2 Dashboard page handler
   response = await handleDashboardPage(request, pathname);
   if (response) return response;
   
