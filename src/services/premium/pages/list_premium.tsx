@@ -55,7 +55,7 @@ async function SubscriptionPlansServer() {
       id: "2",
       name: "Early Bird",
       price: 99000,
-      price_formatted: "Rp. 30000",
+      price_formatted: "Rp. 99000",
       description: "Paket terbaik untuk kesehatan",
       ai_scan_limit: 10,
       validity_days: 90,
@@ -112,7 +112,6 @@ async function SubscriptionPlansServer() {
   
   // Format the feature data to match our component's expected structure
   const formattedPlans = await Promise.all(subscriptionPlans.map(async (plan, index) => {
-    console.log(plan);
     // Check if this plan is currently active
     const isActive = hasActiveSubscription && plan.id === activePlanId;
     // Get the end date if this plan is active
@@ -122,10 +121,10 @@ async function SubscriptionPlansServer() {
     const featureItems = [
       { text: `${plan.ai_scan_limit}x scan AI`, available: true },
       { text: "scan estimasi kalori", available: Boolean(plan.features.scan_estimasi_kalori || plan.features.scan_ai) },
-      { text: "chatBot gizi", available: Boolean(plan.features.chatbot) },
-      { text: "cek BMI", available: Boolean(plan.features.bmi_check) },
-      { text: "tracking pemantauan berat badan", available: Boolean(plan.features.weight_tracking) },
-      { text: "informasi kesehatan", available: Boolean(plan.features.health_info) },
+      { text: "chatBot gizi", available: Boolean(plan.features.chatbot || plan.features.chatbot_gizi) },
+      { text: "cek BMI", available: Boolean(plan.features.bmi_check || plan.features.cek_bmi) },
+      { text: "tracking pemantauan berat badan", available: Boolean(plan.features.weight_tracking || plan.features.tracking_berat_badan) },
+      { text: "informasi kesehatan", available: Boolean(plan.features.health_info || plan.features.informasi_kesehatan) },
     ];
 
     // Determine card variant - second card (index 1) always gets mint variant
@@ -192,6 +191,14 @@ export default function ListPremium() {
           </Suspense>
           
           <h3 className="font-semibold text-lg mb-4">Pilih Paket Premium</h3>
+
+          <div className="text-sm text-gray-500 mb-6 bg-yellow-50 p-3 rounded-md border border-yellow-200">
+            <p>
+              <strong>Mode Sandbox:</strong> Ini adalah integrasi Midtrans dalam mode sandbox. 
+              Tidak ada pembayaran nyata yang diproses. Gunakan salah satu metode pembayaran 
+              simulator yang tersedia di halaman pembayaran.
+            </p>
+          </div>
           
           <Suspense fallback={
             <>

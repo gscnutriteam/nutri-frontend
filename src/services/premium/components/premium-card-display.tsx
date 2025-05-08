@@ -35,6 +35,15 @@ const PremiumCardDisplay = ({
 }: PremiumCardDisplayProps) => {
   const hasValidSubscription = Boolean(endDate && new Date(endDate) > new Date());
   
+  // Extract numeric price from formatted string (e.g., "Rp. 15000" -> 15000)
+  const getNumericPrice = (): number => {
+    const priceMatch = price.match(/\d+/g);
+    if (priceMatch && priceMatch.length > 0) {
+      return parseInt(priceMatch.join(''), 10);
+    }
+    return 0;
+  };
+  
   return (
     <Card
       className={`overflow-hidden rounded-xl border-2 ${hasValidSubscription ? 'border-green-500 shadow-md shadow-green-200' : ''} relative`}
@@ -89,7 +98,9 @@ const PremiumCardDisplay = ({
         <div className="flex justify-end">
           <PremiumCardButtonWrapper
             planId={planId} 
-            isActive={hasValidSubscription} 
+            isActive={hasValidSubscription}
+            planName={title}
+            amount={getNumericPrice()}
           />
         </div>
       </div>

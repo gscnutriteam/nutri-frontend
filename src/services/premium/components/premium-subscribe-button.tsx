@@ -4,44 +4,36 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { CheckIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { purchaseSubscription } from '../api/subscriptions';
+import MidtransPaymentButton from './midtrans-payment-button';
 
 interface PremiumSubscribeButtonProps {
   planId: string;
   isActive?: boolean;
+  planName?: string;
+  amount?: number;
 }
 
 export default function PremiumSubscribeButton({
   planId,
-  isActive = false
+  isActive = false,
+  planName = "Premium",
+  amount = 0
 }: PremiumSubscribeButtonProps) {
-  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubscribe = async () => {
-    // If plan is already active, no need to purchase
-    if (isActive) {
-      return;
-    }
+  // Extract numbers from the price string if amount isn't provided
+  const getAmount = () => {
+    if (amount > 0) return amount;
     
-    setIsLoading(true);
-    try {
-      // Use the server action to purchase the subscription with default payment method
-      const result = await purchaseSubscription(planId, 'gopay');
-      
-      if (result) {
-        // Show success notification
-        alert('Subscription successfully purchased!');
-        router.refresh(); // Refresh the page to show updated subscription status
-      } else {
-        alert('Failed to purchase subscription. Please try again.');
-      }
-    } catch (error) {
-      console.error('Failed to purchase subscription:', error);
-      alert('Failed to purchase subscription. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
+    // Fallback amounts based on plan IDs
+    const planAmounts: Record<string, number> = {
+      "1": 15000,
+      "2": 99000,
+      "3": 30000,
+      "4": 120000
+    };
+    
+    return planAmounts[planId] || 10000; // Default to 10000 if not found
   };
 
   return (
@@ -56,14 +48,12 @@ export default function PremiumSubscribeButton({
           Paket Aktif
         </Button>
       ) : (
-        <Button 
-          variant="default" 
-          className="bg-teal-500 hover:bg-teal-600 text-white py-1 px-3 text-sm"
-          onClick={handleSubscribe}
-          disabled={isLoading}
-        >
-          {isLoading ? 'Memproses...' : 'Langganan'}
-        </Button>
+        <MidtransPaymentButton
+          planId={planId}
+          planName={planName}
+          amount={getAmount()}
+          buttonText="Langganan"
+        />
       )}
     </>
   );
