@@ -55,7 +55,7 @@ export const CameraScan = () => {
 			</div>
 
 			{/* Bottom Camera Controls */}
-			<div className="absolute bottom-20 left-0 w-full flex justify-center items-center gap-10 p-4">
+			<div className="absolute bottom-10 left-0 w-full flex justify-center items-center gap-10 p-4">
 				<button
 					type="button"
 					className="rounded-full bg-white p-4"

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ScanPhoto() {
     return (
-    <AppMobileLayout>
+    <AppMobileLayout withBottomBar={false}>
       <div className="bg-white relative h-[95vh] flex flex-col w-full overflow-hidden">
         {/* Header with back button and flash toggle */}
         <CameraScan />

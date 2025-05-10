@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Toaster } from 'sonner';
 import { ButtonLogout } from '@/services/profile/components/button_logout';
+import LinkAPP from '@/components/util/link';
 
 export const metadataToken: Metadata = {
   title: 'Token | NutriBox',
@@ -36,6 +37,9 @@ export default function RegisterToken() {
         <p className="text-center mt-4 text-sm">
           Tidak memiliki token? <Link href="https://instagram.com/nutriplateid" target='_blank' className="text-button underline">Produk Kami</Link>
         </p>
+        {/* <p className="text-center mt-1 text-sm">
+          atau beli premium <LinkAPP href="/premium" className="text-button underline">di sini</LinkAPP>
+        </p> */}
       </div>
     </AuthLayout>
   );

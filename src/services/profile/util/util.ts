@@ -16,6 +16,7 @@ export const JWTUserTOProfileProps = (user: JWTPayload): ProfileProps => {
         medical_history: userData.medical_history,
         physical_activity: userData.activity_level,
         profile_picture: userData.profile_picture ?? '/assets/img/no_pp.png',
+        subscriptionFeatures: userData.subscriptionFeatures ?? {},
         progress: 0,
         bmi: getBMI(userData.height, userData.weight),
         isProductTokenVerified: userData.isProductTokenVerified,

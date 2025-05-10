@@ -5,19 +5,26 @@ This directory contains the code for the premium subscription service with Midtr
 ## Setup
 
 1. Copy the `sample.env.local` file to `.env.local` in the root directory
-2. Register for Midtrans account at [Midtrans Dashboard](https://dashboard.midtrans.com/)
-3. Set your Midtrans API credentials in `.env.local`:
+2. Set your Midtrans client key in `.env.local`:
    ```
    NEXT_PUBLIC_MIDTRANS_CLIENT_KEY=SB-Mid-client-YOUR_CLIENT_KEY
-   MIDTRANS_SERVER_KEY=SB-Mid-server-YOUR_SERVER_KEY
    NEXT_PUBLIC_MIDTRANS_IS_PRODUCTION=false
    ```
 
 ## Implementation
 
-- `api/midtrans.ts` - Server-side implementation for generating Midtrans payment tokens
+- `api/subscriptions.ts` - API client for backend subscription endpoints, including Midtrans payment
 - `components/midtrans-payment-button.tsx` - Client-side component for Midtrans payment popup
 - `pages/list_premium.tsx` - Main page displaying available premium plans
+
+## Integration Flow
+
+1. User selects a premium plan and clicks the payment button
+2. Frontend calls `/subscriptions/purchase/{planId}` backend API
+3. Backend generates Midtrans token and returns it to the frontend
+4. Frontend loads Midtrans Snap.js and opens payment popup with the token
+5. User completes payment in the Midtrans popup
+6. User is redirected to success or pending page based on payment result
 
 ## Features
 
@@ -42,4 +49,3 @@ In sandbox mode, you can use various payment methods with test credentials. For 
 
 - [Midtrans Documentation](https://docs.midtrans.com/)
 - [Midtrans Snap Integration Guide](https://docs.midtrans.com/docs/snap-snap-integration-guide)
-- [midtrans-client NPM Package](https://www.npmjs.com/package/midtrans-client)

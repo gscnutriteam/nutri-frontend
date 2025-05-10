@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card';
 
 const PremiumCardSkeleton: React.FC = () => {
   return (
-    <Card className="border-2 border-gray-200 overflow-hidden rounded-xl" variant="neutral">
+    <Card className="border-2 border-gray-200 mb-5 overflow-hidden rounded-xl" variant="neutral">
       <div className="p-5">
         {/* Header skeleton with title and price */}
         <div className="flex justify-between items-center mb-4">

@@ -16,5 +16,14 @@ export interface ProfileProps {
       profile_picture: string;
       progress: number;
       isProductTokenVerified?: boolean;
+      subscriptionFeatures?: {
+        bmi_check?: boolean;
+        scan_ai?: boolean;
+        scan_calorie?: boolean;
+        health_info?: boolean;
+        chatbot?: boolean;
+        weight_tracking?: boolean;
+        [key: string]: boolean | undefined;
+      }
     // };
   }

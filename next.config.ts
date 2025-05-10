@@ -25,6 +25,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "placehold.co",
       },
+      {
+        hostname: "storage.googleapis.com",
+      },
     ]
   },
   experimental: {

@@ -22,7 +22,7 @@ const AppMobileLayout: React.FC<Props> = ({ children, withBottomBar = true }) =>
           {/* favicon */}
           <link rel="icon" href="/assets/img/logo.png" />
         </Head>
-        <div className="relative max-w-md mx-auto ">{children}</div>
+        <div className="relative max-w-md mx-auto pb-10">{children}</div>
         {withBottomBar && <BottomBar/>}
       </div>
     </QueryProvider>

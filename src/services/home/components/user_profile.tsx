@@ -1,5 +1,5 @@
 "use client"
-import { LucideUser, Star, User, User2 } from 'lucide-react';
+import { Check, LucideUser, Star, User, User2 } from 'lucide-react';
 import type React from 'react';
 import BMIStats from './BMI_stats';
 import { Badge } from '@/components/ui/badge';
@@ -7,6 +7,8 @@ import { Progress } from '@/components/ui/progress';
 import { getBMIStatus } from '@/services/info_kesehatan/util/util';
 import { trimString } from '@/services/profile/util/util';
 import LinkAPP from '@/components/util/link';
+import { getDetailUser, getUserData } from '@/services/profile/api/getUser';
+import { isUserPro, useUser } from '@/services/auth/util/useUser';
 
 interface UserProfileProps {
   name: string;
@@ -27,6 +29,9 @@ const UserProfile: React.FC<UserProfileProps> = ({
   height = 0,
   healthScore = 0,
 }) => {
+  // Don't override the prop value here - causes hydration mismatch
+  const userIsPro = isPro;
+
   return (
     <div className="flex flex-col relative w-full" style={{ background: 'linear-gradient(180deg, #D0FBFD 0%, rgba(83, 194, 198, 0.00) 100%)' }}>
       <img src="/assets/img/home-pattern.png" className="w-full absolute -z-0 top-0 left-0 h-full object-cover" alt="pattern" />
@@ -38,10 +43,21 @@ const UserProfile: React.FC<UserProfileProps> = ({
           <span className="font-medium">{trimString(name, 20)}</span>
         </div>
         <div className="flex items-center gap-4 ">
+          {userIsPro ? (<>
+            <LinkAPP href='/app/premium' className="cursor-pointer flex items-center gap-2 justify-center bg-gradient-to-r from-emerald-500 to-teal-500 py-1.5 px-4 border-2 border-black rounded-full shadow-sm hover:shadow-md transition-all">
+              <div className="flex items-center gap-1.5">
+                <span className="font-semibold text-white">Pro</span>
+                <div className="bg-white rounded-full p-0.5 flex items-center justify-center">
+                  <Check className="size-3.5 text-emerald-600" strokeWidth={3} />
+                </div>
+              </div>
+            </LinkAPP>
+          </>) : (<>
           <LinkAPP href='/app/premium' className="flex items-center bg-white py-1 px-3 border-2 border-black rounded-full">
-            <span>Try</span>
-            {isPro && <span className="font-medium ml-1">Pro</span>}
+            <span>Try</span> 
+            <span className="font-medium ml-1">Pro</span>
           </LinkAPP>
+          </>)}
           <div className="flex items-center gap-1 bg-white py-1 px-3 border-2 border-black rounded-full">
             <span>
               <Star className="size-4 fill-[#E6C64F]" />

@@ -171,7 +171,7 @@ async function SubscriptionPlansServer() {
 
 export default function ListPremium() {
   return (
-    <AppMobileLayout>
+    <AppMobileLayout withBottomBar={false}>
       <div className="bg-white h-screen flex flex-col w-full overflow-auto pb-10">
         <div className="p-4 flex items-center">
           <Link href="/app" className="text-teal-500">

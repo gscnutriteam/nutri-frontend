@@ -33,6 +33,12 @@ export interface UserSubscription {
   created_at: string;
 }
 
+export interface MidtransPaymentResponse {
+  order_id: string;
+  redirect_url: string;
+  transaction_token: string;
+}
+
 export interface ApiResponse<T> {
   data: T;
   message: string;
@@ -129,13 +135,14 @@ export const isPlanActive = cache(async (planId: string): Promise<boolean> => {
 
 /**
  * Purchase a subscription plan - server action
+ * Returns Midtrans payment data for Snap integration
  */
 export async function purchaseSubscription(
   planId: string, 
   paymentMethod: string
-): Promise<UserSubscription | null> {
+): Promise<MidtransPaymentResponse | null> {
   try {
-    const response = await apiClient<{ payment_method: string }, ApiResponse<UserSubscription>>(
+    const response = await apiClient<{ payment_method: string }, ApiResponse<MidtransPaymentResponse>>(
       `/subscriptions/purchase/${planId}`, 
       "POST",
       { payment_method: paymentMethod }
