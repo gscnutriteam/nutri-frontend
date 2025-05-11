@@ -7,6 +7,9 @@ import MenuGrid from '../components/menu_grid';
 import Head from 'next/head';
 import type { Metadata } from 'next';
 import { getDetailUser, getUserData } from '@/services/profile/api/getUser';
+import Image from 'next/image';
+import { Crown } from 'lucide-react';
+import LinkAPP from '@/components/util/link';
 
 export const metadataHome: Metadata = {
   title: 'Home | NutriBox',
@@ -41,16 +44,21 @@ export default async function Home({
   },
 }: Props) {
   const user = (await getDetailUser());
+  const isPro = Object.values(user?.subscriptionFeatures ?? {}).some(Boolean);
+  
   return (
     <AppMobileLayout>
       <Head  >
         <title>Home | Nutribox</title>
       </Head>
       <div className="w-full relative flex flex-col outfit-font pb-20">
+        
+        
         <div className="relative z-10">
           <UserProfile
             name={user?.name || 'No Data'}
-            isPro={user?.isProductTokenVerified || false}
+            profile_picture={user?.profile_picture}
+            isPro={isPro}
             points={10}
             bmi={user?.bmi}
           />
