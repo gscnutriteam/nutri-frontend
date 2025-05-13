@@ -26,7 +26,7 @@ interface AuthTokens {
 
 const useRefreshAPI = async (data: RefreshRequest) => {
     try {
-        return await apiClient('/auth/refresh-tokens', 'POST', data);
+        return await apiClient<RefreshRequest, RefreshResponse>('/auth/refresh-tokens', 'POST', data);
     } catch (error) {
         console.error('Refresh API error:', error);
         throw error;

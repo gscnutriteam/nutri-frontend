@@ -71,9 +71,9 @@ const UserProfile: React.FC<UserProfileProps> = ({
       {/* Header with user profile */}
       <div className="flex justify-between items-center mb-2 p-4 relative z-10">
           <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 rounded-full border-2 border-black overflow-hidden bg-primary shadow-neobrutalism-sm">
+            <div className="relative w-12 aspect-square rounded-full border-2 border-black overflow-hidden bg-primary shadow-neobrutalism-sm">
               {profile_picture ? (
-                <Image src={profile_picture} alt="Profile" fill className="object-cover" />
+                <Image src={profile_picture} alt="Profile" fill className="object-cover aspect-square" />
               ) : (
                 <div className="w-full h-full bg-gray-200" />
               )}
