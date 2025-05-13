@@ -58,16 +58,18 @@ NutriPlate is a comprehensive nutrition tracking and health management applicati
    pnpm install
    ```
 
-3. Create a `.env.local` file based on `.env.example`:
+3. Create a `.env` file based on `sample.env`:
    ```bash
-   cp .env.example .env.local
+   cp sample.env .env
    ```
 
-4. Fill in the environment variables in `.env.local`:
+4. Fill in the environment variables in `.env`:
    - `OPENAI_API_KEY`: Your OpenAI API key
    - `GOOGLE_GENAI_API_KEY`: Your Google GenAI API key
    - Firebase configuration variables
    - Other required secrets
+
+   **⚠️ Security Note**: Never commit your `.env` file or any file containing API keys or secrets to git. The `.env` file is included in `.gitignore` to prevent accidental commits.
 
 5. Start the development server:
    ```bash
@@ -80,6 +82,28 @@ NutriPlate is a comprehensive nutrition tracking and health management applicati
 
 6. Open [http://localhost:3000](http://localhost:3000) in your browser
 
+## 🛡️ Environment Variables and Security
+
+For security reasons, we use environment variables for all sensitive information and API keys. These should never be committed to the repository.
+
+### Setting Up Environment Variables
+
+1. Copy `sample.env` to `.env`:
+   ```bash
+   cp sample.env .env
+   ```
+
+2. Edit the `.env` file with your actual credentials.
+
+3. For Docker deployments, the `.env` file is automatically used.
+
+### Security Best Practices
+
+- Never commit files containing API keys or secrets
+- The `.env` file and all `.env.*` files are included in `.gitignore`
+- Docker builds use ARG variables which are only accessible during build time
+- Production deployments should use secured environment variable storage systems
+
 ## 🐳 Docker Deployment
 
 NutriFe can be easily deployed using Docker and Docker Compose.
@@ -88,30 +112,37 @@ NutriFe can be easily deployed using Docker and Docker Compose.
 
 1. Configure your environment variables:
    ```bash
-   cp .env.docker .env.local
+   cp sample.env .env
    ```
-   Edit the `.env.local` file with your actual configuration values.
+   Edit the `.env` file with your actual configuration values.
 
 2. Build and start the containers:
    ```bash
-   docker-compose up -d --build
+   ./docker-build.sh
+   docker-compose up -d
    ```
 
 3. Access the application at [http://localhost:3000](http://localhost:3000)
 
 ### Manual Docker Deployment
 
-1. Build the Docker image:
+1. Create and set up your `.env` file:
    ```bash
-   docker build -t nutrife-app .
+   cp sample.env .env
+   # Edit .env with your actual values
    ```
 
-2. Run the container:
+2. Build the Docker image:
    ```bash
-   docker run -p 3000:3000 --env-file .env.local -d nutrife-app
+   ./docker-build.sh
    ```
 
-3. Access the application at [http://localhost:3000](http://localhost:3000)
+3. Run the container:
+   ```bash
+   ./docker-run-direct.sh
+   ```
+
+4. Access the application at [http://localhost:3000](http://localhost:3000)
 
 ### Docker Configuration Files
 
