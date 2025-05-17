@@ -154,7 +154,7 @@ export function CallToAction() {
                   "group mt-4 rounded-[2rem] px-6"
                 )}
               >
-                Beli Nutriplate
+                Coba Nutriplate
                 <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
               </a>
             </div>

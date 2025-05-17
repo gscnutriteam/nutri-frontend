@@ -77,7 +77,7 @@ export function ProductShowcase() {
                 {/* Front */}
                 <div className="absolute inset-0 border-2 border-black bg-white rounded-xl p-4 shadow-neobrutalism [backface-visibility:hidden]">
                   <Image 
-                    src="/assets/img/plate-front.png" 
+                    src="/assets/img/piring_phone.png" 
                     alt="NutriPlate Front View" 
                     width={400}
                     height={400}
@@ -90,7 +90,7 @@ export function ProductShowcase() {
                 {/* Back */}
                 <div className="absolute inset-0 border-2 border-black bg-secondary rounded-xl p-4 shadow-neobrutalism [backface-visibility:hidden] [transform:rotateY(180deg)]">
                   <Image 
-                    src="/assets/img/plate-back.png" 
+                    src="/assets/img/piring_phone.png" 
                     alt="NutriPlate Back View" 
                     width={400}
                     height={400}

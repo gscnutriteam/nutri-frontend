@@ -19,7 +19,7 @@ export default function LandingPage() {
         <HeroSection />
         <ProductShowcase />
         <FeaturesSection />
-        <PricingWrapper />
+        {/* <PricingWrapper /> */}
         <PartnersSection />
         <TestimonialsSection />
         <CallToAction />
