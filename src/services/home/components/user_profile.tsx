@@ -99,7 +99,7 @@ const UserProfile: React.FC<UserProfileProps> = ({
             )}
           </div>
         </div>
-      <div className="flex w-full px-4 items-center z-10">
+      {/* <div className="flex w-full px-4 items-center z-10">
         <img src="/assets/img/home.png" className="w-1/2" alt="avatar" />
         <div className="w-1/2 flex flex-col">
           <p className='' >BMI</p>
@@ -122,7 +122,7 @@ const UserProfile: React.FC<UserProfileProps> = ({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
     </div>
   );

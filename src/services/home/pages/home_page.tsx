@@ -10,6 +10,14 @@ import { getDetailUser, getUserData } from '@/services/profile/api/getUser';
 import Image from 'next/image';
 import { Crown } from 'lucide-react';
 import LinkAPP from '@/components/util/link';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
+
+// Import components from v2
+import CalorieRing from '../components/CalorieRing';
+import MacroNutrientCards from '../components/MacroNutrientCards';
+import WeightTracker from '../components/WeightTracker';
+import { fetchHomePageData } from '../data/homeApi';
+import { getDummyNutritionData } from '@/services/nutrition/data/user-nutrition';
 
 export const metadataHome: Metadata = {
   title: 'Home | NutriBox',
@@ -46,6 +54,11 @@ export default async function Home({
   const user = (await getDetailUser());
   const isPro = Object.values(user?.subscriptionFeatures ?? {}).some(Boolean);
   
+  // Fetch nutritional and user data for calorie and weight tracking components
+  const homeData = await fetchHomePageData();
+
+  // console.log(homeData);
+  
   return (
     <AppMobileLayout>
       <Head  >
@@ -63,7 +76,42 @@ export default async function Home({
             bmi={user?.bmi}
           />
         </div>
-        <div className="relative z-20">
+        
+        {/* Tabs for Calorie and Weight tracking */}
+        <div className="relative z-20 px-4 mt-4">
+          <Tabs defaultValue="calories" className="w-full">
+            <TabsList className="w-full grid grid-cols-2 mb-4">
+              <TabsTrigger value="calories">Kalori</TabsTrigger>
+              <TabsTrigger value="weight">Berat Badan</TabsTrigger>
+            </TabsList>
+              
+            {/* Calories Tab Content */}
+            <TabsContent value="calories" className="flex flex-col gap-4">
+              {/* Calorie Tracking Card */}
+              <div className="relative  rounded-xl border-2 border-black shadow-neobrutalism animate-fade-in-slide-up p-5">
+                <div className="flex flex-col items-center">
+                  <CalorieRing 
+                    value={homeData.nutritionData.caloriesConsumed} 
+                    max={homeData.nutritionData.caloriesGoal} 
+                  />
+                    
+                  {/* Nutrition Cards Grid */}
+                  <MacroNutrientCards nutritionData={homeData.nutritionData} />
+                </div>
+              </div>
+            </TabsContent>
+            
+            {/* Weight Tab Content */}
+            <TabsContent value="weight" className="flex flex-col gap-4">
+              <WeightTracker 
+                user={homeData.userData} 
+                isLoading={false} 
+              />
+            </TabsContent>
+          </Tabs>
+        </div>
+        
+        <div className="relative z-20 mt-4">
           <CalorieChart />
         </div>
         <MenuGrid />
