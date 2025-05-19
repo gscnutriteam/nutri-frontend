@@ -66,10 +66,10 @@ async function apiClient<T, R>(endpoint: string, method: string, data?: T, inclu
 				document.cookie = 'refresh_token=; Max-Age=0; path=/; domain=' + window.location.hostname;
 			}
 			
-			// Redirect to login page
-			if (typeof window !== 'undefined') {
-				window.location.href = '/app/login';
-			}
+			// // Redirect to login page
+			// if (typeof window !== 'undefined') {
+			// 	window.location.href = '/app/login';
+			// }
 		}
 	  
 	  return {
