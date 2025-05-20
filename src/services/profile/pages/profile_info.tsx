@@ -94,11 +94,11 @@ export default function Profile(user: ProfileProps) {
                           }}
                         />
                       )}
-                      <MenuButton 
+                      {/* <MenuButton 
                         icon={<CreditCard className="stroke-primaryText" />} 
                         label="Kelola Pembayaran" 
                         href="/billing" 
-                      />
+                      /> */}
                       <MenuButton 
                         icon={<KeyRound className="stroke-primaryText" />} 
                         label="Ubah Kata Sandi" 
@@ -113,7 +113,7 @@ export default function Profile(user: ProfileProps) {
                       <MenuButton 
                         icon={<Award className="stroke-primaryText" />} 
                         label="Detail Langganan" 
-                        href="/account/subscription" 
+                        href="/premium" 
                       />
                     </div>
                   </CardContent>
@@ -216,7 +216,7 @@ const MenuButton = ({ icon, label, href, disabled, onClick }: { icon: React.Reac
   const content = (
     <>
       {icon}
-      <span className={`font-medium text-black ${disabled ? 'text-gray-500' : ''}`}>{label}</span>
+      <span className={`font-medium cursor-pointer text-black ${disabled ? 'text-gray-500' : ''}`}>{label}</span>
       {!disabled && (
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 ml-auto text-gray-400">
           <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

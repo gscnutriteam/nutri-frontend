@@ -32,6 +32,7 @@ interface ProfileFormProps {
   updateMutation: UseMutationResult<any, Error, PatchUserRequest>;
   isUploadingPhoto: boolean;
   formatDateForInput: (timestamp: number) => string;
+  isEmailVerified?: boolean;
 }
 
 const ProfileForm: React.FC<ProfileFormProps> = ({
@@ -40,6 +41,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({
   updateMutation,
   isUploadingPhoto,
   formatDateForInput,
+  isEmailVerified = false,
 }) => {
   const router = useAppRouter();
 
@@ -88,7 +90,7 @@ const ProfileForm: React.FC<ProfileFormProps> = ({
                   type="email"
                   placeholder="Masukkan email" 
                   {...field} 
-                  disabled={updateMutation.isPending}
+                  disabled={isEmailVerified}
                 />
               </FormControl>
               <FormMessage />
