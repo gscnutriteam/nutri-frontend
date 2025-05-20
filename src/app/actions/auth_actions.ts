@@ -6,6 +6,7 @@ import {
 } from '@/services/auth/server/token_utils';
 import type { ResponseCookies } from 'next/dist/server/web/spec-extension/cookies';
 import useRefreshAPI from '@/services/auth/api/refresh';
+import { apiClient } from '@/lib/api_instance';
 
 interface AuthTokens {
   access: { token: string; expires: string; };
@@ -63,6 +64,41 @@ export async function performTokenRefreshAndSetCookies(): Promise<{ success: boo
     const errorMsg = error instanceof Error ? error.message : 'Unknown error during token refresh action.';
     console.error('Server Action (performTokenRefreshAndSetCookies): Critical error:', errorMsg);
     return { success: false, message: errorMsg };
+  }
+}
+
+export async function resetPasswordAction(
+  token: string, 
+  newPassword: string
+): Promise<{ success: boolean; message: string }> {
+  if (!token) {
+    return { success: false, message: "Reset token is missing." };
+  }
+  
+  const endpoint = `/auth/reset-password?token=${token}`;
+  
+  try {
+    const response = await apiClient<
+      { password: string }, 
+      { status: string; message: string } // Expected success response structure
+    >(
+      endpoint,
+      'POST',
+      { password: newPassword },
+      false // No authentication needed for this endpoint
+    );
+
+    console.log(response);
+    if (response.success && response.data?.status === 'success') {
+      return { success: true, message: response.data.message || "Password reset successfully." };
+    } else {
+      // Use message from API response if available, otherwise provide a generic error
+      const errorMessage = response.data?.message || response.error || "Password reset failed. Please try again.";
+      return { success: false, message: errorMessage };
+    }
+  } catch (error) {
+    console.error('Critical error in resetPasswordAction:', error);
+    return { success: false, message: error instanceof Error ? error.message : "An unexpected error occurred during password reset." };
   }
 }
 
