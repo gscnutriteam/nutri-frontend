@@ -91,4 +91,12 @@ export const removeAuthTokens = async () => {
     cookieStore.delete('refresh_token');
 }
 
+export const replaceAuthTokens = async (accessToken: string, refreshToken: string) => {
+    const cookieStore = await cookies();
+    cookieStore.set('access_token', accessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+    });
+}
+
 export default useTokenAPI;

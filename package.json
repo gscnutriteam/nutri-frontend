@@ -41,6 +41,7 @@
     "genkit": "^1.2.0",
     "jose": "^6.0.10",
     "js-cookie": "^3.0.5",
+    "lottie-react": "^2.4.1",
     "lucide-react": "^0.475.0",
     "midtrans-client": "^1.4.2",
     "motion": "^12.7.3",

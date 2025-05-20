@@ -38,7 +38,11 @@ interface ApiResponseWrapper {
  */
 const useRefreshAPI = async (data: RefreshRequest): Promise<ApiResponseWrapper> => {
     try {
-        const response = await apiClient<RefreshRequest, RefreshResponse>('/auth/refresh-tokens', 'POST', data);
+        const response = await apiClient<RefreshRequest, RefreshResponse>(
+            '/auth/refresh-tokens', 
+            'POST', 
+            data 
+        );
         return response as ApiResponseWrapper;
     } catch (error) {
         throw error;

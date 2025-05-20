@@ -12,9 +12,11 @@ import Head from 'next/head';
 import { Gender } from '@/services/auth/store/register_store';
 import { Button } from '@/components/ui/button';
 import { ButtonLogout } from '../components/button_logout';
-import { Toaster } from 'sonner';
+import { toast, Toaster } from 'sonner';
 import type { ProfileProps } from '../type/types';
 import { HeaderFeature } from '@/components/ui/header_feature';
+import { sendEmailVerification } from '../api/sendEmailVerification';
+import { sendResetPassword } from '../api/sendResetPassword';
 
 export default function Profile(user: ProfileProps) {
   return (
@@ -83,7 +85,13 @@ export default function Profile(user: ProfileProps) {
                         <MenuButton 
                           icon={<MailWarning className="stroke-yellow-500" />} 
                           label="Verifikasi Email Anda" 
-                          href="/account/verify-email" 
+                          onClick={ async () => {
+                            toast.promise(sendEmailVerification(), {
+                              loading: "Mengirim email verifikasi...",
+                              success: "Email verifikasi berhasil dikirim",
+                              error: "Gagal mengirim email verifikasi"
+                            });
+                          }}
                         />
                       )}
                       <MenuButton 
@@ -94,7 +102,13 @@ export default function Profile(user: ProfileProps) {
                       <MenuButton 
                         icon={<KeyRound className="stroke-primaryText" />} 
                         label="Ubah Kata Sandi" 
-                        href="/account/change-password" 
+                        onClick={() => {
+                          toast.promise(sendResetPassword(user.email), {
+                            loading: "Mengirim email reset password...",
+                            success: "Email reset password berhasil dikirim",
+                            error: "Gagal mengirim email reset password"
+                          });
+                        }}
                       />
                       <MenuButton 
                         icon={<Award className="stroke-primaryText" />} 
@@ -114,13 +128,15 @@ export default function Profile(user: ProfileProps) {
                     <div className="divide-y-2 divide-border">
                       <MenuButton 
                         icon={<Bell className="stroke-primaryText" />} 
-                        label="Notifikasi" 
+                        label="Notifikasi (Soon)" 
                         href="/settings/notifications" 
+                        disabled
                       />
                       <MenuButton 
                         icon={<ShieldCheck className="stroke-primaryText" />} 
-                        label="Privasi Akun" 
+                        label="Privasi Akun (Soon)" 
                         href="/settings/privacy" 
+                        disabled
                       />
                     </div>
                   </CardContent>
@@ -196,7 +212,7 @@ export default function Profile(user: ProfileProps) {
 }
 
 // Menu Button Component
-const MenuButton = ({ icon, label, href, disabled }: { icon: React.ReactNode, label: string, href: string, disabled?: boolean }) => {
+const MenuButton = ({ icon, label, href, disabled, onClick }: { icon: React.ReactNode, label: string, href?: string, disabled?: boolean, onClick?: () => void }) => {
   const content = (
     <>
       {icon}
@@ -219,8 +235,9 @@ const MenuButton = ({ icon, label, href, disabled }: { icon: React.ReactNode, la
 
   return (
     <a 
-      href={'/app' + href} 
+      href={href ? '/app' + href : undefined} 
       className="flex items-center gap-4 p-4 hover:bg-primaryLight transition-colors duration-150 ease-in-out"
+      onClick={onClick}
     >
       {content}
     </a>

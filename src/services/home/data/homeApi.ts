@@ -90,7 +90,7 @@ export const fetchHomePageData = async () => {
     }
     
     const homeStats = await getHomeStatistics();
-    console.log(homeStats);
+    // console.log(homeStats);
     
     // Convert user profile to nutrition data format
     const nutritionUserData = await profileToNutritionData(userDataSafe);

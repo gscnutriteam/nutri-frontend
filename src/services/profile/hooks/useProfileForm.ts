@@ -14,7 +14,6 @@ import { formatDateForInput } from "@/services/auth/util/util";
 import { getUserData } from "../api/getUser";
 import usePatchUser, { PatchUserRequest, PatchUserResponse } from "../api/editUser";
 import { 
-    refreshAuthTokenServerAction, 
     refreshAndSetNewTokensAfterUpdate
 } from "@/app/actions/auth_actions";
 
@@ -57,7 +56,7 @@ export const useProfileForm = (user: ProfileProps) => {
   const attemptTokenRefreshAndRetry = async (failedMutationData: PatchUserRequest) => {
     try {
       toast.info("Authentication may have expired. Attempting to refresh session...");
-      const refreshResult = await refreshAuthTokenServerAction();
+      const refreshResult = await refreshAndSetNewTokensAfterUpdate();
       if (refreshResult.success) {
         toast.success("Session refreshed. Retrying profile update...");
         updateMutation.mutate(failedMutationData);

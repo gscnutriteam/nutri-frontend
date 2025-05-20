@@ -24,6 +24,11 @@ async function apiClient<T, R>(endpoint: string, method: string, data?: T, inclu
 		const token = await getAuthToken();
 		if (token) {
 		  headers.Authorization = `Bearer ${token}`;
+		//   console.log('Token found');
+		//   console.log(headers);
+		// } else {
+		// 	console.log('No token found');
+		// 	throw new Error('No token found');
 		}
 	  }
 
