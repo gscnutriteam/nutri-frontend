@@ -20,6 +20,7 @@ export const JWTUserTOProfileProps = (user: JWTPayload): ProfileProps => {
         progress: 0,
         bmi: getBMI(userData.height, userData.weight),
         isProductTokenVerified: userData.isProductTokenVerified,
+        verified_email: userData.verified_email,
     }
 }
 

@@ -1,28 +1,37 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import { useAppRouter } from "@/hooks/useAppRouter";
-import Cookies from "js-cookie";
 import type { z } from "zod";
 
 import { editProfileSchema } from "../schema/form";
 import { ProfileProps } from "../type/types";
 import { Gender, PhsyicalActivity } from "@/services/auth/store/register_store";
-import { formatDateForInput, saveAuthTokens } from "@/services/auth/util/util";
+import { formatDateForInput } from "@/services/auth/util/util";
 import { getUserData } from "../api/getUser";
-import usePatchUser, { PatchUserRequest } from "../api/editUser";
-import useRefreshAPI from "@/services/auth/api/refresh";
-import { LoginResponse } from "@/services/auth/api/login";
+import usePatchUser, { PatchUserRequest, PatchUserResponse } from "../api/editUser";
+import { 
+    refreshAuthTokenServerAction, 
+    refreshAndSetNewTokensAfterUpdate
+} from "@/app/actions/auth_actions";
+
+// Assuming apiClient returns a structure like this. Adjust if your apiClient is different.
+interface ApiClientResponse<DataType> {
+  success: boolean;
+  status: number;
+  statusText: string;
+  data: DataType; 
+  error?: any; 
+}
 
 export const useProfileForm = (user: ProfileProps) => {
   const router = useAppRouter();
   const [newProfilePicture, setNewProfilePicture] = useState<string | null>(null);
   const defaultPhoto = "/assets/img/no_pp.png";
   
-  // Create form with validation
   const form = useForm<z.infer<typeof editProfileSchema>>({
     resolver: zodResolver(editProfileSchema),
     defaultValues: {
@@ -45,103 +54,69 @@ export const useProfileForm = (user: ProfileProps) => {
     },
   });
 
-  // Handle profile update mutation
-  const updateProfile = async (data: PatchUserRequest) => {
+  const attemptTokenRefreshAndRetry = async (failedMutationData: PatchUserRequest) => {
     try {
-      // Ensure we have a valid access token before making the request
-      const access_token = Cookies.get('access_token');
-      
-      if (!access_token) {
-        // If no access token, try to refresh it
-        const refresh_token = Cookies.get('refresh_token');
-        if (refresh_token) {
-          const response = await useRefreshAPI({ refresh_token });
-          if (response.success) {
-            const responseData = response.data as LoginResponse;
-            saveAuthTokens(responseData.tokens);
-          } else {
-            throw new Error("Failed to refresh token before updating profile");
-          }
-        } else {
-          throw new Error("No authentication tokens available");
-        }
+      toast.info("Authentication may have expired. Attempting to refresh session...");
+      const refreshResult = await refreshAuthTokenServerAction();
+      if (refreshResult.success) {
+        toast.success("Session refreshed. Retrying profile update...");
+        updateMutation.mutate(failedMutationData);
+      } else {
+        toast.error(refreshResult.error || "Session refresh failed. Please log in again.");
       }
-      
-      const userId = (await getUserData())?.userData.id || '';
-      const { success, statusText } = await usePatchUser({  
-        ...data, 
-        gender: data.gender === "Male" ? Gender.male : Gender.female, 
-        id: userId, 
-      });
-
-      return { success, statusText, data, userId };
     } catch (error) {
-      console.error("Error in updateProfile:", error);
-      return { 
-        success: false, 
-        statusText: error instanceof Error ? error.message : "Unknown error", 
-        data, 
-        userId: user.id 
-      };
+      toast.error("Error during token refresh process. Please log in again.");
     }
   };
 
-  const updateMutation = useMutation({
-    mutationFn: updateProfile,
-    onSuccess: async(data) => {
-      if (!data.success) {
+  const updateProfileMutationFn = async (data: PatchUserRequest): Promise<ApiClientResponse<PatchUserResponse> & { originalData: PatchUserRequest }> => {
+    const userId = (await getUserData())?.userData.id || user.id;
+    
+    const result = await usePatchUser({  
+      ...data, 
+      gender: data.gender === "Male" ? Gender.male : Gender.female, 
+      id: userId, 
+    }) as ApiClientResponse<PatchUserResponse>;
+    return { ...result, originalData: data }; 
+  };
+
+  const updateMutation = useMutation<ApiClientResponse<PatchUserResponse> & { originalData: PatchUserRequest }, Error, PatchUserRequest>({
+    mutationFn: updateProfileMutationFn,
+    onSuccess: async (response) => {
+      if (response.success) {
+        toast.success("Profile successfully updated! Refreshing session with updated data...");
         
-        // If we get Forbidden, try to refresh the token and retry
-        if (data.statusText === 'Forbidden') {
-          const refresh_token = Cookies.get('refresh_token');
-          if (refresh_token) {
-            try {
-              const response = await useRefreshAPI({ refresh_token });
-              if (response.success) {
-                const responseData = response.data as LoginResponse;
-                saveAuthTokens(responseData.tokens);
-                
-                // Retry the update with new token
-                toast.info("Retrying profile update with refreshed authentication...");
-                updateMutation.mutate(data.data);
-                return;
-              }
-            } catch (refreshError) {
-              console.error("Failed to refresh token:", refreshError);
-            }
-          }
+        const postUpdateRefreshResult = await refreshAndSetNewTokensAfterUpdate();
+        if (!postUpdateRefreshResult.success) {
+          toast.warning(postUpdateRefreshResult.error || "Could not refresh session after profile update, but profile was saved.");
         }
+        router.push('/app/profile');
+      } else {
+        const errorMessage = (response.data as any)?.message || response.error?.message || response.statusText || "Failed to update profile.";
         
-        toast.error("Failed to update profile. Please try again.");
-        return;
+        const isAuthError = response.status === 401 || 
+                            response.status === 403 || 
+                            (typeof response.statusText === 'string' && response.statusText.toLowerCase().includes('forbidden')) ||
+                            (typeof errorMessage === 'string' && errorMessage.toLowerCase().includes('unauthorized'));
+                            
+        if (isAuthError) {
+          await attemptTokenRefreshAndRetry(response.originalData);
+        } else {
+          toast.error(errorMessage);
+        }
       }
-      
-      toast.success("Profile successfully updated!");
-      const refresh_token = Cookies.get('refresh_token'); 
-      
-      if (!refresh_token) {
-        toast.error("Failed to update profile. Please try again.");
-        return;
-      }
-      
-      const response = await useRefreshAPI({ refresh_token: refresh_token ?? "" });
-      
-      if (!response.success) {
-        toast.error("Failed to update profile. Please try again.");
-        return;
-      }
-      
-      const responseData = response.data as LoginResponse;
-      saveAuthTokens(responseData.tokens);
-      router.push('/app/profile');
     },
-    onError: (error: Error) => {
-      console.error(error); 
-      toast.error(error.message || "Failed to update profile. Please try again.");
+    onError: async (error: Error, variables) => { 
+      console.error("Profile update error:", error);
+      const errorMessageText = error.message.toLowerCase();
+      if (errorMessageText.includes("unauthorized") || errorMessageText.includes("forbidden") || errorMessageText.includes("401") || errorMessageText.includes("403")) {
+        await attemptTokenRefreshAndRetry(variables);
+      } else {
+        toast.error(error.message || "An unexpected error occurred. Please try again.");
+      }
     }
   });
 
-  // Handle profile update submission
   const onSubmit = (values: z.infer<typeof editProfileSchema>) => {
     const updatedValues: PatchUserRequest = {
       id: user.id,
@@ -159,11 +134,9 @@ export const useProfileForm = (user: ProfileProps) => {
       medical_history: values.medicalHistory,
       profile_picture: newProfilePicture || user.profile_picture || defaultPhoto
     };
-
     updateMutation.mutate(updatedValues);
   };
 
-  // Handle profile picture update
   const handleProfilePictureChange = (url: string) => {
     setNewProfilePicture(url);
     form.setValue("profilePicture", url);

@@ -1,27 +1,20 @@
+"use client";
+
 import React from 'react';
-import { Card } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import AppMobileLayout from '@/layout/app_mobile_layout';
-import { Progress } from '@/components/ui/progress';
-import { LogOutIcon, Star } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
+import {
+  CreditCard, HelpCircle, Info, Share2, ThumbsUp, User, Edit3, Mail, LogOut,
+  KeyRound, Award, Bell, ShieldCheck, MessageSquarePlus, FileText,
+  MailCheck, MailWarning
+} from 'lucide-react';
 import Head from 'next/head';
-import type { Metadata } from 'next';
-import { Gender, PhsyicalActivity } from '@/services/auth/store/register_store';
+import { Gender } from '@/services/auth/store/register_store';
 import { Button } from '@/components/ui/button';
 import { ButtonLogout } from '../components/button_logout';
 import { Toaster } from 'sonner';
 import type { ProfileProps } from '../type/types';
-import { ButtonEditProfile } from '../components/button_edit_profile';
-
-export const metadataProfile: Metadata = {
-  title: 'Profile | NutriBox',
-  description: 'Profile page nutribox app',
-  icons: "/assets/img/logo.png",
-  openGraph: {
-    title: 'Profile | NutriBox',
-    description: 'Profile nutribox app',
-  }
-}
+import { HeaderFeature } from '@/components/ui/header_feature';
 
 export default function Profile(user: ProfileProps) {
   return (
@@ -31,93 +24,169 @@ export default function Profile(user: ProfileProps) {
       </Head>
       <AppMobileLayout>
         <Toaster position="top-center" richColors />
-        <div className="">
-          <div className="max-w-7xl mx-auto pb-20">
-            <div className="relative">
-              {/* Profile Header Background */}
-              <ButtonEditProfile/>
-              <div className="h-48  relative ">
-                <div className="absolute inset-0">
-                  <img
-                    className="h-full w-full object-cover rounded-b-xl"
-                    src={user.profile_picture}
-                    alt="People working on laptops"
-                  />
+        <HeaderFeature 
+            title="Profile"
+            variant={"primary"} 
+            className="text-center w-full py-3 sticky top-0 z-20 bg-white border-b-2 border-black"
+        />
+        <div className="min-h-screen bg-white">
+          <div className="max-w-7xl mx-auto pb-20 pt-6 px-4">
+            {/* User Info Section */}
+            <div className="flex items-center mb-8 p-4 bg-secondaryLight rounded-base border-2 border-black shadow-neobrutalism">
+              <img
+                src={user.profile_picture}
+                alt="Profile"
+                className="w-20 h-20 rounded-full object-cover border-2 border-black mr-4"
+              />
+              <div className="flex-grow">
+                <h2 className="text-xl font-bold text-black">{user.name}</h2>
+                <div className="flex items-center">
+                  <Mail size={14} className="mr-1 text-gray-700" /> 
+                  <p className="text-sm text-gray-700">{user.email}</p>
+                  {user.verified_email ? (
+                    <MailCheck size={16} className="ml-2 text-green-500" />
+                  ) : (
+                    <MailWarning size={16} className="ml-2 text-yellow-500" />
+                  )}
                 </div>
-                <div className="absolute rounded-b-xl inset-0 bg-teal-600 opacity-25" />
+                 <p className="text-sm text-gray-600">
+                  {user.gender === Gender.male ? "Laki-Laki" : "Perempuan"} | {user.age} tahun
+                </p>
               </div>
-
-              {/* Profile Picture */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-16">
-                <div className="relative">
-                  <div className="w-32 h-32 rounded-full border-4 border-white bg-gray-200 overflow-hidden">
-                    <img
-                      src={user.profile_picture}
-                      alt="Profile"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
+              <Button 
+                variant="default"
+                size="icon"
+                className="bg-secondary text-black shadow-neobrutalism-sm hover:shadow-none border-2 border-black"
+                onClick={() => window.location.href = "profile/edit"}
+              >
+                <Edit3 size={18} />
+              </Button>
             </div>
 
-            {/* Profile Info */}
-            <div className="mt-12  px-8 py-6">
-              <div className="flex flex-col justify-start items-center mb-6">
-                <div>
-                  <h2 className="text-2xl text-center font-semibold">
-                    {user.name}
-                  </h2>
-                  <p className="text-gray-600 text-center">
-                    {user.gender === Gender.male ? "Laki-Laki" : "Perempuan"} | {user.age} tahun
-                  </p>
-                </div>
-                <div className="flex items-center w-full justify-center">
-                  <Progress value={user.progress} className="w-1/2" />
-                  <span className="ml-2 text-black">{user.progress}</span>
-                  <Star className="mx-2 fill-yellow-400" />
-                </div>
+            {/* Menu Sections */}
+            <div className="space-y-6">
+
+              {/* Akun Section */}
+              <div>
+                <h3 className="font-bold text-md px-2 mb-2 text-gray-700">Akun</h3>
+                <Card variant="neutral" className="shadow-neobrutalism border-2 border-black">
+                  <CardContent className="p-0">
+                    <div className="divide-y-2 divide-border">
+                      {user.verified_email ? (
+                        <MenuButton 
+                          icon={<MailCheck className="stroke-green-500" />} 
+                          label="Email Terverifikasi" 
+                          href="#"
+                          disabled
+                        />
+                      ) : (
+                        <MenuButton 
+                          icon={<MailWarning className="stroke-yellow-500" />} 
+                          label="Verifikasi Email Anda" 
+                          href="/account/verify-email" 
+                        />
+                      )}
+                      <MenuButton 
+                        icon={<CreditCard className="stroke-primaryText" />} 
+                        label="Kelola Pembayaran" 
+                        href="/billing" 
+                      />
+                      <MenuButton 
+                        icon={<KeyRound className="stroke-primaryText" />} 
+                        label="Ubah Kata Sandi" 
+                        href="/account/change-password" 
+                      />
+                      <MenuButton 
+                        icon={<Award className="stroke-primaryText" />} 
+                        label="Detail Langganan" 
+                        href="/account/subscription" 
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-primary relative rounded-lg p-4 pt-6 pb-2 border-2 border-black">
-                  <div className="bg-white absolute -top-4 -left-[2px] rounded-t-lg rounded-br-lg p-1 px-2 border-2 border-black">
-                    <p className=" font-medium text-black text-center">
-                      Aktivitas Fisik
-                    </p>
-                  </div>
-                  <p className="text-lg font-medium text-white text-center">
-                    {user.physical_activity === PhsyicalActivity.high ? "Tinggi" : user.physical_activity === PhsyicalActivity.moderate ? "Sedang" : "Rendah"}
-                  </p>
-                </div>
-                <div className="bg-primary relative rounded-lg p-4 pt-6 pb-2 border-2 border-black">
-                  <div className="bg-white absolute -top-4 -right-[2px] rounded-t-lg rounded-bl-lg p-1 px-2 border-2 border-black">
-                    <p className=" font-medium text-black text-center">
-                      Rata Rata BMI
-                    </p>
-                  </div>
-                  <div className='flex w-full gap-2 items-center justify-center'>
-                  <p className="text-lg font-medium text-white text-center">
-                    {user.bmi}
-                  </p>
-                  <Badge className='py-1 rounded-full' >
-                    {user?.bmi ?? 0 < 18.5 ? "Kurus" : user.bmi ?? 0 < 24.9 ? "Normal" : user.bmi ?? 0 < 29.9 ? "Gemuk" : "Obesitas"}
-                  </Badge>
-                  </div>
-                </div>
+              {/* Pengaturan Section */}
+              <div>
+                <h3 className="font-bold text-md px-2 mb-2 text-gray-700">Pengaturan</h3>
+                <Card variant="neutral" className="shadow-neobrutalism border-2 border-black">
+                  <CardContent className="p-0">
+                    <div className="divide-y-2 divide-border">
+                      <MenuButton 
+                        icon={<Bell className="stroke-primaryText" />} 
+                        label="Notifikasi" 
+                        href="/settings/notifications" 
+                      />
+                      <MenuButton 
+                        icon={<ShieldCheck className="stroke-primaryText" />} 
+                        label="Privasi Akun" 
+                        href="/settings/privacy" 
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
-              <div className="bg-main relative rounded-lg p-4 pt-6 pb-2 border-2 border-black">
-                  <div className="bg-white absolute -top-4 -left-[2px] rounded-t-lg rounded-br-lg p-1 px-2 border-2 border-black">
-                    <p className=" font-medium text-black text-center">
-                      Riwayat Penyakit
-                    </p>
-                  </div>
-                  <p className="text-lg font-medium text-black text-start">
-                    {user.medical_history}
-                  </p>
-                </div>
+              {/* Bantuan & Masukan Section */}
+              <div>
+                <h3 className="font-bold text-md px-2 mb-2 text-gray-700">Bantuan & Masukan</h3>
+                <Card variant="neutral" className="shadow-neobrutalism border-2 border-black">
+                  <CardContent className="p-0">
+                    <div className="divide-y-2 divide-border">
+                      <MenuButton 
+                        icon={<HelpCircle className="stroke-primaryText" />} 
+                        label="Pusat Bantuan" 
+                        href="/help" 
+                      />
+                       <MenuButton 
+                        icon={<MessageSquarePlus className="stroke-primaryText" />} 
+                        label="Kirim Masukan" 
+                        href="/feedback" 
+                      />
+                      <MenuButton 
+                        icon={<ThumbsUp className="stroke-primaryText" />} 
+                        label="Nilai Kami" 
+                        href="/rate" 
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Aplikasi Section */}
+              <div>
+                <h3 className="font-bold text-md px-2 mb-2 text-gray-700">Aplikasi</h3>
+                <Card variant="neutral" className="shadow-neobrutalism border-2 border-black">
+                  <CardContent className="p-0">
+                    <div className="divide-y-2 divide-border">
+                      <MenuButton 
+                        icon={<Info className="stroke-primaryText" />} 
+                        label="Tentang Kami" 
+                        href="/about" 
+                      />
+                      <MenuButton 
+                        icon={<Share2 className="stroke-primaryText" />} 
+                        label="Bagikan Aplikasi" 
+                        href="/share" 
+                      />
+                      <MenuButton 
+                        icon={<FileText className="stroke-primaryText" />} 
+                        label="Ketentuan Layanan" 
+                        href="/terms" 
+                      />
+                       <MenuButton 
+                        icon={<FileText className="stroke-primaryText" />}
+                        label="Kebijakan Privasi" 
+                        href="/privacy-policy" 
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+              
+              <div className="mt-8 pt-4 border-t-2 border-gray-200">
                 <ButtonLogout />
+              </div>
             </div>
           </div>
         </div>
@@ -125,3 +194,35 @@ export default function Profile(user: ProfileProps) {
     </>
   );
 }
+
+// Menu Button Component
+const MenuButton = ({ icon, label, href, disabled }: { icon: React.ReactNode, label: string, href: string, disabled?: boolean }) => {
+  const content = (
+    <>
+      {icon}
+      <span className={`font-medium text-black ${disabled ? 'text-gray-500' : ''}`}>{label}</span>
+      {!disabled && (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 ml-auto text-gray-400">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      )}
+    </>
+  );
+
+  if (disabled) {
+    return (
+      <div className="flex items-center gap-4 p-4 opacity-50 cursor-not-allowed">
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <a 
+      href={'/app' + href} 
+      className="flex items-center gap-4 p-4 hover:bg-primaryLight transition-colors duration-150 ease-in-out"
+    >
+      {content}
+    </a>
+  );
+};

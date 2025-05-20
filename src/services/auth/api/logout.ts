@@ -1,6 +1,7 @@
 'use server'
 
 import { apiClient } from "@/lib/api_instance";
+import { cookies } from "next/headers";
 
 interface LogoutRequest {
     refresh_token: string;
@@ -20,6 +21,10 @@ interface LogoutResponse {
 
 const useLogoutAPI = async (data: LogoutRequest) => {
     try {
+        const cookieStore = await cookies();
+        if (!data.refresh_token) {
+            data.refresh_token = cookieStore.get('refresh_token')?.value || "";
+        }
         return await apiClient('/auth/logout', 'POST', data);
     } catch (error) {
         console.error('Logout API error:', error);

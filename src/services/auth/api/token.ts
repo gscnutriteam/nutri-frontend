@@ -85,4 +85,10 @@ export const getRefreshToken = async (): Promise<string | null> => {
     return cookieStore.get('refresh_token')?.value || null;
 }
 
+export const removeAuthTokens = async () => {
+    const cookieStore = await cookies();
+    cookieStore.delete('access_token');
+    cookieStore.delete('refresh_token');
+}
+
 export default useTokenAPI;
