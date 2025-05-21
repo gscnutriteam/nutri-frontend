@@ -11,13 +11,15 @@ interface PremiumSubscribeButtonProps {
   isActive?: boolean;
   planName?: string;
   amount?: number;
+  lockOthersIfActive?: boolean;
 }
 
 export default function PremiumSubscribeButton({
   planId,
   isActive = false,
   planName = "Premium",
-  amount = 0
+  amount = 0,
+  lockOthersIfActive = false
 }: PremiumSubscribeButtonProps) {
   const router = useRouter();
 
@@ -53,6 +55,7 @@ export default function PremiumSubscribeButton({
           planName={planName}
           amount={getAmount()}
           buttonText="Langganan"
+          disabled={lockOthersIfActive}
         />
       )}
     </>

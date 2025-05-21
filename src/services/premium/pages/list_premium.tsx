@@ -144,7 +144,8 @@ async function SubscriptionPlansServer() {
       variant: cardVariant,
       planId: plan.id,
       isActive,
-      endDate
+      endDate,
+      userHasAnyActiveSubscription: hasActiveSubscription
     };
   }));
 
@@ -163,6 +164,7 @@ async function SubscriptionPlansServer() {
           planId={plan.planId}
           isActive={plan.isActive}
           endDate={plan.endDate}
+          userHasAnyActiveSubscription={plan.userHasAnyActiveSubscription}
         />
       ))}
     </div>

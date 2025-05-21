@@ -7,13 +7,15 @@ interface PremiumCardButtonWrapperProps {
   isActive: boolean;
   planName?: string;
   amount?: number;
+  lockOthersIfActive?: boolean;
 }
 
 export default function PremiumCardButtonWrapper({ 
   planId, 
   isActive,
   planName,
-  amount
+  amount,
+  lockOthersIfActive = false
 }: PremiumCardButtonWrapperProps) {
   return (
     <PremiumSubscribeButton 
@@ -21,6 +23,7 @@ export default function PremiumCardButtonWrapper({
       isActive={isActive} 
       planName={planName} 
       amount={amount} 
+      lockOthersIfActive={lockOthersIfActive}
     />
   );
 } 

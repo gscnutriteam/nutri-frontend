@@ -17,6 +17,7 @@ import type { ProfileProps } from '../type/types';
 import { HeaderFeature } from '@/components/ui/header_feature';
 import { sendEmailVerification } from '../api/sendEmailVerification';
 import { sendResetPassword } from '../api/sendResetPassword';
+import LinkAPP from '@/components/util/link';
 
 export default function Profile(user: ProfileProps) {
   return (
@@ -36,7 +37,7 @@ export default function Profile(user: ProfileProps) {
             {/* User Info Section */}
             <div className="flex items-center mb-8 p-4 bg-secondaryLight rounded-base border-2 border-black shadow-neobrutalism">
               <img
-                src={user.profile_picture}
+                src={user.profile_picture || "/assets/img/no_pp.png"}
                 alt="Profile"
                 className="w-20 h-20 rounded-full object-cover border-2 border-black mr-4"
               />
@@ -152,7 +153,7 @@ export default function Profile(user: ProfileProps) {
                       <MenuButton 
                         icon={<HelpCircle className="stroke-primaryText" />} 
                         label="Pusat Bantuan" 
-                        href="/help" 
+                        href="https://api.whatsapp.com/send/?phone=6285717035472&text&type=phone_number&app_absent=0" 
                       />
                        <MenuButton 
                         icon={<MessageSquarePlus className="stroke-primaryText" />} 
@@ -183,17 +184,23 @@ export default function Profile(user: ProfileProps) {
                       <MenuButton 
                         icon={<Share2 className="stroke-primaryText" />} 
                         label="Bagikan Aplikasi" 
-                        href="/share" 
+                        onClick={() => {
+                          navigator.share({
+                            title: 'NutriBox',
+                            text: 'Bagikan Aplikasi NutriBox',
+                            url: 'https://nutriplate.id'
+                          });
+                        }}
                       />
                       <MenuButton 
                         icon={<FileText className="stroke-primaryText" />} 
                         label="Ketentuan Layanan" 
-                        href="/terms" 
+                        href="/legal/terms" 
                       />
                        <MenuButton 
                         icon={<FileText className="stroke-primaryText" />}
                         label="Kebijakan Privasi" 
-                        href="/privacy-policy" 
+                        href="/legal/privacy-policy" 
                       />
                     </div>
                   </CardContent>
@@ -234,12 +241,12 @@ const MenuButton = ({ icon, label, href, disabled, onClick }: { icon: React.Reac
   }
 
   return (
-    <a 
-      href={href ? '/app' + href : undefined} 
+    <LinkAPP 
+      href={href ? href : '#'} 
       className="flex items-center gap-4 p-4 hover:bg-primaryLight transition-colors duration-150 ease-in-out"
       onClick={onClick}
     >
       {content}
-    </a>
+    </LinkAPP>
   );
 };

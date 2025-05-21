@@ -36,6 +36,7 @@ import {
 } from "../util/util";
 import { useMutation } from "@tanstack/react-query";
 import { getPayloadFromToken, verifyJWT } from "@/lib/jwt";
+import { TermsAndConditionsCheckbox } from "@/components/ui/TermsAndConditionsCheckbox";
 
 export const RegisterInfoForm = () => {
 	const {
@@ -68,6 +69,7 @@ export const RegisterInfoForm = () => {
 			weight: typeof weight === "number" ? weight : undefined,
 			physicalActivity: physicalActivity ?? undefined,
 			medicalHistory: medicalHistory ?? "",
+			termsAccepted: false,
 		},
 	});
 
@@ -78,7 +80,7 @@ export const RegisterInfoForm = () => {
 			if (!response.success) {
 				console.error(response);
 
-				throw new Error(response.error || "Registration failed");
+				throw new Error((response.data as { message?: string })?.message || "Registration failed");
 			}
 
 			const responseData = response.data as RegisterResponse;
@@ -101,6 +103,13 @@ export const RegisterInfoForm = () => {
 	async function onSubmit(values: z.infer<typeof registerInfoSchema>) {
 		if (!name || !email || !password) {
 			router.back();
+			return;
+		}
+		if (!values.termsAccepted) {
+			form.setError("termsAccepted", {
+				type: "manual",
+				message: "Anda harus menyetujui Syarat & Ketentuan dan Kebijakan Privasi.",
+			});
 			return;
 		}
 
@@ -265,6 +274,22 @@ export const RegisterInfoForm = () => {
 									/>
 								</FormControl>
 								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="termsAccepted"
+						render={({ field }) => (
+							<FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+								<FormControl>
+									<TermsAndConditionsCheckbox
+										checked={field.value}
+										onCheckedChange={field.onChange}
+										id="terms-register"
+										error={form.formState.errors.termsAccepted?.message}
+									/>
+								</FormControl>
 							</FormItem>
 						)}
 					/>
