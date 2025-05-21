@@ -5,6 +5,7 @@ import type { ProfileProps } from "@/services/profile/type/types";
 import { JWTUserTOProfileProps } from "@/services/profile/util/util";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
 import type { Metadata } from "next";
+import RetryButton from "@/components/RetryButton";
 
 // Define metadata in the server component
 export const metadata: Metadata = {
@@ -64,9 +65,7 @@ export default async function Page() {
                     <h2 className="text-2xl font-bold mb-2">Oops! Something went wrong</h2>
                     <p className="text-gray-600">We couldn't load your profile information</p>
                 </div>
-                <button onClick={() => window.location.reload()} className="bg-secondary border-2 border-black text-black px-6 py-2 rounded-base shadow-neobrutalism font-medium">
-                    Try Again
-                </button>
+                <RetryButton />
             </div>
         );
     }
