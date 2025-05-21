@@ -30,7 +30,7 @@ export default function Footer() {
               <a href="https://facebook.com" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
                 <Facebook size={18} />
               </a>
-              <a href="https://instagram.com" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
+              <a href="https://instagram.com/nutriplateid" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
                 <Instagram size={18} />
               </a>
               <a href="https://twitter.com" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
@@ -100,22 +100,22 @@ export default function Footer() {
               <h3 className="font-bold text-lg mb-4">Support</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/help" className="text-black hover:text-primary transition-colors">
+                  <Link href="https://api.whatsapp.com/send/?phone=6285717035472&text&type=phone_number&app_absent=0" className="text-black hover:text-primary transition-colors">
                     Pusat Bantuan
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-black hover:text-primary transition-colors">
+                  <Link href="https://api.whatsapp.com/send/?phone=6285717035472&text&type=phone_number&app_absent=0" className="text-black hover:text-primary transition-colors">
                     Kontak Kami
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="text-black hover:text-primary transition-colors">
+                  <Link href="/app/legal/terms" className="text-black hover:text-primary transition-colors">
                     Syarat & Ketentuan
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy" className="text-black hover:text-primary transition-colors">
+                  <Link href="/app/legal/privacy-policy" className="text-black hover:text-primary transition-colors">
                     Kebijakan Privasi
                   </Link>
                 </li>
@@ -137,7 +137,7 @@ export default function Footer() {
                 size="sm"
                 className="rounded-lg"
               >
-                <Link href="/contact">
+                <Link href="https://api.whatsapp.com/send/?phone=6285717035472&text&type=phone_number&app_absent=0">
                   Hubungi Kami
                 </Link>
               </Button>

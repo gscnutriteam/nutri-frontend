@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight, ClipboardCheck, MessageCircle, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import styles from '@/app/(landing_page)/landing.module.css';
 import { motion } from 'framer-motion';
@@ -26,18 +26,18 @@ export function ProductShowcase() {
     },
     {
       icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 21H4C3.46957 21 2.96086 20.7893 2.58579 20.4142C2.21071 20.0391 2 19.5304 2 19V16"></path><path d="M2 8V5C2 4.46957 2.21071 3.96086 2.58579 3.58579C2.96086 3.21071 3.46957 3 4 3H7"></path><path d="M17 3H20C20.5304 3 21.0391 3.21071 21.4142 3.58579C21.7893 3.96086 22 4.46957 22 5V8"></path><path d="M22 16V19C22 19.5304 21.7893 20.0391 21.4142 20.4142C21.0391 20.7893 20.5304 21 20 21H17"></path><rect x="8" y="8" width="8" height="8" rx="1"></rect></svg>,
-      title: "QR Technology",
-      description: "Dilengkapi teknologi QR code untuk pemindaian cepat"
+      title: "AI Technology",
+      description: "Dilengkapi teknologi AI untuk analisis makanan"
     },
     {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>,
+      icon: <ClipboardCheck />,
       title: "Portion Control",
       description: "Pembagian area makanan yang jelas dan proporsional"
     },
     {
-      icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>,
-      title: "Customizable",
-      description: "Dapat disesuaikan dengan kebutuhan diet khusus"
+      icon: <MessageCircle />,
+      title: "Chatbot",
+      description: "Chatbot nutrisionis untuk mendapatkan informasi lebih lanjut"
     }
   ];
 

@@ -52,11 +52,11 @@ export const TestimonialCard = ({
     <div className="select-none text-sm font-normal text-neutral-700 dark:text-neutral-400">
       {description}
       <div className="flex flex-row py-1">
-        <StarIcon className="size-4 text-yellow-500" />
-        <StarIcon className="size-4 text-yellow-500" />
-        <StarIcon className="size-4 text-yellow-500" />
-        <StarIcon className="size-4 text-yellow-500" />
-        <StarIcon className="size-4 text-yellow-500" />
+        <StarIcon className="size-4 fill-yellow-500 text-yellow-500" />
+        <StarIcon className="size-4 fill-yellow-500 text-yellow-500" />
+        <StarIcon className="size-4 fill-yellow-500 text-yellow-500" />
+        <StarIcon className="size-4 fill-yellow-500 text-yellow-500" />
+        <StarIcon className="size-4 fill-yellow-500 text-yellow-500" />
       </div>
     </div>
  
@@ -149,99 +149,79 @@ const testimonials = [
     ),
   },
   {
-    name: "Carlos Gomez",
-    role: "Head of R&D at EcoInnovate",
+    name: "Rina Wulandari",
+    role: "Karyawan Swasta",
     img: "https://randomuser.me/api/portraits/men/14.jpg",
     description: (
       <p>
-        By integrating #GreenTech's sustainable energy solutions, we've seen a
-        significant reduction in carbon footprint.
-        <Highlight>
-          Leading the way in eco-friendly business practices.
-        </Highlight>{" "}
-        Pioneering change in the industry.
+        NutriPlate sangat praktis untuk saya yang sibuk.
+        <Highlight>Membantu saya menjaga pola makan sehat di tengah kesibukan kerja.</Highlight> Rekomendasi banget untuk para profesional!
       </p>
     ),
   },
   {
-    name: "Aisha Khan",
-    role: "Chief Marketing Officer at Fashion Forward",
+    name: "Agus Salim",
+    role: "Penggiat Kebugaran",
     img: "https://randomuser.me/api/portraits/women/56.jpg",
     description: (
       <p>
-        #TrendSetter's market analysis AI has transformed how we approach
-        fashion trends.
-        <Highlight>
-          Our campaigns are now data-driven with higher customer engagement.
-        </Highlight>{" "}
-        Revolutionizing fashion marketing.
+        Sebagai seorang yang peduli kebugaran, NutriPlate jadi andalan saya.
+        <Highlight>Porsi makronutrien jadi lebih terukur dan mudah dipantau.</Highlight> Sangat mendukung pencapaian target fitnes saya.
       </p>
     ),
   },
   {
-    name: "Tom Chen",
-    role: "Director of IT at HealthTech Solutions",
+    name: "Siti Aminah",
+    role: "Ibu Menyusui",
     img: "https://randomuser.me/api/portraits/men/18.jpg",
     description: (
       <p>
-        Implementing #MediCareAI in our patient care systems has improved
-        patient outcomes significantly.
-        <Highlight>
-          Technology and healthcare working hand in hand for better health.
-        </Highlight>{" "}
-        A milestone in medical technology.
+        Selama menyusui, asupan gizi sangat penting. NutriPlate membantu saya memastikan kebutuhan nutrisi harian terpenuhi dengan baik.
+        <Highlight>Fitur chatbot nutrisi juga sangat informatif dan responsif.</Highlight> Terima kasih NutriPlate!
       </p>
     ),
   },
   {
-    name: "Sofia Patel",
-    role: "CEO at EduTech Innovations",
+    name: "Joko Susilo",
+    role: "Mahasiswa",
     img: "https://randomuser.me/api/portraits/women/73.jpg",
     description: (
       <p>
-        #LearnSmart's AI-driven personalized learning plans have doubled student
-        performance metrics.
-        <Highlight>Education tailored to every learner's needs.</Highlight>{" "}
-        Transforming the educational landscape.
+        Dulu sering makan sembarangan, tapi sejak pakai NutriPlate jadi lebih sadar akan pentingnya porsi yang benar.
+        <Highlight>Belajar gizi seimbang jadi menyenangkan dan tidak ribet.</Highlight> Cocok untuk anak kos yang ingin hidup sehat.
       </p>
     ),
   },
   {
-    name: "Jake Morrison",
-    role: "CTO at SecureNet Tech",
+    name: "Dewi Lestari",
+    role: "Chef Rumahan & Food Blogger",
     img: "https://randomuser.me/api/portraits/men/25.jpg",
     description: (
       <p>
-        With #CyberShield's AI-powered security systems, our data protection
-        levels are unmatched.
-        <Highlight>Ensuring safety and trust in digital spaces.</Highlight>{" "}
-        Redefining cybersecurity standards.
+        Saya suka memasak, dan NutriPlate memberi inspirasi baru untuk menyajikan makanan sehat dan seimbang bagi keluarga.
+        <Highlight>Desainnya menarik dan edukatif untuk seluruh anggota keluarga.</Highlight> Inovasi yang luar biasa di dapur.
       </p>
     ),
   },
   {
-    name: "Nadia Ali",
-    role: "Product Manager at Creative Solutions",
+    name: "Eko Prasetyo",
+    role: "Pensiunan Aktif",
     img: "https://randomuser.me/api/portraits/women/78.jpg",
     description: (
       <p>
-        #DesignPro's AI has streamlined our creative process, enhancing
-        productivity and innovation.
-        <Highlight>Bringing creativity and technology together.</Highlight> A
-        game-changer for creative industries.
+        Di usia senja, menjaga kesehatan itu utama. NutriPlate memudahkan saya mengatur pola makan sesuai anjuran dokter.
+        <Highlight>Sangat mudah digunakan, bahkan untuk lansia seperti saya.</Highlight> Hidup sehat jadi lebih simpel dan menyenangkan.
       </p>
     ),
   },
   {
-    name: "Omar Farooq",
-    role: "Founder at Startup Hub",
+    name: "Putri Ayu",
+    role: "Pelajar SMA",
     img: "https://randomuser.me/api/portraits/men/54.jpg",
     description: (
       <p>
-        #VentureAI's insights into startup ecosystems have been invaluable for
-        our growth and funding strategies.
-        <Highlight>Empowering startups with data-driven decisions.</Highlight> A
-        catalyst for startup success.
+        Awalnya ragu, tapi setelah mencoba NutriPlate, saya jadi lebih paham tentang pentingnya makanan sehat.
+        <Highlight>Tidak lagi takut makan berlebih atau kekurangan gizi saat belajar.</Highlight> Keren banget dan sangat membantu!
       </p>
     ),
   },
