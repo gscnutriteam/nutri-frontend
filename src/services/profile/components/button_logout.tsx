@@ -25,16 +25,16 @@ export const ButtonLogout = ({
         onSuccess: (response) => {
 
             if (!response.success) {
-                throw new Error(
-                    (response.data as { message?: string })?.message || "Logout failed"
-                );
+               console.log(response.data);
             }
 
             removeAuthTokens();
             router.push("/login");
         },
         onError: (error: Error) => {
-            toast.error(error.message || "Logout failed. Please try again.");
+            removeAuthTokens();
+            router.push("/login");
+            console.log(error);
         },
     });
 

@@ -23,7 +23,7 @@ export default function Profile(user: ProfileProps) {
   return (
     <>
       <Head>
-        <title>Profile | NutriBox</title>
+        <title>Profile | NutriPlate</title>
       </Head>
       <AppMobileLayout>
         <Toaster position="top-center" richColors />
@@ -186,8 +186,8 @@ export default function Profile(user: ProfileProps) {
                         label="Bagikan Aplikasi" 
                         onClick={() => {
                           navigator.share({
-                            title: 'NutriBox',
-                            text: 'Bagikan Aplikasi NutriBox',
+                            title: 'NutriPlate',
+                            text: 'Bagikan Aplikasi NutriPlate',
                             url: 'https://nutriplate.id'
                           });
                         }}

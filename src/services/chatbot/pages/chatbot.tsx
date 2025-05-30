@@ -15,11 +15,11 @@ export default function ChatBot() {
 }
 
 export const metadataChatbot: Metadata = {
-  title: "Chatbot | NutriBox",
-  description: "Chatbot page nutribox app",
+  title: "Chatbot | NutriPlate",
+  description: "Chatbot page NutriPlate app",
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: "Chatbot | NutriBox",
-    description: "Chatbot nutribox app",
+    title: "Chatbot | NutriPlate",
+    description: "Chatbot NutriPlate app",
   },
 };
