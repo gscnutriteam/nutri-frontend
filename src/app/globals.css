@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .outfit-font {
   font-family: 'Outfit', sans-serif;
 }

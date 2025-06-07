@@ -1,0 +1,72 @@
+{
+    "platform_name": "NutriPlate Digital Platform",
+    "platform_type": "Website dan Aplikasi Mobile",
+    "features": {
+      "food_scanning": {
+        "title": "Food Scanning",
+        "description": "Upload or take photos of your food to get instant nutritional analysis",
+        "capabilities": [
+          "Calorie count",
+          "Macronutrient breakdown",
+          "Food identification",
+          "Health recommendations"
+        ]
+      },
+      "nutrition_tracking": {
+        "title": "Nutrition Tracking",
+        "description": "Track your daily nutritional intake with comprehensive tools",
+        "capabilities": [
+          "Daily calorie and macro tracking",
+          "Meal categorization (breakfast, lunch, dinner, snacks)",
+          "Custom food entry",
+          "Progress visualization"
+        ]
+      },
+      "ai_assistant": {
+        "title": "AI Nutrition Assistant (Nubo)",
+        "description": "Chat with our AI assistant for personalized nutrition guidance",
+        "capabilities": [
+          "Personalized nutrition advice",
+          "Diet recommendations",
+          "Answers to health and nutrition questions",
+          "Food substitution suggestions"
+        ]
+      },
+      "recipes": {
+        "title": "Recipe Recommendations",
+        "description": "Discover healthy recipes tailored to your preferences and dietary needs",
+        "capabilities": [
+          "Healthy recipe suggestions based on preferences",
+          "Detailed nutritional information for recipes",
+          "Easy-to-follow cooking instructions",
+          "Ingredient substitution options"
+        ]
+      },
+      "health_info": {
+        "title": "Health Information",
+        "description": "Access to curated health content and educational resources",
+        "capabilities": [
+          "Curated health and nutrition articles",
+          "Evidence-based nutrition information",
+          "Tips for healthy eating habits"
+        ]
+      },
+      "additional_services": {
+        "title": "Additional Services",
+        "description": "Extra features available on the NutriPlate platform",
+        "capabilities": [
+          "Perhitungan BMI (Body Mass Index)",
+          "Layanan konsultasi diet",
+          "Tracking berat badan",
+          "Program diet",
+          "Rekomendasi dan peringatan jam makan"
+        ]
+      }
+    },
+    "platform_benefits": [
+      "Real-time nutrisi tracking",
+      "Personalisasi berdasarkan kebutuhan individu",
+      "Edukasi nutrisi berkelanjutan",
+      "Dukungan perubahan pola makan sehat"
+    ]
+  }

@@ -10,12 +10,13 @@ export function PricingWrapper() {
 
   return (
     <motion.div
-      className={`${mobileFirstClass} ${essentialContentClass}`}
+      className={`${mobileFirstClass} ${essentialContentClass} scroll-mt-28`}
       initial="initial"
       animate={isMobile ? controls : undefined}
       whileInView={!isMobile ? "animate" : undefined}
       viewport={viewportConfig}
       variants={fadeInUp}
+      id='price' 
     >
       <PricingSection />
     </motion.div>

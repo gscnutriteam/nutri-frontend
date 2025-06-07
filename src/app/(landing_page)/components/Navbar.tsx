@@ -37,17 +37,17 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/about" className="text-black font-medium hover:text-primary transition-colors">
-              Tentang
-            </Link>
-            <Link href="/product" className="text-black font-medium hover:text-primary transition-colors">
+            <Link href="#product" className="text-black font-medium hover:text-primary transition-colors">
               Produk
             </Link>
-            <Link href="/articles" className="text-black font-medium hover:text-primary transition-colors">
-              Artikel
+            <Link href="#feature" className="text-black font-medium hover:text-primary transition-colors">
+              Fitur
             </Link>
-            <Link href="/contact" className="text-black font-medium hover:text-primary transition-colors">
-              Kontak
+            <Link href="#price" className="text-black font-medium hover:text-primary transition-colors">
+              Harga
+            </Link>
+            <Link href="#testimoni" className="text-black font-medium hover:text-primary transition-colors">
+              Testimoni
             </Link>
           </nav>
 
@@ -89,32 +89,32 @@ export default function Navbar() {
           <div className="container mx-auto px-4">
             <nav className="flex flex-col space-y-4 py-6">
               <Link 
-                href="/about" 
-                className="text-black font-medium hover:text-primary transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Tentang
-              </Link>
-              <Link 
-                href="/product" 
+                href="#product" 
                 className="text-black font-medium hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Produk
               </Link>
               <Link 
-                href="/articles" 
+                href="#feature" 
                 className="text-black font-medium hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Artikel
+                Fitur
               </Link>
               <Link 
-                href="/contact" 
+                href="#price" 
                 className="text-black font-medium hover:text-primary transition-colors py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Kontak
+                Harga
+              </Link>
+              <Link 
+                href="#testimoni" 
+                className="text-black font-medium hover:text-primary transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Testimoni
               </Link>
               
               <div className="flex flex-col space-y-2 pt-2">

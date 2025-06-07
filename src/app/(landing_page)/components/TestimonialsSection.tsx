@@ -10,14 +10,15 @@ export function TestimonialsSection() {
 
   return (
     <motion.section 
-      className="py-16"
+      className="py-16 scroll-mt-28"
       initial="initial"
       animate={isMobile ? controls : undefined}
       whileInView={!isMobile ? "animate" : undefined}
       viewport={viewportConfig}
       variants={fadeInUp}
+      id='testimoni'
     >
-      <div className="container mx-auto px-4">
+      <div  className="container mx-auto px-4">
         <h2 className="text-3xl md:text-5xl font-bold text-black text-center mb-10">
           PENGALAMAN <span className="text-primary">PENGGUNA</span>
         </h2>

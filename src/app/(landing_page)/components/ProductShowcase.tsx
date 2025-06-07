@@ -43,12 +43,13 @@ export function ProductShowcase() {
 
   return (
     <motion.section 
-      className={`py-16 relative bg-white ${mobileFirstClass} ${essentialContentClass}`}
+      className={`py-16 relative bg-white ${mobileFirstClass} ${essentialContentClass} scroll-mt-28`}
       initial="initial"
       animate={isMobile ? controls : undefined}
       whileInView={!isMobile ? "animate" : undefined}
       viewport={viewportConfig}
       variants={staggerChildren}
+      id='product' 
     >
       <div className="container px-4 mx-auto relative z-10 max-w-6xl">
         <motion.div 
