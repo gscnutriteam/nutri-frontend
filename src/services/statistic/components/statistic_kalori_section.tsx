@@ -10,7 +10,6 @@ import { Toaster } from "sonner";
 
 export default function StatisticsKaloriSection() {
   const { calorieData, isLoading, hasMore, lastItemRef, resetAndRefetch } = useCalorieData();
-
   return (
     <AppMobileLayout>
       <Toaster position="top-center" richColors />

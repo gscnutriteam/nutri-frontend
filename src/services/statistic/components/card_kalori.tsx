@@ -8,7 +8,6 @@ interface CardKaloriProps extends CardCalorieProps {
 }
 
 export const CardKalori = ({ onDelete, ...data }: CardKaloriProps) => {
-  console.log(data);
   return (
     <div className="w-full bg-secondaryLight border-2 px-3 py-2 border-black flex items-center justify-between rounded-lg">
       <div className="flex flex-col h-full">
