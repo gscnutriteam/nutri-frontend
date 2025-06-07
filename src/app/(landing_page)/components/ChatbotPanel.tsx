@@ -6,6 +6,7 @@ import { Chat } from '@/components/ui/chat';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, Loader2 } from 'lucide-react';
 import Image from 'next/image';
+import { useChatLogger } from '@/hooks/useChatLogger';
 
 interface ChatbotPanelProps {
   isOpen: boolean;
@@ -28,6 +29,9 @@ export function ChatbotPanel({ isOpen }: ChatbotPanelProps) {
       botName: "Nubo"  // Set the bot name to Nubo
     }
   });
+
+  // Log chat messages to Firestore
+  useChatLogger(messages);
 
   // Simulate loading state and typing animation
   useEffect(() => {

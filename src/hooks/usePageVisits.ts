@@ -56,7 +56,7 @@ const usePageVisits = () => {
 
     const unsubscribe = onSnapshot(counterRef, (doc) => {
       if (doc.exists()) {
-        setVisits(doc.data().count + 1350);
+        setVisits(doc.data().count + 12357);
       } else {
         setVisits(0);
       }
