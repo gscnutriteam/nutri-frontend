@@ -1,0 +1,12 @@
+@keyframes float-side-to-side {
+  0%, 100% {
+    transform: translateX(-20px);
+  }
+  50% {
+    transform: translateX(20px);
+  }
+}
+
+.float-side {
+  animation: float-side-to-side 8s ease-in-out infinite;
+} 

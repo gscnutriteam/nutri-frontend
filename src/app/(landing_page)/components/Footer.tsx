@@ -3,10 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Youtube, Phone, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import usePageVisits from '@/hooks/usePageVisits';
 
 export default function Footer() {
+  const visits = usePageVisits();
+
   return (
     <footer className="bg-white pt-16 pb-8 border-t-2 border-black">
       <div className="container px-4 mx-auto max-w-6xl">
@@ -27,18 +30,27 @@ export default function Footer() {
               Piring pintar dengan teknologi QR code untuk mengontrol porsi makan dan hidup lebih sehat.
             </p>
             <div className="flex space-x-3">
-              <a href="https://facebook.com" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
-                <Facebook size={18} />
+              <a href="https://api.whatsapp.com/send/?phone=6285717035472&text&type=phone_number&app_absent=0" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
+                <Phone size={18} />
               </a>
               <a href="https://instagram.com/nutriplateid" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
                 <Instagram size={18} />
               </a>
-              <a href="https://twitter.com" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
-                <Twitter size={18} />
+              <a href="https://facebook.com/nutriplateid" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
+                <Facebook size={18} />
               </a>
-              <a href="https://youtube.com" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
+              <a href="https://youtube.com/@nutriplateid" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
                 <Youtube size={18} />
               </a>
+            </div>
+            <div className="mt-4 bg-secondaryLight border-2 border-black shadow-neobrutalism-sm rounded-lg p-3 text-center">
+              <h4 className="font-bold text-sm flex items-center justify-center gap-2">
+                <Eye size={18} className="text-primaryText" />
+                Total Kunjungan
+              </h4>
+              <p className="text-2xl font-bold text-secondaryBlack">
+                {visits !== null ? visits.toLocaleString('id-ID') : '...'}
+              </p>
             </div>
           </div>
 
@@ -57,7 +69,7 @@ export default function Footer() {
                     Karir
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href="/blog" className="text-black hover:text-primary transition-colors">
                     Blog
                   </Link>
@@ -66,7 +78,7 @@ export default function Footer() {
                   <Link href="/press" className="text-black hover:text-primary transition-colors">
                     Press Kit
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             
@@ -74,7 +86,7 @@ export default function Footer() {
               <h3 className="font-bold text-lg mb-4">Produk</h3>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/product" className="text-black hover:text-primary transition-colors">
+                  <Link href="#product" className="text-black hover:text-primary transition-colors">
                     NutriPlate
                   </Link>
                 </li>
@@ -84,7 +96,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/pricing" className="text-black hover:text-primary transition-colors">
+                  <Link href="#price" className="text-black hover:text-primary transition-colors">
                     Paket Berlangganan
                   </Link>
                 </li>
