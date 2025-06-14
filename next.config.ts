@@ -28,6 +28,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "storage.googleapis.com",
       },
+      {
+        hostname: "ui-avatars.com",
+      }
     ]
   },
   experimental: {

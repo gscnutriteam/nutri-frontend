@@ -62,8 +62,8 @@ export const TestimonialCard = ({
  
     <div className="flex w-full select-none items-center justify-start gap-5">
       <img
-        src={img}
-        className="h-10 w-10 rounded-full  ring-1 ring-border ring-offset-4"
+        src={`https://ui-avatars.com/api/?background=random&name=${name}`}
+        className="h-10 w-10 rounded-full ring-1 ring-border ring-offset-4"
       />
  
       <div>

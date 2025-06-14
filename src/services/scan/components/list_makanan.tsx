@@ -21,7 +21,7 @@ export const ListMakanan = () => {
   useEffect(() => {
     if (noResults) {
       // reset();
-      window.location.href = '/app/scan';
+      // window.location.href = '/app/scan';
     }
     if (!noResults) {
       setShouldRender(true);
@@ -43,7 +43,10 @@ export const ListMakanan = () => {
           <div className="text-2xl font-bold">
             Tidak ada hasil makanan yang terdeteksi.
           </div>
-          <Button className="mt-4" onClick={() => router.push('/app/scan')}>
+          <Button className="mt-4" onClick={() => {
+            router.push('/app/scan');
+            reset();
+          }}>
             Kembali ke halaman scan
           </Button>
         </div>

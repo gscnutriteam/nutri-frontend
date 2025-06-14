@@ -17,13 +17,23 @@ import { useAppRouter } from "@/hooks/useAppRouter";
 export const CameraScan = () => {
 	const cameraRef = useRef<CameraType | null>(null);
 	const [isTorchOn, setIsTorchOn] = useState(false);
-	const { isLoading } = useScanStore();
+	const { isLoading, setPhase, setIsLoading } = useScanStore();
 	const router = useAppRouter();
 
 	// If loading, show only the loading component
 	if (isLoading) {
 		return <ScanLoading />;
 	}
+
+	// useEffect(() => {
+
+	// 	return () => {
+	// 		if (isLoading) {
+	// 			setPhase(ScanPhase.IDLE);
+	// 			setIsLoading(false);
+	// 		}
+	// 	}
+	// }, [])
 
 	return (
 		<>
