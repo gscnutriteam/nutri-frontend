@@ -3,9 +3,9 @@ import { z } from 'zod';
 import pricingInfo from '../knowledge/pricing_info.json';
 
 export const pricingTool = tool({
-  description: 'Memberikan informasi harga, paket, promo, dan subscription NutriPlate',
+  description: 'Memberikan informasi harga, paket, promo, dan subscription NutriCare',
   parameters: z.object({
-    packageName: z.string().optional().describe('Nama paket yang ingin diketahui, misal: Paket NutriPlate Single, Paket NutriPlate Couple, Paket Premium App Only'),
+    packageName: z.string().optional().describe('Nama paket yang ingin diketahui, misal: Paket NutriCare Single, Paket NutriCare Couple, Paket Premium App Only'),
   }),
   async execute({ packageName }: { packageName?: string }) {
     if (!packageName) return { result: pricingInfo.pricing_packages };

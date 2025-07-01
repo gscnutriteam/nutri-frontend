@@ -9,12 +9,12 @@ import RetryButton from "@/components/RetryButton";
 
 // Define metadata in the server component
 export const metadata: Metadata = {
-  title: 'Profile | NutriPlate',
-  description: 'Profile page NutriPlate app',
+  title: 'Profile | NutriCare',
+  description: 'Profile page NutriCare app',
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: 'Profile | NutriPlate',
-    description: 'Profile NutriPlate app',
+    title: 'Profile | NutriCare',
+    description: 'Profile NutriCare app',
   }
 };
 

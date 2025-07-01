@@ -1,5 +1,5 @@
 {
-    "platform_name": "NutriPlate Digital Platform",
+    "platform_name": "NutriCare Digital Platform",
     "platform_type": "Website dan Aplikasi Mobile",
     "features": {
       "food_scanning": {
@@ -53,7 +53,7 @@
       },
       "additional_services": {
         "title": "Additional Services",
-        "description": "Extra features available on the NutriPlate platform",
+        "description": "Extra features available on the NutriCare platform",
         "capabilities": [
           "Perhitungan BMI (Body Mass Index)",
           "Layanan konsultasi diet",

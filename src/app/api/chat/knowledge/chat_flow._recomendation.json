@@ -1,8 +1,8 @@
 {
     "welcome_flow": {
-      "greeting": "Halo! Selamat datang di layanan chatbot NutriPlate. Saya siap membantu Anda mengenai piring pemorsian cerdas kami dan platform digital nutrisi.",
+      "greeting": "Halo! Selamat datang di layanan chatbot NutriCare. Saya siap membantu Anda mengenai piring pemorsian cerdas kami dan platform digital nutrisi.",
       "quick_options": [
-        "Tentang NutriPlate",
+        "Tentang NutriCare",
         "Fitur dan Teknologi",
         "Paket dan Harga",
         "Bantuan Pembelian",
@@ -11,22 +11,22 @@
     },
     "recommended_flows": {
       "new_user": {
-        "introduction": "NutriPlate adalah piring pemorsian cerdas dengan teknologi AI yang membantu Anda mengatur pola makan seimbang.",
+        "introduction": "NutriCare adalah piring pemorsian cerdas dengan teknologi AI yang membantu Anda mengatur pola makan seimbang.",
         "suggested_path": ["tentang_produk", "fitur_utama", "paket_harga", "cara_pembelian"],
         "follow_up_question": "Apakah Anda tertarik untuk mengetahui lebih lanjut tentang varian produk kami?"
       },
       "purchase_inquiry": {
-        "introduction": "Kami memiliki beberapa paket NutriPlate yang bisa disesuaikan dengan kebutuhan Anda.",
+        "introduction": "Kami memiliki beberapa paket NutriCare yang bisa disesuaikan dengan kebutuhan Anda.",
         "suggested_path": ["paket_harga", "promo_berlangsung", "cara_pembelian", "metode_pembayaran"],
         "follow_up_question": "Apakah Anda ingin mengetahui detail paket tertentu atau ingin langsung diarahkan ke halaman pembelian?"
       },
       "product_usage": {
-        "introduction": "Penggunaan NutriPlate sangat mudah dan intuitif.",
+        "introduction": "Penggunaan NutriCare sangat mudah dan intuitif.",
         "suggested_path": ["cara_penggunaan", "aktivasi_premium", "fitur_platform", "tips_pemorsian"],
         "follow_up_question": "Apakah ada fitur spesifik yang ingin Anda ketahui cara penggunaannya?"
       },
       "technical_support": {
-        "introduction": "Kami siap membantu jika Anda mengalami kendala dengan produk NutriPlate.",
+        "introduction": "Kami siap membantu jika Anda mengalami kendala dengan produk NutriCare.",
         "suggested_path": ["faq_umum", "masalah_umum", "kontak_support"],
         "follow_up_question": "Bisakah Anda menjelaskan masalah yang Anda alami agar kami dapat memberikan solusi yang tepat?"
       }

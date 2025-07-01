@@ -3,7 +3,7 @@ import { z } from 'zod';
 import productInfo from '../knowledge/product_info.json';
 
 export const productInfoTool = tool({
-  description: 'Memberikan informasi detail tentang produk NutriPlate (deskripsi, fitur, varian, bahan, isi paket, instruksi penggunaan)',
+  description: 'Memberikan informasi detail tentang produk NutriCare (deskripsi, fitur, varian, bahan, isi paket, instruksi penggunaan)',
   parameters: z.object({
     detail: z.string().optional().describe('Bagian detail produk yang ingin diketahui, misal: variants, usage_instructions, key_features, materials, package_contents'),
   }),

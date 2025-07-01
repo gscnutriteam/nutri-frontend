@@ -4,12 +4,12 @@ import type { Metadata } from "next";
 import { Toaster } from "sonner";
 
 export const metaDataRegisterInfo: Metadata = {
-  title: 'Register Detail | NutriPlate',
-  description: 'Register Detail page NutriPlate app',
+  title: 'Register Detail | NutriCare',
+  description: 'Register Detail page NutriCare app',
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: 'Register Detail | NutriPlate',
-    description: 'Register Detail page NutriPlate app',
+    title: 'Register Detail | NutriCare',
+    description: 'Register Detail page NutriCare app',
   }
 }
 

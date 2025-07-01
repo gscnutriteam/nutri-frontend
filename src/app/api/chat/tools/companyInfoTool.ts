@@ -3,7 +3,7 @@ import { z } from 'zod';
 import companyInfo from '../knowledge/company_info.json';
 
 export const companyInfoTool = tool({
-  description: 'Memberikan informasi tentang perusahaan NutriPlate (visi, misi, kontak, partner, tujuan bisnis, dsb)',
+  description: 'Memberikan informasi tentang perusahaan NutriCare (visi, misi, kontak, partner, tujuan bisnis, dsb)',
   parameters: z.object({
     detail: z.string().optional().describe('Bagian detail perusahaan yang ingin diketahui, misal: vision, mission, contact, partners, business_goals, tagline, about'),
   }),

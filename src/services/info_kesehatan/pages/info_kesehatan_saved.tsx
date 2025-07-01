@@ -35,11 +35,11 @@ export default function InfoKesehatanSaved() {
 }
 
 export const metadataInfoKesehatanSaved: Metadata = {
-  title: "Artikel Tersimpan | NutriPlate",
+  title: "Artikel Tersimpan | NutriCare",
   description: "Artikel tersimpan dari Info Kesehatan",
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: "Artikel Tersimpan | NutriPlate",
+    title: "Artikel Tersimpan | NutriCare",
     description: "Artikel tersimpan dari Info Kesehatan",
   },
 }; 

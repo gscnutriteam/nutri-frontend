@@ -3,7 +3,7 @@ import { z } from 'zod';
 import platformFeatures from '../knowledge/digital_platform_features.json';
 
 export const platformFeaturesTool = tool({
-  description: 'Memberikan informasi tentang fitur-fitur platform digital NutriPlate (food scanning, nutrition tracking, AI assistant, resep, info kesehatan, layanan tambahan)',
+  description: 'Memberikan informasi tentang fitur-fitur platform digital NutriCare (food scanning, nutrition tracking, AI assistant, resep, info kesehatan, layanan tambahan)',
   parameters: z.object({
     featureName: z.string().optional().describe('Nama fitur yang ingin diketahui, misal: food_scanning, nutrition_tracking, ai_assistant, recipes, health_info, additional_services'),
   }),

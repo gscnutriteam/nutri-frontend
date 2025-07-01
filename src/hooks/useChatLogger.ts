@@ -12,7 +12,7 @@ export const useChatLogger = (messages: Message[]) => {
   // Safely get session ID on the client side after mount
   useEffect(() => {
     const getSessionId = () => {
-      const key = 'nutriplate-chat-session-id';
+      const key = 'NutriCare-chat-session-id';
       let sid = sessionStorage.getItem(key);
       if (!sid) {
         sid = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;

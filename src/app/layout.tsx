@@ -10,7 +10,7 @@ const outfitSans = Outfit({
 
 export const metadata: Metadata = {
   // metadataBase: new URL('YOUR_PRODUCTION_URL'), // Replace with your actual production URL
-  title: 'NutriPlate',
+  title: 'NutriCare',
   description: 'Your personal nutrition and fitness companion',
 };
 

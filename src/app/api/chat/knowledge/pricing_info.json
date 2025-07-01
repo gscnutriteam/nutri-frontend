@@ -1,12 +1,12 @@
 {
     "pricing_packages": [
       {
-        "name": "Paket NutriPlate Single",
+        "name": "Paket NutriCare Single",
         "price": 175000,
         "currency": "IDR",
         "description": "1 Piring Pintar + Akses Premium",
         "contents": [
-          "1x NutriPlate Smart Plate",
+          "1x NutriCare Smart Plate",
           "Akses premium GRATIS selama periode early bird",
           "Scan AI makanan tanpa batas",
           "Estimasi kalori otomatis",
@@ -17,14 +17,14 @@
         ]
       },
       {
-        "name": "Paket NutriPlate Couple",
+        "name": "Paket NutriCare Couple",
         "price": 300000,
         "original_price": 350000,
         "savings": 50000,
         "currency": "IDR",
         "description": "2 Piring Pintar + Akses Premium",
         "contents": [
-          "2x NutriPlate Smart Plate",
+          "2x NutriCare Smart Plate",
           "Akses premium GRATIS selama periode early bird",
           "Scan AI makanan tanpa batas",
           "Estimasi kalori otomatis",
@@ -53,5 +53,5 @@
       }
     ],
     "standard_price": 150000,
-    "additional_info": "Pada masa early bird, pembelian piring gratis subscription premium website nutriplate selama masa early bird (sebulannya 99.000 jika tidak membeli piring)"
+    "additional_info": "Pada masa early bird, pembelian piring gratis subscription premium website NutriCare selama masa early bird (sebulannya 99.000 jika tidak membeli piring)"
   }

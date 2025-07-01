@@ -3,7 +3,7 @@ import faqData from '../knowledge/faq_info.json';
 
 export const faqTool = {
   name: 'faqTool',
-  description: 'Menjawab pertanyaan seputar FAQ NutriPlate (produk, fitur, pembelian, penggunaan, dukungan)',
+  description: 'Menjawab pertanyaan seputar FAQ NutriCare (produk, fitur, pembelian, penggunaan, dukungan)',
   parameters: z.object({
     question: z.string().describe('Pertanyaan yang ingin dijawab dari FAQ'),
   }),

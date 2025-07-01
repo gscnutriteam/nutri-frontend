@@ -12,7 +12,7 @@ const reviews = [
   {
     name: "Dr. Andi",
     username: "@dr.andi",
-    body: "NutriPlate membantu pasien saya mengontrol porsi makan dengan lebih baik.",
+    body: "NutriCare membantu pasien saya mengontrol porsi makan dengan lebih baik.",
     img: "https://avatar.vercel.sh/drandi",
   },
   {
@@ -24,7 +24,7 @@ const reviews = [
   {
     name: "Budi",
     username: "@budi.s",
-    body: "Diabetes saya lebih terkontrol dengan panduan porsi dari NutriPlate.",
+    body: "Diabetes saya lebih terkontrol dengan panduan porsi dari NutriCare.",
     img: "https://avatar.vercel.sh/budi",
   },
   {
@@ -36,7 +36,7 @@ const reviews = [
   {
     name: "Denny",
     username: "@denny.pro",
-    body: "Sebagai atlet, NutriPlate membantu saya mengatur nutrisi dengan tepat.",
+    body: "Sebagai atlet, NutriCare membantu saya mengatur nutrisi dengan tepat.",
     img: "https://avatar.vercel.sh/denny",
   },
   {
@@ -142,7 +142,7 @@ export function CallToAction() {
                 Mulai Hidup Sehat Sekarang
               </h1>
               <p className="mt-2">
-                Dapatkan NutriPlate dan rasakan manfaatnya dalam 7 hari pertama
+                Dapatkan NutriCare dan rasakan manfaatnya dalam 7 hari pertama
               </p>
               <a
                 href="/app/register"
@@ -154,7 +154,7 @@ export function CallToAction() {
                   "group mt-4 rounded-[2rem] px-6"
                 )}
               >
-                Coba Nutriplate
+                Coba NutriCare
                 <ChevronRight className="ml-1 size-4 transition-all duration-300 ease-out group-hover:translate-x-1" />
               </a>
             </div>

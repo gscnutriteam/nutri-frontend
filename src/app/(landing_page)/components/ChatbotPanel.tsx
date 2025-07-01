@@ -21,7 +21,7 @@ export function ChatbotPanel({ isOpen }: ChatbotPanelProps) {
       {
         id: "welcome-message",
         role: "assistant",
-        content: "Halo! Saya Nubo, asisten virtual Nutriplate. Ada yang bisa saya bantu terkait produk dan layanan kami?"
+        content: "Halo! Saya Nubo, asisten virtual NutriCare. Ada yang bisa saya bantu terkait produk dan layanan kami?"
       }
     ],
     api: '/api/chat/home',
@@ -73,7 +73,7 @@ export function ChatbotPanel({ isOpen }: ChatbotPanelProps) {
                 ease: "easeInOut"
               }}
             />
-            <h3 className="text-white font-bold text-lg">Nutriplate Assistant</h3>
+            <h3 className="text-white font-bold text-lg">NutriCare Assistant</h3>
           </div>
           
           <AnimatePresence mode="wait">
@@ -124,10 +124,10 @@ export function ChatbotPanel({ isOpen }: ChatbotPanelProps) {
                     stop={stop}
                     append={append}
                     suggestions={[
-                      "Apa itu Nutriplate?",
-                      "Bagaimana cara menggunakan Nutriplate?",
-                      "Harga Nutriplate",
-                      "Manfaat Nutriplate untuk kesehatan"
+                      "Apa itu NutriCare?",
+                      "Bagaimana cara menggunakan NutriCare?",
+                      "Harga NutriCare",
+                      "Manfaat NutriCare untuk kesehatan"
                     ]}
                   />
                 </div>

@@ -61,7 +61,7 @@ export function ProductShowcase() {
             <span className="text-sm font-medium">Produk Inovatif</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">
-            NUTRIPLATE <span className="text-primary">SMART PLATE</span>
+            NutriCare <span className="text-primary">SMART PLATE</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Piring pintar pertama di Indonesia yang menggabungkan teknologi QR code dengan panduan porsi makan yang tepat
@@ -79,7 +79,7 @@ export function ProductShowcase() {
                 <div className="absolute inset-0 border-2 border-black bg-white rounded-xl p-4 shadow-neobrutalism [backface-visibility:hidden]">
                   <Image 
                     src="/assets/img/piring_phone.png" 
-                    alt="NutriPlate Front View" 
+                    alt="NutriCare Front View" 
                     width={400}
                     height={400}
                     className="object-contain w-full h-full"
@@ -92,7 +92,7 @@ export function ProductShowcase() {
                 <div className="absolute inset-0 border-2 border-black bg-secondary rounded-xl p-4 shadow-neobrutalism [backface-visibility:hidden] [transform:rotateY(180deg)]">
                   <Image 
                     src="/assets/img/piring_phone.png" 
-                    alt="NutriPlate Back View" 
+                    alt="NutriCare Back View" 
                     width={400}
                     height={400}
                     className="object-contain w-full h-full"
@@ -113,7 +113,7 @@ export function ProductShowcase() {
             <div className="space-y-4">
               <h3 className="text-2xl font-bold">Teknologi Smart Plate</h3>
               <p className="text-lg text-gray-600">
-                NutriPlate membantu Anda mengontrol porsi makan dengan tepat melalui pembagian area makanan yang dirancang khusus dan teknologi QR code yang inovatif.
+                NutriCare membantu Anda mengontrol porsi makan dengan tepat melalui pembagian area makanan yang dirancang khusus dan teknologi QR code yang inovatif.
               </p>
             </div>
 
