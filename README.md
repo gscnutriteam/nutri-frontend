@@ -1,4 +1,4 @@
-# 🥗 NutriPlate
+# 🥗 NutriCare
 
 <div align="center">
   <img src="public/assets/img/logo.png" alt="NutriFe Logo" width="200"/>
@@ -7,7 +7,7 @@
 
 ## 📱 Overview
 
-NutriPlate is a comprehensive nutrition tracking and health management application built with Next.js. It helps users monitor their nutritional intake, track meals through food scanning, get personalized health information, find recipes, and receive AI-powered nutrition advice.
+NutriCare is a comprehensive nutrition tracking and health management application built with Next.js. It helps users monitor their nutritional intake, track meals through food scanning, get personalized health information, find recipes, and receive AI-powered nutrition advice.
 
 ### ✨ Key Features
 
