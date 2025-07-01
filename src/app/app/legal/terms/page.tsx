@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 import LinkAPP from '@/components/util/link';
 
 export const metadata: Metadata = {
-  title: 'Ketentuan Layanan | NutriPlate',
-  description: 'Baca Ketentuan Layanan untuk NutriPlate.',
+  title: 'Ketentuan Layanan | NutriCare',
+  description: 'Baca Ketentuan Layanan untuk NutriCare.',
 };
 
 export default function TermsPage() {
@@ -20,7 +20,7 @@ export default function TermsPage() {
       <div className="max-w-3xl mx-auto bg-white p-8 shadow-lg rounded-lg">
         <header className="mb-10 text-center">
           <Link href="/">
-            <img src="/assets/img/logo.png" alt="Logo NutriPlate" className="w-24 h-auto mx-auto mb-4" />
+            <img src="/assets/img/logo.png" alt="Logo NutriCare" className="w-24 h-auto mx-auto mb-4" />
           </Link>
           <h1 className="text-4xl font-bold text-button">Ketentuan Layanan</h1>
           <p className="text-gray-600 mt-2">Terakhir diperbarui: {lastUpdatedDate}</p>
@@ -29,7 +29,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-3">1. Pendahuluan</h2>
           <p className="text-gray-700 leading-relaxed">
-            Selamat datang di NutriPlate! Ketentuan Layanan ini ("Ketentuan") mengatur penggunaan Anda atas situs web, aplikasi seluler,
+            Selamat datang di NutriCare! Ketentuan Layanan ini ("Ketentuan") mengatur penggunaan Anda atas situs web, aplikasi seluler,
             dan layanan kami (secara kolektif disebut "Layanan"). Dengan mengakses atau menggunakan Layanan kami, Anda setuju untuk terikat oleh Ketentuan ini
             dan <LinkAPP href="/legal/privacy-policy" className="text-button hover:underline">Kebijakan Privasi</LinkAPP> kami.
             Jika Anda tidak menyetujui Ketentuan ini, mohon jangan gunakan Layanan kami.
@@ -39,7 +39,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-3">2. Penggunaan Layanan Kami</h2>
           <p className="text-gray-700 leading-relaxed mb-2">
-            NutriPlate menyediakan platform untuk pelacakan nutrisi, analisis makanan melalui pemindaian makanan, informasi kesehatan yang dipersonalisasi,
+            NutriCare menyediakan platform untuk pelacakan nutrisi, analisis makanan melalui pemindaian makanan, informasi kesehatan yang dipersonalisasi,
             pencarian resep, dan saran nutrisi bertenaga AI. Anda setuju untuk menggunakan Layanan kami hanya untuk tujuan yang sah
             dan sesuai dengan Ketentuan ini.
           </p>
@@ -54,7 +54,7 @@ export default function TermsPage() {
           <h2 className="text-2xl font-semibold text-gray-800 mb-3">3. Penggunaan Data dan Privasi</h2>
           <p className="text-gray-700 leading-relaxed">
             Kami berkomitmen untuk melindungi privasi Anda. <LinkAPP href="/legal/privacy-policy" className="text-button hover:underline">Kebijakan Privasi</LinkAPP> kami menjelaskan bagaimana kami mengumpulkan, menggunakan, dan membagikan informasi pribadi Anda.
-            Dengan menggunakan Layanan kami, Anda setuju bahwa NutriPlate dapat menggunakan data Anda sesuai dengan Kebijakan Privasi kami.
+            Dengan menggunakan Layanan kami, Anda setuju bahwa NutriCare dapat menggunakan data Anda sesuai dengan Kebijakan Privasi kami.
             Secara khusus, Anda mengakui dan menyetujui bahwa:
           </p>
           <ul className="list-disc list-inside text-gray-700 leading-relaxed space-y-1 pl-4 mt-2">
@@ -68,8 +68,8 @@ export default function TermsPage() {
           <h2 className="text-2xl font-semibold text-gray-800 mb-3">4. Kekayaan Intelektual</h2>
           <p className="text-gray-700 leading-relaxed">
             Layanan dan konten aslinya (tidak termasuk konten yang disediakan oleh pengguna), fitur, dan fungsionalitas adalah
-            dan akan tetap menjadi milik eksklusif NutriPlate dan pemberi lisensinya. Merek dagang dan tampilan dagang kami tidak boleh
-            digunakan sehubungan dengan produk atau layanan apa pun tanpa persetujuan tertulis sebelumnya dari NutriPlate.
+            dan akan tetap menjadi milik eksklusif NutriCare dan pemberi lisensinya. Merek dagang dan tampilan dagang kami tidak boleh
+            digunakan sehubungan dengan produk atau layanan apa pun tanpa persetujuan tertulis sebelumnya dari NutriCare.
           </p>
         </section>
 
@@ -78,7 +78,7 @@ export default function TermsPage() {
           <p className="text-gray-700 leading-relaxed">
             Layanan kami disediakan "sebagaimana adanya" dan "sebagaimana tersedia" tanpa jaminan apa pun, baik tersurat maupun
             tersirat, termasuk namun tidak terbatas pada, jaminan tersirat tentang kelayakan untuk diperdagangkan, kesesuaian untuk tujuan tertentu,
-            atau non-pelanggaran. NutriPlate tidak menjamin bahwa Layanan akan tidak terganggu, aman, atau bebas dari kesalahan.
+            atau non-pelanggaran. NutriCare tidak menjamin bahwa Layanan akan tidak terganggu, aman, atau bebas dari kesalahan.
             Setiap informasi nutrisi atau kesehatan yang diberikan hanya untuk tujuan informasi dan tidak boleh dianggap sebagai nasihat medis. Selalu konsultasikan dengan profesional perawatan kesehatan yang berkualifikasi untuk masalah kesehatan apa pun atau sebelum membuat keputusan apa pun terkait kesehatan atau perawatan Anda.
           </p>
         </section>
@@ -86,7 +86,7 @@ export default function TermsPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-3">6. Batasan Tanggung Jawab</h2>
           <p className="text-gray-700 leading-relaxed">
-            Dalam keadaan apa pun NutriPlate, maupun direktur, karyawan, mitra, agen, pemasok, atau afiliasinya,
+            Dalam keadaan apa pun NutriCare, maupun direktur, karyawan, mitra, agen, pemasok, atau afiliasinya,
             tidak akan bertanggung jawab atas kerugian tidak langsung, insidental, khusus, konsekuensial, atau punitif, termasuk tanpa
             batasan, kehilangan keuntungan, data, penggunaan, goodwill, atau kerugian tidak berwujud lainnya, yang diakibatkan oleh akses Anda
             ke atau penggunaan atau ketidakmampuan untuk mengakses atau menggunakan Layanan.
@@ -105,12 +105,12 @@ export default function TermsPage() {
         <section>
           <h2 className="text-2xl font-semibold text-gray-800 mb-3">8. Hubungi Kami</h2>
           <p className="text-gray-700 leading-relaxed">
-            Jika Anda memiliki pertanyaan tentang Ketentuan ini, silakan hubungi kami di nutriplateugm@gmail.com
+            Jika Anda memiliki pertanyaan tentang Ketentuan ini, silakan hubungi kami di NutriCareugm@gmail.com
           </p>
         </section>
 
         <footer className="mt-12 pt-8 border-t border-gray-200 text-center">
-          <p className="text-sm text-gray-500">&copy; {currentYear} NutriPlate. Semua hak dilindungi.</p>
+          <p className="text-sm text-gray-500">&copy; {currentYear} NutriCare. Semua hak dilindungi.</p>
         </footer>
       </div>
     </div>

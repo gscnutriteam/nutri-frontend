@@ -5,7 +5,7 @@ import chatFlowData from '../knowledge/chat_flow._recomendation.json';
 const chatFlow = chatFlowData as Record<string, any>;
 
 export const chatFlowTool = tool({
-  description: 'Memberikan rekomendasi alur chat, quick options, dan saran kontekstual untuk chatbot NutriPlate',
+  description: 'Memberikan rekomendasi alur chat, quick options, dan saran kontekstual untuk chatbot NutriCare',
   parameters: z.object({
     flowType: z.string().describe('Tipe alur chat, misal: welcome_flow, recommended_flows, contextual_suggestions, conversation_ending'),
     subType: z.string().optional().describe('Sub-tipe untuk recommended_flows atau contextual_suggestions, misal: new_user, purchase_inquiry, after_product_info'),

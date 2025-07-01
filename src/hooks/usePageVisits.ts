@@ -12,7 +12,7 @@ const usePageVisits = () => {
     const visitsCollectionRef = collection(db, 'visits');
     
     const logVisit = async () => {
-      const sessionKey = 'nutriplate-visit-logged';
+      const sessionKey = 'NutriCare-visit-logged';
       if (sessionStorage.getItem(sessionKey)) {
         return;
       }

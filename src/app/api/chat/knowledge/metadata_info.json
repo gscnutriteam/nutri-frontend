@@ -1,7 +1,7 @@
 {
     "intents": {
       "company_info": [
-        "tentang perusahaan", "visi misi", "tentang nutriplate", "sejarah", 
+        "tentang perusahaan", "visi misi", "tentang NutriCare", "sejarah", 
         "partner", "kerjasama", "tujuan bisnis", "tagline", "pendiri", 
         "kontak", "hubungi", "lokasi"
       ],
@@ -30,7 +30,7 @@
       }
     },
     "response_types": {
-      "general_info": "Informasi umum tentang NutriPlate",
+      "general_info": "Informasi umum tentang NutriCare",
       "specific_detail": "Detail spesifik tentang produk atau layanan",
       "instruction": "Langkah-langkah penggunaan produk atau platform",
       "recommendation": "Rekomendasi berdasarkan pertanyaan pengguna",
@@ -44,10 +44,10 @@
       "enthusiastic": "Tunjukkan antusiasme tentang produk dan manfaatnya"
     },
     "entity_definitions": {
-      "NutriPlate": "Brand piring pemorsian cerdas berbasis AI",
+      "NutriCare": "Brand piring pemorsian cerdas berbasis AI",
       "Isi Piringku": "Pedoman gizi seimbang dari Kementerian Kesehatan Indonesia",
       "Food Scanning": "Fitur pengenalan makanan dan analisis nutrisi melalui foto",
-      "Nubo": "Asisten nutrisi AI dalam platform NutriPlate",
+      "Nubo": "Asisten nutrisi AI dalam platform NutriCare",
       "Early Bird": "Periode promosi awal dengan benefit khusus"
     }
   }

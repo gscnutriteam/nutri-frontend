@@ -45,13 +45,13 @@ export function TestimonialsSection() {
     {
       name: "Budi Santoso",
       role: "Pengguna sejak 2022",
-      message: "NutriPlate telah membantu saya mengontrol diabetes saya dengan mengatur porsi makanan yang tepat. Berat badan saya turun 5kg dalam 3 bulan!",
+      message: "NutriCare telah membantu saya mengontrol diabetes saya dengan mengatur porsi makanan yang tepat. Berat badan saya turun 5kg dalam 3 bulan!",
       imgSrc: "https://randomuser.me/api/portraits/men/1.jpg"
     },
     {
       name: "Siti Rahayu",
       role: "Nutrisionis",
-      message: "Sebagai ahli gizi, saya sangat merekomendasikan NutriPlate kepada klien saya. Teknologi QR pada piring ini sangat inovatif.",
+      message: "Sebagai ahli gizi, saya sangat merekomendasikan NutriCare kepada klien saya. Teknologi QR pada piring ini sangat inovatif.",
       imgSrc: "https://randomuser.me/api/portraits/women/2.jpg"
     },
     {
@@ -63,13 +63,13 @@ export function TestimonialsSection() {
     {
       name: "Maya Indira",
       role: "Pengguna sejak 2021",
-      message: "NutriPlate membantu saya memahami porsi makanan yang tepat. Tekanan darah saya sekarang terkontrol dengan baik.",
+      message: "NutriCare membantu saya memahami porsi makanan yang tepat. Tekanan darah saya sekarang terkontrol dengan baik.",
       imgSrc: "https://randomuser.me/api/portraits/women/4.jpg"
     },
     {
       name: "Denny Prakoso",
       role: "Atlet",
-      message: "Sebagai atlet, nutrisi sangat penting. NutriPlate memudahkan saya melacak asupan kalori dan nutrisi untuk performa optimal.",
+      message: "Sebagai atlet, nutrisi sangat penting. NutriCare memudahkan saya melacak asupan kalori dan nutrisi untuk performa optimal.",
       imgSrc: "https://randomuser.me/api/portraits/men/5.jpg"
     },
     {

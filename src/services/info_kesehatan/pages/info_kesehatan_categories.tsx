@@ -125,11 +125,11 @@ function CardInfoKesehatanSkeleton() {
 }
 
 export const metadataInfoKesehatanCategories: Metadata = {
-  title: "Kategori Info Kesehatan | NutriPlate",
-  description: "Kategori Info Kesehatan page NutriPlate app",
+  title: "Kategori Info Kesehatan | NutriCare",
+  description: "Kategori Info Kesehatan page NutriCare app",
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: "Kategori Info Kesehatan | NutriPlate",
-    description: "Kategori Info Kesehatan NutriPlate app",
+    title: "Kategori Info Kesehatan | NutriCare",
+    description: "Kategori Info Kesehatan NutriCare app",
   },
 }; 

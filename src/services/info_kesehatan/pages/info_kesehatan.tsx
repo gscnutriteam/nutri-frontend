@@ -70,11 +70,11 @@ export default function InfoKesehatan() {
 }
 
 export const metadataInfoKesehatan: Metadata = {
-  title: "Info Kesehatan | NutriPlate",
-  description: "Info Kesehatan page NutriPlate app",
+  title: "Info Kesehatan | NutriCare",
+  description: "Info Kesehatan page NutriCare app",
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: "Info Kesehatan | NutriPlate",
-    description: "Info Kesehatan NutriPlate app",
+    title: "Info Kesehatan | NutriCare",
+    description: "Info Kesehatan NutriCare app",
   },
 };

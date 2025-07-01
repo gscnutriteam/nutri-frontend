@@ -81,7 +81,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/men/91.jpg",
     description: (
       <p>
-        NutriPlate sangat membantu pasien saya dalam mengontrol porsi makan.
+        NutriCare sangat membantu pasien saya dalam mengontrol porsi makan.
         <Highlight>
           Hasilnya terlihat dalam 3 bulan pertama penggunaan.
         </Highlight>{" "}
@@ -91,12 +91,12 @@ const testimonials = [
   },
   {
     name: "Siti Rahayu",
-    role: "Pengguna NutriPlate",
+    role: "Pengguna NutriCare",
     img: "https://randomuser.me/api/portraits/women/12.jpg",
     description: (
       <p>
-        Setelah menggunakan NutriPlate, berat badan saya turun 8kg dalam 6 bulan.
-        <Highlight>Porsi makan jadi lebih terkontrol!</Highlight> Terima kasih NutriPlate.
+        Setelah menggunakan NutriCare, berat badan saya turun 8kg dalam 6 bulan.
+        <Highlight>Porsi makan jadi lebih terkontrol!</Highlight> Terima kasih NutriCare.
       </p>
     ),
   },
@@ -106,7 +106,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/men/45.jpg",
     description: (
       <p>
-        Diabetes saya lebih terkontrol berkat NutriPlate.
+        Diabetes saya lebih terkontrol berkat NutriCare.
         <Highlight>Gula darah stabil dan porsi makan tepat.</Highlight> Sangat membantu!
       </p>
     ),
@@ -117,7 +117,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/women/83.jpg",
     description: (
       <p>
-        Memasak untuk keluarga jadi lebih mudah dengan panduan porsi dari NutriPlate.
+        Memasak untuk keluarga jadi lebih mudah dengan panduan porsi dari NutriCare.
         <Highlight>Anak-anak juga suka dengan piringnya yang colorful.</Highlight>
       </p>
     ),
@@ -128,7 +128,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/men/1.jpg",
     description: (
       <p>
-        Sebagai atlet, nutrisi sangat penting. NutriPlate membantu saya mengatur porsi protein dan karbohidrat.
+        Sebagai atlet, nutrisi sangat penting. NutriCare membantu saya mengatur porsi protein dan karbohidrat.
         <Highlight>
           Performa olahraga meningkat signifikan.
         </Highlight>
@@ -141,7 +141,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/women/5.jpg",
     description: (
       <p>
-        NutriPlate adalah inovasi yang sangat membantu dalam edukasi gizi.
+        NutriCare adalah inovasi yang sangat membantu dalam edukasi gizi.
         <Highlight>
           Pasien lebih mudah memahami porsi yang tepat.
         </Highlight>
@@ -154,7 +154,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/men/14.jpg",
     description: (
       <p>
-        NutriPlate sangat praktis untuk saya yang sibuk.
+        NutriCare sangat praktis untuk saya yang sibuk.
         <Highlight>Membantu saya menjaga pola makan sehat di tengah kesibukan kerja.</Highlight> Rekomendasi banget untuk para profesional!
       </p>
     ),
@@ -165,7 +165,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/women/56.jpg",
     description: (
       <p>
-        Sebagai seorang yang peduli kebugaran, NutriPlate jadi andalan saya.
+        Sebagai seorang yang peduli kebugaran, NutriCare jadi andalan saya.
         <Highlight>Porsi makronutrien jadi lebih terukur dan mudah dipantau.</Highlight> Sangat mendukung pencapaian target fitnes saya.
       </p>
     ),
@@ -176,8 +176,8 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/men/18.jpg",
     description: (
       <p>
-        Selama menyusui, asupan gizi sangat penting. NutriPlate membantu saya memastikan kebutuhan nutrisi harian terpenuhi dengan baik.
-        <Highlight>Fitur chatbot nutrisi juga sangat informatif dan responsif.</Highlight> Terima kasih NutriPlate!
+        Selama menyusui, asupan gizi sangat penting. NutriCare membantu saya memastikan kebutuhan nutrisi harian terpenuhi dengan baik.
+        <Highlight>Fitur chatbot nutrisi juga sangat informatif dan responsif.</Highlight> Terima kasih NutriCare!
       </p>
     ),
   },
@@ -187,7 +187,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/women/73.jpg",
     description: (
       <p>
-        Dulu sering makan sembarangan, tapi sejak pakai NutriPlate jadi lebih sadar akan pentingnya porsi yang benar.
+        Dulu sering makan sembarangan, tapi sejak pakai NutriCare jadi lebih sadar akan pentingnya porsi yang benar.
         <Highlight>Belajar gizi seimbang jadi menyenangkan dan tidak ribet.</Highlight> Cocok untuk anak kos yang ingin hidup sehat.
       </p>
     ),
@@ -198,7 +198,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/men/25.jpg",
     description: (
       <p>
-        Saya suka memasak, dan NutriPlate memberi inspirasi baru untuk menyajikan makanan sehat dan seimbang bagi keluarga.
+        Saya suka memasak, dan NutriCare memberi inspirasi baru untuk menyajikan makanan sehat dan seimbang bagi keluarga.
         <Highlight>Desainnya menarik dan edukatif untuk seluruh anggota keluarga.</Highlight> Inovasi yang luar biasa di dapur.
       </p>
     ),
@@ -209,7 +209,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/women/78.jpg",
     description: (
       <p>
-        Di usia senja, menjaga kesehatan itu utama. NutriPlate memudahkan saya mengatur pola makan sesuai anjuran dokter.
+        Di usia senja, menjaga kesehatan itu utama. NutriCare memudahkan saya mengatur pola makan sesuai anjuran dokter.
         <Highlight>Sangat mudah digunakan, bahkan untuk lansia seperti saya.</Highlight> Hidup sehat jadi lebih simpel dan menyenangkan.
       </p>
     ),
@@ -220,7 +220,7 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/men/54.jpg",
     description: (
       <p>
-        Awalnya ragu, tapi setelah mencoba NutriPlate, saya jadi lebih paham tentang pentingnya makanan sehat.
+        Awalnya ragu, tapi setelah mencoba NutriCare, saya jadi lebih paham tentang pentingnya makanan sehat.
         <Highlight>Tidak lagi takut makan berlebih atau kekurangan gizi saat belajar.</Highlight> Keren banget dan sangat membantu!
       </p>
     ),

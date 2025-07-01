@@ -15,12 +15,12 @@ import { HeaderFeature } from "@/components/ui/header_feature";
 import EditProfileSection from "../components/edit_profile_section";
 
 export const metadataEditProfile: Metadata = {
-	title: "Edit Profile | NutriPlate",
-	description: "Edit Profile page NutriPlate app",
+	title: "Edit Profile | NutriCare",
+	description: "Edit Profile page NutriCare app",
 	icons: "/assets/img/logo.png",
 	openGraph: {
-		title: "Edit Profile | NutriPlate",
-		description: "Edit Profile NutriPlate app",
+		title: "Edit Profile | NutriCare",
+		description: "Edit Profile NutriCare app",
 	},
 };
 
@@ -28,7 +28,7 @@ export default function EditProfile(user: ProfileProps) {
 	return (
 		<>
 			<Head>
-				<title>Profile | NutriPlate</title>
+				<title>Profile | NutriCare</title>
 			</Head>
 			<AppMobileLayout withBottomBar={false}>
 				<Toaster position="top-center" richColors />

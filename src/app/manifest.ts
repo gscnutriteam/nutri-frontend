@@ -2,8 +2,8 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-      name: 'NutriPlate',
-      short_name: 'NutriPlate',
+      name: 'NutriCare',
+      short_name: 'NutriCare',
       description: 'Portioning Precision Health in Every Division',
       start_url: '/',
       display: 'standalone',

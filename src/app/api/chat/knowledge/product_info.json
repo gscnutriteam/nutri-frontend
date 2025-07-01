@@ -1,34 +1,34 @@
 {
-    "product_name": "NutriPlate",
+    "product_name": "NutriCare",
     "product_type": "Piring pemorsian cerdas",
-    "product_description": "NutriPlate merupakan sebuah piring pemorsian terklasifikasi dilengkapi dengan teknologi Artificial Intelligence (AI) untuk mengidentifikasi jenis makanan serta menghitung kandungan gizi dalam setiap porsi.",
+    "product_description": "NutriCare merupakan sebuah piring pemorsian terklasifikasi dilengkapi dengan teknologi Artificial Intelligence (AI) untuk mengidentifikasi jenis makanan serta menghitung kandungan gizi dalam setiap porsi.",
     "key_features": [
       "Teknologi sensor gizi",
       "Koneksi ke web app", 
       "Desain ergonomis",
       "Personalisasi untuk berbagai kondisi kesehatan",
-      "QR code terintegrasi dengan website NutriPlate"
+      "QR code terintegrasi dengan website NutriCare"
     ],
     "materials": "Keramik porselen food grade",
     "variants": [
       {
-        "name": "NutriPlate Normal",
+        "name": "NutriCare Normal",
         "description": "Dirancang untuk individu dengan kondisi kesehatan normal"
       },
       {
-        "name": "NutriPlate Obesitas", 
+        "name": "NutriCare Obesitas", 
         "description": "Disesuaikan untuk membantu kontrol porsi bagi penderita obesitas"
       },
       {
-        "name": "NutriPlate Diabetes",
+        "name": "NutriCare Diabetes",
         "description": "Dirancang khusus dengan pemorsian yang tepat untuk penderita diabetes"
       },
       {
-        "name": "NutriPlate Atlet",
+        "name": "NutriCare Atlet",
         "description": "Menyediakan pemorsian yang optimal untuk kebutuhan gizi atlet"
       }
     ],
-    "packaging": "Produk NutriPlate sebelum dipasarkan akan dilakukan quality control untuk menjamin kualitas terbaik. Pengemasan menggunakan bubble wrap dan kardus yang telah didesain khusus untuk melindungi produk.",
+    "packaging": "Produk NutriCare sebelum dipasarkan akan dilakukan quality control untuk menjamin kualitas terbaik. Pengemasan menggunakan bubble wrap dan kardus yang telah didesain khusus untuk melindungi produk.",
     "package_contents": [
       "Piring Pemorsian",
       "Gantungan Kunci",
@@ -43,6 +43,6 @@
       "Kunjungi halaman website pada qr code piring",
       "Daftar Akun / Register",
       "Masukkan produk token",
-      "Akses Fitur-fitur nutriplate"
+      "Akses Fitur-fitur NutriCare"
     ]
   }

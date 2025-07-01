@@ -2,8 +2,8 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Kebijakan Privasi | NutriPlate',
-  description: 'Baca Kebijakan Privasi untuk NutriPlate.',
+  title: 'Kebijakan Privasi | NutriCare',
+  description: 'Baca Kebijakan Privasi untuk NutriCare.',
 };
 
 export default function PrivacyPolicyPage() {
@@ -14,7 +14,7 @@ export default function PrivacyPolicyPage() {
       <div className="max-w-3xl mx-auto bg-white p-8 shadow-lg rounded-lg">
         <header className="mb-10 text-center">
            <Link href="/">
-            <img src="/assets/img/logo.png" alt="Logo NutriPlate" className="w-24 h-auto mx-auto mb-4" />
+            <img src="/assets/img/logo.png" alt="Logo NutriCare" className="w-24 h-auto mx-auto mb-4" />
           </Link>
           <h1 className="text-4xl font-bold text-button">Kebijakan Privasi</h1>
           <p className="text-gray-600 mt-2">Terakhir diperbarui: 20 Mei {currentYear}</p>
@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-3">1. Pendahuluan</h2>
           <p className="text-gray-700 leading-relaxed">
-            NutriPlate ("kami") berkomitmen untuk melindungi privasi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami
+            NutriCare ("kami") berkomitmen untuk melindungi privasi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami
             mengumpulkan, menggunakan, mengungkapkan, dan menjaga informasi Anda saat Anda menggunakan Layanan kami. Harap baca kebijakan privasi ini
             dengan saksama. Jika Anda tidak setuju dengan ketentuan kebijakan privasi ini, mohon jangan mengakses aplikasi.
             Kami berhak melakukan perubahan pada Kebijakan Privasi ini kapan saja dan untuk alasan apa pun.
@@ -158,12 +158,12 @@ export default function PrivacyPolicyPage() {
         <section className="mb-8">
           <h2 className="text-2xl font-semibold text-gray-800 mb-3">8. Hubungi Kami</h2>
           <p className="text-gray-700 leading-relaxed">
-            Jika Anda memiliki pertanyaan atau komentar tentang Kebijakan Privasi ini, silakan hubungi kami di: nutriplateugm@gmail.com
+            Jika Anda memiliki pertanyaan atau komentar tentang Kebijakan Privasi ini, silakan hubungi kami di: NutriCareugm@gmail.com
           </p>
         </section>
 
         <footer className="mt-12 pt-8 border-t border-gray-200 text-center">
-          <p className="text-sm text-gray-500">&copy; {currentYear} NutriPlate. Semua hak dilindungi.</p>
+          <p className="text-sm text-gray-500">&copy; {currentYear} NutriCare. Semua hak dilindungi.</p>
         </footer>
       </div>
     </div>

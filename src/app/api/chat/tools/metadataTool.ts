@@ -3,7 +3,7 @@ import { z } from 'zod';
 import metadataInfo from '../knowledge/metadata_info.json';
 
 export const metadataTool = tool({
-  description: 'Memberikan informasi metadata untuk intent, tipe respons, tone, dan definisi entitas chatbot NutriPlate',
+  description: 'Memberikan informasi metadata untuk intent, tipe respons, tone, dan definisi entitas chatbot NutriCare',
   parameters: z.object({
     type: z.string().optional().describe('Jenis metadata yang ingin diketahui, misal: intents, response_types, tone_guidelines, entity_definitions'),
   }),

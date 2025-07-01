@@ -23,14 +23,14 @@ export const metadata: Metadata = {
     description: 'Piring pintar pertama di Indonesia yang menggabungkan teknologi QR code dengan panduan porsi makan yang tepat',
     type: 'website',
     locale: 'id_ID',
-    url: 'https://nutriplate.id',
-    siteName: 'NutriPlate',
+    url: 'https://NutriCare.id',
+    siteName: 'NutriCare',
     images: [
       {
-        url: '/assets/img/nutriplate-hero.png',
+        url: '/assets/img/NutriCare-hero.png',
         width: 1200,
         height: 630,
-        alt: 'NutriPlate Smart Plate',
+        alt: 'NutriCare Smart Plate',
       },
     ],
   },

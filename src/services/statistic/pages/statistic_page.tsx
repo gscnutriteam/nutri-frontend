@@ -80,7 +80,7 @@ export default function Statistics({ user }: Props) {
   return (
     <AppMobileLayout>
       <Head>
-        <title>Statistik | NutriPlate</title>
+        <title>Statistik | NutriCare</title>
       </Head>
       <div className="w-full relative flex flex-col outfit-font pb-20 bg-[#3E9295]">
         <img

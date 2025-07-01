@@ -62,7 +62,7 @@ export const Navbar = () => {
           <div className="relative h-10 w-40">
             <Image 
               src="/assets/img/logo.png" 
-              alt="NutriPlate Logo" 
+              alt="NutriCare Logo" 
               fill
               style={{ objectFit: 'contain' }}
               className="transition-transform duration-300 hover:scale-105"

@@ -184,7 +184,7 @@ export default function ListPremium() {
         
         <div className="px-4 pb-20">
           <p className="text-center text-teal-500 mb-6">
-            Dapatkan pengalaman terbaik dalam mengontrol kesehatan Anda dengan NutriPlate
+            Dapatkan pengalaman terbaik dalam mengontrol kesehatan Anda dengan NutriCare
           </p>
           
           {/* Show current subscription if exists */}
@@ -218,11 +218,11 @@ export default function ListPremium() {
 }
 
 export const metadataListPremium: Metadata = {
-  title: "Premium Plan | NutriPlate",
-  description: "Premium Plan page NutriPlate app",
+  title: "Premium Plan | NutriCare",
+  description: "Premium Plan page NutriCare app",
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: "Premium Plan | NutriPlate",
-    description: "Premium Plan NutriPlate app",
+    title: "Premium Plan | NutriCare",
+    description: "Premium Plan NutriCare app",
   },
 }; 

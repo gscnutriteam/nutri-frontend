@@ -55,7 +55,7 @@ const CareersPage = () => {
               transition={{ duration: 0.5 }}
               className="text-center mb-12"
             >
-              <h1 className="text-5xl md:text-6xl font-heading text-secondaryBlack mb-4">Karir di NutriPlate</h1>
+              <h1 className="text-5xl md:text-6xl font-heading text-secondaryBlack mb-4">Karir di NutriCare</h1>
               <p className="text-xl font-sans text-textGray max-w-2xl mx-auto">
                 🚀 Bergabunglah dengan tim kami yang bersemangat dan bantu kami membangun masa depan teknologi kesehatan.
               </p>

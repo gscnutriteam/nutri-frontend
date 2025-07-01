@@ -36,17 +36,17 @@ export async function generateMetadata({ params }: InfoKesehatanDetailProps): Pr
   
   if (!article) {
     return {
-      title: "Artikel Tidak Ditemukan | NutriPlate",
+      title: "Artikel Tidak Ditemukan | NutriCare",
       description: "Artikel yang Anda cari tidak ditemukan",
     };
   }
   
   return {
-    title: `${article.title} | NutriPlate`,
+    title: `${article.title} | NutriCare`,
     description: article.content.substring(0, 160),
     icons: "/assets/img/logo.png",
     openGraph: {
-      title: `${article.title} | NutriPlate`,
+      title: `${article.title} | NutriCare`,
       description: article.content.substring(0, 160),
       images: [article.image],
     },

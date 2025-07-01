@@ -10,12 +10,12 @@ export function PricingSection() {
   const plans = [
     {
       id: "single",
-      name: "NutriPlate Single",
+      name: "NutriCare Single",
       price: 175000,
       price_formatted: "Rp175.000",
       description: "1 Piring Pintar + Akses Premium",
       features: [
-        "1x NutriPlate Smart Plate",
+        "1x NutriCare Smart Plate",
         "Akses premium GRATIS selama periode early bird",
         "Scan AI makanan tanpa batas",
         "Estimasi kalori otomatis",
@@ -27,14 +27,14 @@ export function PricingSection() {
     },
     {
       id: "double",
-      name: "NutriPlate Couple",
+      name: "NutriCare Couple",
       price: 300000,
       price_formatted: "Rp300.000",
       original_price: "Rp350.000",
       description: "2 Piring Pintar + Akses Premium",
       save: "Hemat Rp50.000",
       features: [
-        "2x NutriPlate Smart Plate",
+        "2x NutriCare Smart Plate",
         "Akses premium GRATIS selama periode early bird",
         "Scan AI makanan tanpa batas",
         "Estimasi kalori otomatis",
@@ -66,7 +66,7 @@ export function PricingSection() {
   ];
 
   const ecommerceLinks = {
-    shopee: "https://shopee.com/nutriplate"
+    shopee: "https://shopee.com/NutriCare"
   };
 
   return (
@@ -78,7 +78,7 @@ export function PricingSection() {
             <span className="text-sm font-medium">Early Bird Special</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-black mb-4">
-            NUTRIPLATE <span className="text-primary">SMART PLATE</span>
+            NutriCare <span className="text-primary">SMART PLATE</span>
           </h2>
           <div className="flex items-center justify-center gap-2 mb-4">
             <Clock className="w-5 h-5 text-primary" />
@@ -87,7 +87,7 @@ export function PricingSection() {
             </p>
           </div>
           <p className="text-lg text-gray-600">
-            Beli NutriPlate sekarang dan dapatkan <span className="font-bold text-primary">AKSES PREMIUM GRATIS</span> selama periode early bird!
+            Beli NutriCare sekarang dan dapatkan <span className="font-bold text-primary">AKSES PREMIUM GRATIS</span> selama periode early bird!
           </p>
         </div>
 

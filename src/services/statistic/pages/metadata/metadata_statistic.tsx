@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadataStatistic: Metadata = {
-    title: 'Statistic | NutriPlate',
-    description: 'Statistic page NutriPlate app',
+    title: 'Statistic | NutriCare',
+    description: 'Statistic page NutriCare app',
     icons: "/assets/img/logo.png",
     openGraph: {
-      title: 'Statistic | NutriPlate',
-      description: 'Statistic NutriPlate app',
+      title: 'Statistic | NutriCare',
+      description: 'Statistic NutriCare app',
     }
 }
   

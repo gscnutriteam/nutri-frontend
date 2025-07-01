@@ -4,8 +4,8 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 export const metadata: Metadata = {
-  title: 'NutriPlate - Portioning Precision Health in Every Division',
-  description: 'NutriPlate - SmartPlate Berbasis QR Code untuk Porsi Makan Terklasifikasi',
+  title: 'NutriCare - Portioning Precision Health in Every Division',
+  description: 'NutriCare - SmartPlate Berbasis QR Code untuk Porsi Makan Terklasifikasi',
 };
 
 export default function LandingPageLayout({

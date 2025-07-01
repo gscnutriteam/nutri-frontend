@@ -19,12 +19,12 @@ export default function Footer() {
             <div className="flex items-center mb-4">
               <Image 
                 src="/assets/img/logo.png" 
-                alt="NutriPlate Logo" 
+                alt="NutriCare Logo" 
                 width={40} 
                 height={40} 
                 className="mr-2"
               />
-              <span className="font-bold text-xl text-black">NutriPlate</span>
+              <span className="font-bold text-xl text-black">NutriCare</span>
             </div>
             <p className="text-sm text-black mb-4">
               Piring pintar dengan teknologi QR code untuk mengontrol porsi makan dan hidup lebih sehat.
@@ -33,13 +33,13 @@ export default function Footer() {
               <a href="https://api.whatsapp.com/send/?phone=6285717035472&text&type=phone_number&app_absent=0" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
                 <Phone size={18} />
               </a>
-              <a href="https://instagram.com/nutriplateid" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
+              <a href="https://instagram.com/NutriCareid" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
                 <Instagram size={18} />
               </a>
-              <a href="https://facebook.com/nutriplateid" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
+              <a href="https://facebook.com/NutriCareid" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
                 <Facebook size={18} />
               </a>
-              <a href="https://youtube.com/@nutriplateid" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
+              <a href="https://youtube.com/@NutriCareid" className="bg-primary rounded-full p-2 text-white hover:opacity-80 transition-opacity">
                 <Youtube size={18} />
               </a>
             </div>
@@ -87,7 +87,7 @@ export default function Footer() {
               <ul className="space-y-2">
                 <li>
                   <Link href="#product" className="text-black hover:text-primary transition-colors">
-                    NutriPlate
+                    NutriCare
                   </Link>
                 </li>
                 <li>
@@ -139,7 +139,7 @@ export default function Footer() {
         <div className="mt-12 pt-6 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-black">
-              &copy; {new Date().getFullYear()} NutriPlate. All rights reserved.
+              &copy; {new Date().getFullYear()} NutriCare. All rights reserved.
             </p>
             
             <div className="mt-4 md:mt-0">
