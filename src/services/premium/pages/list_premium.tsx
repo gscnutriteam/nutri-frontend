@@ -144,7 +144,8 @@ async function SubscriptionPlansServer() {
       variant: cardVariant,
       planId: plan.id,
       isActive,
-      endDate
+      endDate,
+      userHasAnyActiveSubscription: hasActiveSubscription
     };
   }));
 
@@ -163,6 +164,7 @@ async function SubscriptionPlansServer() {
           planId={plan.planId}
           isActive={plan.isActive}
           endDate={plan.endDate}
+          userHasAnyActiveSubscription={plan.userHasAnyActiveSubscription}
         />
       ))}
     </div>
@@ -182,7 +184,7 @@ export default function ListPremium() {
         
         <div className="px-4 pb-20">
           <p className="text-center text-teal-500 mb-6">
-            Dapatkan pengalaman terbaik dalam mengontrol kesehatan Anda dengan NutriBox
+            Dapatkan pengalaman terbaik dalam mengontrol kesehatan Anda dengan NutriPlate
           </p>
           
           {/* Show current subscription if exists */}
@@ -216,11 +218,11 @@ export default function ListPremium() {
 }
 
 export const metadataListPremium: Metadata = {
-  title: "Premium Plan | NutriBox",
-  description: "Premium Plan page nutribox app",
+  title: "Premium Plan | NutriPlate",
+  description: "Premium Plan page NutriPlate app",
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: "Premium Plan | NutriBox",
-    description: "Premium Plan nutribox app",
+    title: "Premium Plan | NutriPlate",
+    description: "Premium Plan NutriPlate app",
   },
 }; 

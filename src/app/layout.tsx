@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import { Providers } from './providers';
@@ -9,8 +9,12 @@ const outfitSans = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'NutriFe',
+  // metadataBase: new URL('YOUR_PRODUCTION_URL'), // Replace with your actual production URL
+  title: 'NutriPlate',
   description: 'Your personal nutrition and fitness companion',
+};
+
+export const viewport: Viewport = {
   themeColor: '#ffffff',
 };
 

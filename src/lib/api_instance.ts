@@ -24,6 +24,11 @@ async function apiClient<T, R>(endpoint: string, method: string, data?: T, inclu
 		const token = await getAuthToken();
 		if (token) {
 		  headers.Authorization = `Bearer ${token}`;
+		//   console.log('Token found');
+		//   console.log(headers);
+		// } else {
+		// 	console.log('No token found');
+		// 	throw new Error('No token found');
 		}
 	  }
 
@@ -66,10 +71,10 @@ async function apiClient<T, R>(endpoint: string, method: string, data?: T, inclu
 				document.cookie = 'refresh_token=; Max-Age=0; path=/; domain=' + window.location.hostname;
 			}
 			
-			// Redirect to login page
-			if (typeof window !== 'undefined') {
-				window.location.href = '/app/login';
-			}
+			// // Redirect to login page
+			// if (typeof window !== 'undefined') {
+			// 	window.location.href = '/app/login';
+			// }
 		}
 	  
 	  return {

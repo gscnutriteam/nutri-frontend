@@ -15,7 +15,7 @@ export interface PatchUserRequest {
     profile_picture?: string;
 }
 
-interface PatchUserResponse {
+export interface PatchUserResponse {
     message: string;
     status: string;
     user: {

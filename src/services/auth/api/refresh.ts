@@ -6,12 +6,6 @@ interface RefreshRequest {
     refresh_token: string;
 }
 
-interface RefreshResponse {
-    message: string;
-    status: string; 
-    data: AuthTokens;
-}
-
 interface AuthTokens {
     access: {
       token: string;
@@ -21,14 +15,36 @@ interface AuthTokens {
       token: string;
       expires: string; 
     };
-  }
+}
 
+interface RefreshResponse {
+    message?: string;
+    status: string; 
+    tokens: AuthTokens;
+}
 
-const useRefreshAPI = async (data: RefreshRequest) => {
+interface ApiResponseWrapper {
+    success: boolean;
+    status: number;
+    statusText: string;
+    data?: RefreshResponse;
+    error?: string;
+}
+
+/**
+ * API function to refresh authentication tokens
+ * @param data The request containing the refresh token
+ * @returns A promise containing the API response with new tokens
+ */
+const useRefreshAPI = async (data: RefreshRequest): Promise<ApiResponseWrapper> => {
     try {
-        return await apiClient<RefreshRequest, RefreshResponse>('/auth/refresh-tokens', 'POST', data);
+        const response = await apiClient<RefreshRequest, RefreshResponse>(
+            '/auth/refresh-tokens', 
+            'POST', 
+            data 
+        );
+        return response as ApiResponseWrapper;
     } catch (error) {
-        console.error('Refresh API error:', error);
         throw error;
     }
 }

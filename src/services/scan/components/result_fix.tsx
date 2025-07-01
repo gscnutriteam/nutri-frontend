@@ -52,8 +52,8 @@ const FoodTrackingResult = () => {
         </Button>
       </div>
 
-      {/* Bottom Warning */}
-      <RecommendationWarning recommendation={scanResult?.recomendation || ""} />
+      {/* Bottom Warning (now modal trigger) */}
+      <RecommendationWarning recommendation={scanResult?.recomendation || ""} comment={scanResult?.comment || ""} />
     </div>
   );
 };

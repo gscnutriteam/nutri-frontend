@@ -25,7 +25,7 @@ export const useCalorieData = () => {
       } else {
         const formattedData = response.results.map((item: UserCalorie) => ({
           id: item.id,
-          tanggal: new Date(),
+          tanggal: new Date(item.meal_time),
           calorie: item.calories,
           carbs: item.carbs,
           protein: item.protein,
@@ -57,7 +57,7 @@ export const useCalorieData = () => {
       } else {
         const formattedData = response.results.map((item: UserCalorie) => ({
           id: item.id,
-          tanggal: new Date(),
+          tanggal: new Date(item.meal_time),
           calorie: item.calories,
           carbs: item.carbs,
           protein: item.protein,

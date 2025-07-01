@@ -6,6 +6,7 @@ export interface UserCalorie {
   id: string;
   label: string;
   meal_image: string;
+  meal_time: string;
   title: string;
 }
 

@@ -16,6 +16,7 @@ export interface ProfileProps {
       profile_picture: string;
       progress: number;
       isProductTokenVerified?: boolean;
+      verified_email?: boolean;
       subscriptionFeatures?: {
         bmi_check?: boolean;
         scan_ai?: boolean;

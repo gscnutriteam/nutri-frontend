@@ -1,0 +1,77 @@
+[
+  {
+    "id": "1",
+    "slug": "frontend-developer",
+    "title": "Frontend Developer",
+    "location": "Remote (Indonesia)",
+    "type": "Part-time Internship",
+    "department": "Engineering",
+    "description": "Kami mencari Frontend Developer berbakat untuk bergabung dengan tim kami. Anda akan bertanggung jawab untuk membangun antarmuka pengguna yang indah dan fungsional untuk platform web dan mobile kami, memastikan pengalaman pengguna yang luar biasa.",
+    "responsibilities": [
+      "Mengembangkan fitur antarmuka pengguna baru menggunakan React dan Next.js.",
+      "Membangun kode dan library yang dapat digunakan kembali untuk penggunaan di masa depan.",
+      "Memastikan kelayakan teknis dari desain UI/UX.",
+      "Mengoptimalkan aplikasi untuk kecepatan dan skalabilitas maksimum.",
+      "Berkolaborasi dengan anggota tim lain dan pemangku kepentingan."
+    ],
+    "qualifications": [
+      "Pengalaman terbukti sebagai Frontend Developer atau peran serupa.",
+      "Pengetahuan mendalam tentang React, Next.js, dan TypeScript.",
+      "Pengalaman dengan state management library seperti Redux atau Zustand.",
+      "Mahir dalam HTML, CSS, dan Tailwind CSS.",
+      "Memahami prinsip-prinsip desain UI/UX.",
+      "Keterampilan pemecahan masalah yang sangat baik.",
+      "Semangat untuk mempelajari teknologi baru."
+    ],
+    "applyEmail": "nutriplateugm@gmail.com"
+  },
+  {
+    "id": "2",
+    "slug": "ui-ux-designer",
+    "title": "UI/UX Designer",
+    "location": "Remote (Indonesia)",
+    "type": "Part-time Internship",
+    "department": "Design",
+    "description": "Kami mencari UI/UX Designer yang kreatif dan bersemangat untuk menciptakan pengalaman pengguna yang intuitif dan menarik secara visual untuk produk digital kami. Anda akan bekerja sama dengan tim produk dan engineering untuk mengubah ide menjadi kenyataan.",
+    "responsibilities": [
+      "Membuat wireframe, storyboards, user flows, dan sitemaps.",
+      "Merancang elemen antarmuka pengguna seperti menu, tab, dan widget.",
+      "Mengembangkan prototipe dan maket UI yang dengan jelas menggambarkan bagaimana situs berfungsi dan terlihat.",
+      "Melakukan riset pengguna dan mengevaluasi feedback pengguna.",
+      "Menetapkan dan mempromosikan pedoman desain, praktik terbaik, dan standar."
+    ],
+    "qualifications": [
+      "Portofolio yang kuat dari proyek desain UI/UX.",
+      "Pengalaman dengan alat desain seperti Figma, Sketch, atau Adobe XD.",
+      "Pemahaman yang kuat tentang prinsip-prinsip desain yang berpusat pada pengguna.",
+      "Keterampilan komunikasi yang sangat baik untuk mengartikulasikan ide-ide desain.",
+      "Kemampuan untuk bekerja secara efektif dalam lingkungan tim yang kolaboratif."
+    ],
+    "applyEmail": "nutriplateugm@gmail.com"
+  },
+  {
+    "id": "3",
+    "slug": "backend-engineer",
+    "title": "Backend Engineer",
+    "location": "Remote (Indonesia)",
+    "type": "Part-time Internship",
+    "department": "Engineering",
+    "description": "Kami mencari Backend Engineer yang berpengalaman untuk merancang, mengembangkan, dan memelihara sisi server dari aplikasi kami. Anda akan bekerja dengan database, API, dan infrastruktur untuk memastikan platform kami berjalan dengan lancar dan efisien.",
+    "responsibilities": [
+      "Merancang dan mengimplementasikan API RESTful yang aman dan dapat diskalakan.",
+      "Mengelola arsitektur database dan server.",
+      "Menulis kode yang bersih dan efisien di sisi server.",
+      "Berintegrasi dengan layanan pihak ketiga.",
+      "Bekerja sama dengan frontend developer untuk mengintegrasikan elemen yang menghadap pengguna dengan logika sisi server."
+    ],
+    "qualifications": [
+      "Pengalaman dalam pengembangan backend menggunakan Node.js, Python, atau Go.",
+      "Pengalaman dengan database SQL dan NoSQL.",
+      "Pengetahuan tentang arsitektur microservices adalah nilai tambah.",
+      "Pemahaman tentang praktik keamanan web.",
+      "Keterampilan analitis dan pemecahan masalah yang kuat.",
+      "Familiaritas dengan layanan cloud seperti AWS atau Google Cloud."
+    ],
+    "applyEmail": "nutriplateugm@gmail.com"
+  }
+] 

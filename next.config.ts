@@ -4,6 +4,7 @@ const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
   skipWaiting: true,
+  scope: '/app',
 });
 
 const nextConfig: NextConfig = {
@@ -28,6 +29,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "storage.googleapis.com",
       },
+      {
+        hostname: "ui-avatars.com",
+      }
     ]
   },
   experimental: {

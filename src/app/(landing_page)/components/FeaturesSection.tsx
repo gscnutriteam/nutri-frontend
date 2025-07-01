@@ -46,7 +46,7 @@ export function FeaturesSection() {
       viewport={viewportConfig}
       variants={staggerChildren}
     >
-      <div className="container px-4 mx-auto relative z-10 max-w-6xl">
+      <div id='feature' className="container px-4 mx-auto relative z-10 max-w-6xl scroll-mt-28">
         <motion.h2 
           className="text-3xl md:text-5xl font-bold text-black text-center mb-10"
           variants={fadeInUp}

@@ -21,6 +21,7 @@ import { saveAuthTokens } from "../util/util";
 import { useMutation } from "@tanstack/react-query";
 import { getPayloadFromToken, verifyJWT } from "@/lib/jwt";
 import LoginGoogleButton from "./login_google_button";
+import LinkAPP from "@/components/util/link";
 
 export const LoginForm = () => {
   const router = useAppRouter();
@@ -123,6 +124,10 @@ export const LoginForm = () => {
             </FormItem>
           )}
         />
+
+        <div className="flex justify-end ">
+          <LinkAPP href="/reset-password" className="text-sm text-button mt-[-10px]">Forgot Password?</LinkAPP>
+        </div>
         
         {/* Submit Button */}
         <Button type="submit" className="w-full" disabled={loginMutation.isPending || loginMutation.data?.success}>

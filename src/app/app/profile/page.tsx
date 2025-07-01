@@ -1,29 +1,72 @@
 import { Gender, PhsyicalActivity } from "@/services/auth/store/register_store";
-import Home, { metadataHome } from "@/services/home/pages/home_page";
 import { getUserData } from "@/services/profile/api/getUser";
-import Profile, { metadataProfile } from "@/services/profile/pages/profile_info";
+import Profile from "@/services/profile/pages/profile_info";
 import type { ProfileProps } from "@/services/profile/type/types";
 import { JWTUserTOProfileProps } from "@/services/profile/util/util";
-export const metadata = metadataProfile;
+import LoadingSpinner from "@/components/ui/LoadingSpinner";
+import type { Metadata } from "next";
+import RetryButton from "@/components/RetryButton";
 
-const dummyUser: ProfileProps = {
-    id: '1',
-    name: 'Murdi',
+// Define metadata in the server component
+export const metadata: Metadata = {
+  title: 'Profile | NutriPlate',
+  description: 'Profile page NutriPlate app',
+  icons: "/assets/img/logo.png",
+  openGraph: {
+    title: 'Profile | NutriPlate',
+    description: 'Profile NutriPlate app',
+  }
+};
+
+// Fallback profile in case user data can't be fetched
+const fallbackProfile: ProfileProps = {
+    id: '0',
+    name: 'Guest User',
     age: 25,
     gender: Gender.male,
     height: 170,
-    bmi: 7.8,
-    medical_history: 'Tidak ada',
-    physical_activity: PhsyicalActivity.high,
-    profile_picture: "https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&sat=-100",
-    progress: 20,
-    email: "cek@gmail.com",
+    bmi: 20.5,
+    medical_history: 'Tidak ada data',
+    physical_activity: PhsyicalActivity.moderate,
+    profile_picture: "/assets/img/default-avatar.png",
+    progress: 0,
+    email: "",
     birth_date: new Date(),
     weight: 60
 }
 
 export default async function Page() {
-    const user = await getUserData();
-    if (!user) return null;
-    return <Profile {...JWTUserTOProfileProps(user)} />;
+    try {
+        const user = await getUserData();
+        
+        // If user data is successfully fetched, render profile with user data
+        if (user) {
+            return <Profile {...JWTUserTOProfileProps(user)} />;
+        }
+        
+        // If no user data but not an error, show fallback profile
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen p-4">
+                <div className="text-center mb-6">
+                    <h2 className="text-2xl font-bold mb-2">No User Data Found</h2>
+                    <p className="text-gray-600">Please login or create an account to view your profile</p>
+                </div>
+                <a href="/auth/login" className="bg-primary border-2 border-black text-white px-6 py-2 rounded-base shadow-neobrutalism font-medium">
+                    Login / Register
+                </a>
+            </div>
+        );
+    } catch (error) {
+        // Handle error case with a friendly message
+        console.error("Error fetching user data:", error);
+        return (
+            <div className="flex flex-col items-center justify-center min-h-screen p-4">
+                <div className="text-center mb-6">
+                    <h2 className="text-2xl font-bold mb-2">Oops! Something went wrong</h2>
+                    <p className="text-gray-600">We couldn't load your profile information</p>
+                </div>
+                <RetryButton />
+            </div>
+        );
+    }
 }

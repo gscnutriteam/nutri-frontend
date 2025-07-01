@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { Cookie, Loader2, LogOutIcon } from "lucide-react";
 import { toast } from "sonner";
 import Cookies from "js-cookie";
+import { removeAuthTokens } from "@/services/auth/api/token";
 
 interface ButtonLogoutProps {
     variant?: "default" | "danger" | "noShadow" | "neutral" | "reverse" | "neutralNoShadow";
@@ -24,17 +25,16 @@ export const ButtonLogout = ({
         onSuccess: (response) => {
 
             if (!response.success) {
-                throw new Error(
-                    (response.data as { message?: string })?.message || "Logout failed"
-                );
+               console.log(response.data);
             }
 
-            Cookies.remove("access_token");
-            Cookies.remove("refresh_token");
+            removeAuthTokens();
             router.push("/login");
         },
         onError: (error: Error) => {
-            toast.error(error.message || "Logout failed. Please try again.");
+            removeAuthTokens();
+            router.push("/login");
+            console.log(error);
         },
     });
 

@@ -37,7 +37,7 @@ export const saveTokensToClientCookies = (tokens: TokensResponse) => {
   
   Cookies.set('access_token', tokens.access.token, { 
     ...cookieOptions, 
-    expires: accessExpires 
+    expires: accessExpires
   });
   
   Cookies.set('refresh_token', tokens.refresh.token, { 

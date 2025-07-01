@@ -75,12 +75,12 @@ export default async function InfoKesehatanSearch({ searchParams = {} }: InfoKes
 }
 
 export const metadataInfoKesehatanSearch: Metadata = {
-  title: "Cari Info Kesehatan | NutriBox",
-  description: "Info Kesehatan page nutribox app",
+  title: "Cari Info Kesehatan | NutriPlate",
+  description: "Info Kesehatan page NutriPlate app",
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: "Cari Info Kesehatan | NutriBox",
-    description: "Info Kesehatan nutribox app",
+    title: "Cari Info Kesehatan | NutriPlate",
+    description: "Info Kesehatan NutriPlate app",
   },
 };
   

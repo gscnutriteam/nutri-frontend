@@ -57,7 +57,7 @@ export default function CompleteProfile() {
 	return (
 		<>
 			<Head>
-				<title>Complete Profile | NutriBox</title>
+				<title>Complete Profile | NutriPlate</title>
 			</Head>
 			<AppMobileLayout withBottomBar={false}>
 				<Toaster position="top-center" richColors />
@@ -95,7 +95,7 @@ export default function CompleteProfile() {
 					{!loading && user && (
 						<>
 							<div className="px-4 py-6">
-								<h2 className="text-lg font-semibold mb-3">Welcome to NutriBox!</h2>
+								<h2 className="text-lg font-semibold mb-3">Welcome to NutriPlate!</h2>
 								<p className="text-sm text-gray-600 mb-6">
 									Please complete your profile to get personalized nutrition recommendations.
 								</p>

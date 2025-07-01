@@ -17,11 +17,11 @@ export default function ScanDetailResult() {
 }
 
 export const metadataScanDetailResult: Metadata = {
-  title: "Scan Makanan | NutriBox",
-  description: "Scan Makanan page nutribox app",
+  title: "Scan Makanan | NutriPlate",
+  description: "Scan Makanan page NutriPlate app",
   icons: "/assets/img/logo.png",
   openGraph: {
-    title: "Scan Makanan | NutriBox",
-    description: "Scan Makanan nutribox app",
+    title: "Scan Makanan | NutriPlate",
+    description: "Scan Makanan NutriPlate app",
   },
 };

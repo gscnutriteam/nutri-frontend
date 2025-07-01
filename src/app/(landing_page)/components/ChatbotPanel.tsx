@@ -6,6 +6,7 @@ import { Chat } from '@/components/ui/chat';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, Loader2 } from 'lucide-react';
 import Image from 'next/image';
+import { useChatLogger } from '@/hooks/useChatLogger';
 
 interface ChatbotPanelProps {
   isOpen: boolean;
@@ -29,6 +30,9 @@ export function ChatbotPanel({ isOpen }: ChatbotPanelProps) {
     }
   });
 
+  // Log chat messages to Firestore
+  useChatLogger(messages);
+
   // Simulate loading state and typing animation
   useEffect(() => {
     if (isOpen) {
@@ -49,7 +53,7 @@ export function ChatbotPanel({ isOpen }: ChatbotPanelProps) {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed bottom-28 right-8 z-40 w-96 h-[500px] rounded-2xl border-2 border-black shadow-neobrutalism overflow-hidden bg-white"
+          className="fixed bottom-28 right-2 sm:right-8 z-40 w-[calc(100%-1rem)] sm:w-96 h-[500px] rounded-2xl border-2 border-black shadow-neobrutalism overflow-hidden bg-white"
           initial={{ y: 20, opacity: 0, scale: 0.8 }}
           animate={{ y: 0, opacity: 1, scale: 1 }}
           exit={{ y: 20, opacity: 0, scale: 0.8 }}

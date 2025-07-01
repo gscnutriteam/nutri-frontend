@@ -18,6 +18,7 @@ export const StatisticKalori = () => {
     return <StatisticKaloriSkeleton />;
   }
 
+  console.log("chartData", period);
   return (
     <div className="px-5">
       <div className="bg-pr10 rounded-lg border-2 border-black p-4 w-full flex flex-col">

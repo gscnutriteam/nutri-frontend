@@ -2,15 +2,14 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-      name: 'NutriFE',
-      short_name: 'NutriFe',
-      description: 'Nutrition tracking and food analysis at your fingertips',
+      name: 'NutriPlate',
+      short_name: 'NutriPlate',
+      description: 'Portioning Precision Health in Every Division',
       start_url: '/',
       display: 'standalone',
       background_color: '#ffffff',
     //   theme_color: 'white"',
       orientation: "portrait",
-
       icons: [
         {
           src: '/web-app-manifest-192x192.png',

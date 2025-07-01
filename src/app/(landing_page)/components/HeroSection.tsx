@@ -41,7 +41,7 @@ export function HeroSection() {
                 className="rounded-lg border-2 border-black shadow-neobrutalism hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none transition-all"
               >
                 <Link href="/app/register" className="flex items-center gap-2">
-                  Beli Nutriplate
+                  Coba Nutriplate
                   <ArrowRight className="ml-1" />
                 </Link>
               </Button>
@@ -56,7 +56,7 @@ export function HeroSection() {
               <div className="absolute -top-3 -left-3 w-full h-full bg-secondary rounded-xl border-2 border-black"></div>
               <div className="relative border-2 border-black rounded-xl overflow-hidden p-4 bg-white shadow-neobrutalism">
                 <Image 
-                  src="/assets/img/nutriplate-hero.png" 
+                  src="/assets/img/piring_phone.png" 
                   alt="NutriPlate Smart Plate" 
                   width={500}
                   height={500}

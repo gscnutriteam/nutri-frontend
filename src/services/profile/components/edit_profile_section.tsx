@@ -48,6 +48,7 @@ const EditProfileSection = (user: ProfileProps) => {
           updateMutation={updateMutation}
           isUploadingPhoto={isUploadingPhoto}
           formatDateForInput={formatDateForInput}
+          isEmailVerified={user.verified_email}
         />
       </div>
     </div>

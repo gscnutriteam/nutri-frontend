@@ -19,6 +19,7 @@ interface PremiumCardDisplayProps {
   planId: string;
   isActive?: boolean;
   endDate?: string;
+  userHasAnyActiveSubscription?: boolean;
 }
 
 const PremiumCardDisplay = ({
@@ -31,9 +32,13 @@ const PremiumCardDisplay = ({
   variant = "neutral",
   planId,
   isActive = false,
-  endDate = ''
+  endDate = '',
+  userHasAnyActiveSubscription = false
 }: PremiumCardDisplayProps) => {
   const hasValidSubscription = Boolean(endDate && new Date(endDate) > new Date());
+  
+  // Determine if this card's button should be locked because another subscription is active
+  const lockButtonDueToOtherActivePlan = userHasAnyActiveSubscription && !isActive;
   
   // Extract numeric price from formatted string (e.g., "Rp. 15000" -> 15000)
   const getNumericPrice = (): number => {
@@ -101,6 +106,7 @@ const PremiumCardDisplay = ({
             isActive={hasValidSubscription}
             planName={title}
             amount={getNumericPrice()}
+            lockOthersIfActive={lockButtonDueToOtherActivePlan}
           />
         </div>
       </div>

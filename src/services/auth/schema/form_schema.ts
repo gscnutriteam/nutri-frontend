@@ -34,6 +34,11 @@ const registerInfoSchema = z.object({
   medicalHistory: z.string({
     required_error: "Riwayat penyakit wajib diisi",
   }),
+  termsAccepted: z.boolean({
+    required_error: "Anda harus menyetujui Syarat & Ketentuan dan Kebijakan Privasi.",
+  }).refine(val => val === true, {
+    message: "Anda harus menyetujui Syarat & Ketentuan dan Kebijakan Privasi untuk melanjutkan.",
+  }),
 });
 
 const registerTokenSchema = z.object({
