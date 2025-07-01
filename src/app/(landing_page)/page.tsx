@@ -16,10 +16,10 @@ const LandingPage = dynamic(
 );
 
 export const metadata: Metadata = {
-  title: 'NutriPlate - Smart Plate for Precision Health',
+  title: 'NutriCare - Smart Plate for Precision Health',
   description: 'Piring pintar pertama di Indonesia yang menggabungkan teknologi QR code dengan panduan porsi makan yang tepat',
   openGraph: {
-    title: 'NutriPlate - Smart Plate for Precision Health',
+    title: 'NutriCare - Smart Plate for Precision Health',
     description: 'Piring pintar pertama di Indonesia yang menggabungkan teknologi QR code dengan panduan porsi makan yang tepat',
     type: 'website',
     locale: 'id_ID',

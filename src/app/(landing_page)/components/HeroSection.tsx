@@ -30,7 +30,7 @@ export function HeroSection() {
             </h1>
             
             <p className="text-lg font-medium text-black">
-              NutriPlate - SmartPlate Berbasis QR Code untuk Porsi Makan Terklasifikasi
+              NutriCare - SmartCare Berbasis QR Code untuk Porsi Makan Terklasifikasi
             </p>
             
             <div className="pt-6">
@@ -41,7 +41,7 @@ export function HeroSection() {
                 className="rounded-lg border-2 border-black shadow-neobrutalism hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none transition-all"
               >
                 <Link href="/app/register" className="flex items-center gap-2">
-                  Coba Nutriplate
+                  Coba NutriCare
                   <ArrowRight className="ml-1" />
                 </Link>
               </Button>
@@ -57,7 +57,7 @@ export function HeroSection() {
               <div className="relative border-2 border-black rounded-xl overflow-hidden p-4 bg-white shadow-neobrutalism">
                 <Image 
                   src="/assets/img/piring_phone.png" 
-                  alt="NutriPlate Smart Plate" 
+                  alt="NutriCare Smart Care" 
                   width={500}
                   height={500}
                   className="object-contain w-full h-auto"

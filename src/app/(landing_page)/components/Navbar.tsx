@@ -27,12 +27,12 @@ export default function Navbar() {
           <Link href="/" className="flex items-center">
             <Image 
               src="/assets/img/logo.png" 
-              alt="NutriPlate Logo" 
+              alt="NutriCare Logo" 
               width={40} 
               height={40} 
               className="mr-2"
             />
-            <span className="font-bold text-xl text-black">NutriPlate</span>
+            <span className="font-bold text-xl text-black">NutriCare</span>
           </Link>
 
           {/* Desktop Navigation */}
