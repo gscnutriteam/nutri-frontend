@@ -35,7 +35,7 @@ export default function RegisterToken() {
         </p>
         <RegisterTokenForm />
         <p className="text-center mt-4 text-sm">
-          Tidak memiliki token? <Link href="https://instagram.com/nutriplateid" target='_blank' className="text-button underline">Produk Kami</Link>
+          Gunakan token TRIAL123 atau TRIAL1234
         </p>
         {/* <p className="text-center mt-1 text-sm">
           atau beli premium <LinkAPP href="/premium" className="text-button underline">di sini</LinkAPP>
