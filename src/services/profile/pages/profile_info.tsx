@@ -45,7 +45,7 @@ export default function Profile(user: ProfileProps) {
                 <h2 className="text-xl font-bold text-black">{maxChar(user.name, 18)}</h2>
                 <div className="flex items-center">
                   <Mail size={14} className="mr-1 text-gray-700" /> 
-                  <p className="text-sm text-gray-700">{maxChar(user.email, 18)}</p>
+                  <p className="text-sm text-gray-700">{maxChar(user.email, 13)}</p>
                   {user.verified_email ? (
                     <MailCheck size={16} className="ml-2 text-green-500" />
                   ) : (
