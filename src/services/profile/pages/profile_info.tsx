@@ -42,10 +42,10 @@ export default function Profile(user: ProfileProps) {
                 className="w-20 h-20 rounded-full object-cover border-2 border-black mr-4"
               />
               <div className="flex-grow">
-                <h2 className="text-xl font-bold text-black">{user.name}</h2>
+                <h2 className="text-xl font-bold text-black">{maxChar(user.name, 18)}</h2>
                 <div className="flex items-center">
                   <Mail size={14} className="mr-1 text-gray-700" /> 
-                  <p className="text-sm text-gray-700">{user.email}</p>
+                  <p className="text-sm text-gray-700">{maxChar(user.email, 18)}</p>
                   {user.verified_email ? (
                     <MailCheck size={16} className="ml-2 text-green-500" />
                   ) : (
@@ -249,4 +249,8 @@ const MenuButton = ({ icon, label, href, disabled, onClick }: { icon: React.Reac
       {content}
     </LinkAPP>
   );
+};
+
+const maxChar = (text: string, max: number) => {
+  return text.length > max ? text.substring(0, max) + "..." : text;
 };
