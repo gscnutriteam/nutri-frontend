@@ -1,6 +1,16 @@
-import ChatBot, { metadataChatbot } from "@/services/chatbot/pages/chatbot";
+import ChatBot from "@/services/chatbot/pages/chatbot";
+import { Metadata } from "next";
 
-export const metadata = metadataChatbot;
-export default function Page() {
+export default async function Page() {
   return <ChatBot />;
 }
+
+export const metadata: Metadata = {
+  title: "Chatbot | NutriPlate",
+  description: "Chatbot page NutriPlate app",
+  icons: "/assets/img/logo.png",
+  openGraph: {
+    title: "Chatbot | NutriPlate",
+    description: "Chatbot NutriPlate app",
+  },
+};

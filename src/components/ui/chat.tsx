@@ -27,6 +27,7 @@ interface ChatPropsBase {
     messageId: string,
     rating: "thumbs-up" | "thumbs-down"
   ) => void
+  userData?: any
 }
 
 interface ChatPropsWithoutSuggestions extends ChatPropsBase {
@@ -52,10 +53,13 @@ export function Chat({
   suggestions,
   className,
   onRateResponse,
+  userData,
 }: ChatProps) {
   const lastMessage = messages.at(-1)
   const isEmpty = messages.length === 0
   const isTyping = lastMessage?.role === "user"
+
+  const [files, setFiles] = useState<File[] | null>(null)
 
   const messageOptions = useCallback(
     (message: Message) => ({
@@ -110,6 +114,7 @@ export function Chat({
             messages={messages}
             isTyping={isTyping}
             messageOptions={messageOptions}
+            userData={userData}
           />
         </ChatMessages>
       ) : null}
@@ -117,14 +122,25 @@ export function Chat({
       <ChatForm
         className="mt-auto mb-5"
         isPending={isGenerating || isTyping}
-        handleSubmit={handleSubmit}
+        handleSubmit={(event, options) => {
+          if (files) {
+            const fileList = createFileList(files)
+            handleSubmit(event, { experimental_attachments: fileList })
+            setFiles(null)
+          } else {
+            handleSubmit(event, options)
+          }
+        }}
       >
-        {({ files, setFiles }) => (
+        {() => (
           <MessageInput
             value={input}
             onChange={handleInputChange}
             stop={stop}
             isGenerating={isGenerating}
+            allowAttachments={true}
+            files={files}
+            setFiles={setFiles}
           />
         )}
       </ChatForm>
