@@ -45,6 +45,9 @@ export async function POST(req: Request) {
 		tools: { userCalorieTool, userWeightTool },
 		maxSteps: 10,
 		temperature: 0.2,
+		onError: (error) => {
+			console.error(error);
+		},
 		async onFinish({ response }) {
 			await saveChat({
 				id,
