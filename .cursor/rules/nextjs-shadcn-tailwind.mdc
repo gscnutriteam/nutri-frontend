@@ -1,0 +1,28 @@
+# Next.js Project Rules: shadcn, Tailwind, Modular Structure
+
+- **UI Components:**
+  - Jika membutuhkan komponen UI yang sudah ada di `@/ui`, *selalu gunakan* dari sana. Jangan membuat komponen baru yang fungsinya sudah tersedia di `@/ui`.
+  - Semua komponen global UI (seperti button, input, dialog, dsb) harus diambil dari `@/ui`.
+
+- **Warna & Tema:**
+  - Gunakan warna dan variabel tema yang sudah didefinisikan di [`tailwind.config.ts`](mdc:tailwind.config.ts). Jangan hardcode warna di komponen.
+
+- **Penulisan Kode:**
+  - Tulis kode secara modular dan terstruktur seperti expert developer.
+  - Pisahkan komponen ke file baru jika kompleksitasnya meningkat atau digunakan ulang.
+
+- **Struktur Folder:**
+  - Semua routing halaman ada di folder `/app`.
+  - Semua komponen dan utility yang spesifik fitur/halaman harus ada di `@/services`.
+  - Komponen/utility yang sangat spesifik (bukan global) *wajib* masuk ke subfolder di `services` sesuai domain/fiturnya.
+  - Di luar `services`, komponen/utility dianggap global.
+  - Pada folder `/app`, hanya lakukan pemanggilan komponen page dari `services`. Usahakan setiap file page di `/app` hanya berisi satu komponen utama yang mengarah ke komponen di `services`.
+
+- **Best Practice:**
+  - Hindari duplikasi kode dan komponen.
+  - Selalu gunakan import absolut (`@/services/...`, `@/ui/...`) sesuai konvensi project.
+  - Jaga konsistensi penamaan dan struktur folder.
+description:
+globs:
+alwaysApply: false
+---
