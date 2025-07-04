@@ -1,17 +1,21 @@
 "use client";
+import React from "react";
 import { Chat } from "@/components/ui/chat";
 import { useChat } from '@ai-sdk/react';
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createChat, loadChat, listChats } from '../util/chat-store';
 import type { Message } from '../util/chat-store';
+import { storage } from '@/lib/firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { HeaderFeature } from "@/components/ui/header_feature";
 
 interface ChatSectionProps {
-  showHistory: boolean;
-  setShowHistory: (show: boolean) => void;
+  userData: any;
+  headerSlot?: React.ReactNode;
 }
 
-export default function ChatSection({ showHistory, setShowHistory }: ChatSectionProps) {
+export default function ChatSection({ userData, headerSlot }: ChatSectionProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
     const chatId = searchParams.get('id');
@@ -19,6 +23,7 @@ export default function ChatSection({ showHistory, setShowHistory }: ChatSection
     const [id, setId] = useState<string | undefined>(chatId || undefined);
     const [isLoading, setIsLoading] = useState(false);
     const [history, setHistory] = useState<{id: string, title: string}[]>([]);
+    const [showHistory, setShowHistory] = useState(false);
 
     useEffect(() => {
         async function setupChat() {
@@ -49,13 +54,55 @@ export default function ChatSection({ showHistory, setShowHistory }: ChatSection
         }
     }, [showHistory]);
 
+    // Add file upload logic
+    async function uploadFilesAndSend(event: any, options: any) {
+        if (event && typeof event.preventDefault === 'function') {
+            event.preventDefault();
+        }
+        if (options && options.experimental_attachments) {
+            const files: FileList = options.experimental_attachments;
+            const urls = [];
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const storageRef = ref(storage, `chat-uploads/${id}/${Date.now()}-${file.name}`);
+                await uploadBytes(storageRef, file);
+                const url = await getDownloadURL(storageRef);
+                urls.push({
+                    name: file.name,
+                    contentType: file.type,
+                    url,
+                });
+            }
+            // Pass URLs as attachments to chat.handleSubmit
+            chat.handleSubmit(event, { experimental_attachments: urls });
+        } else {
+            chat.handleSubmit(event, options);
+        }
+    }
+
     return (
         <div className="relative h-[97vh] px-3 pt-8">
+            {/* <HeaderFeature
+                title="Chat Nubo"
+                variant="white"
+                className="text-center w-full"
+                rightSlot={
+                  headerSlot && React.isValidElement(headerSlot)
+                    ? React.cloneElement(headerSlot as React.ReactElement<any>, {
+                        onClick: (e: any) => {
+                          const orig = (headerSlot as React.ReactElement<any>).props.onClick;
+                          if (orig) orig(e);
+                          setShowHistory(true);
+                        },
+                      })
+                    : headerSlot
+                }
+            /> */}
             {/* Chat UI */}
             <Chat
                 className="h-full"
                 handleInputChange={chat.handleInputChange}
-                handleSubmit={chat.handleSubmit}
+                handleSubmit={uploadFilesAndSend}
                 input={chat.input}
                 isGenerating={isLoading}
                 messages={chat.messages}
@@ -68,6 +115,7 @@ export default function ChatSection({ showHistory, setShowHistory }: ChatSection
                     "Rekomendasi makan siang yang sehat",
                     "Makanan untuk diet",
                 ]}
+                userData={userData}
             />
             {/* History Modal */}
             {showHistory && (
