@@ -42,6 +42,9 @@ export async function POST(req: Request) {
 			Contoh:
 			User: Saya ingin melihat data riwayat berat badan saya.
 
+
+
+			KAMU WAJIB MENGGUNAKAN TOOLS JIKA USER MEMINTA INFORMASI YANG RELEVAN.
 			`,
 		messages,
 		tools: { userCalorieTool, userWeightTool },
@@ -49,8 +52,8 @@ export async function POST(req: Request) {
 		onStepFinish: (step) => {
 			console.log(step);
 		},
-		toolCallStreaming: true,
-		temperature: 0.2,
+		// toolCallStreaming: true,
+		temperature: 0.4,
 		onError: (error) => {
 			console.error(error);
 		},
