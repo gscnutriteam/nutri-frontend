@@ -34,6 +34,8 @@ export async function POST(req: Request) {
 			Mendapatkan riwayat makan dari user. Jika user meminta riwayat makan, gunakan tool ini.
 			Contoh:
 			User: Saya ingin melihat riwayat makan saya.
+			User: berikan data makanan saya.
+			User: berikan data makanan yang saya makan.
 
 			- userWeightTool
 			Mendapatkan data riwayat berat badan dari user. Jika user meminta data riwayat berat badan, gunakan tool ini.
@@ -43,7 +45,11 @@ export async function POST(req: Request) {
 			`,
 		messages,
 		tools: { userCalorieTool, userWeightTool },
-		maxSteps: 10,
+		maxSteps: 15,
+		onStepFinish: (step) => {
+			console.log(step);
+		},
+		toolCallStreaming: true,
 		temperature: 0.2,
 		onError: (error) => {
 			console.error(error);
