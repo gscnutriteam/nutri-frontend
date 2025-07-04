@@ -19,12 +19,14 @@ interface HeaderFeatureProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof headerFeatureVariants> {
   title: string;
+  rightSlot?: React.ReactNode;
 }
 
 export function HeaderFeature({
   className,
   variant = "white",
   title,
+  rightSlot,
   ...props
 }: HeaderFeatureProps) {
   return (
@@ -48,6 +50,9 @@ export function HeaderFeature({
       >
         {title}
       </p>
+      {rightSlot && (
+        <div className="absolute top-0 right-4 h-full flex items-center">{rightSlot}</div>
+      )}
     </div>
   );
 }

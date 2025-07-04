@@ -146,6 +146,7 @@ export function MessageInput({
     props.allowAttachments && props.files && props.files.length > 0
 
   useAutosizeTextArea({
+  /* @ts-ignore */
     ref: textAreaRef,
     maxHeight: 240,
     borderWidth: 1,

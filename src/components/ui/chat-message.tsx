@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 import { FilePreview } from "@/components/ui/file-preview"
 import { MarkdownRenderer } from "@/components/ui/markdown-renderer"
 import Image from "next/image"
+import { getPayloadFromToken } from '@/lib/jwt'
 
 const chatBubbleVariants = cva(
   "group/message relative break-words rounded-lg p-3 text-sm sm:max-w-[90%]",
@@ -90,6 +91,7 @@ export interface ChatMessageProps extends Message {
   animation?: Animation
   actions?: React.ReactNode
   className?: string
+  userData?: any
 }
 
 export const ChatMessage: React.FC<ChatMessageProps> = ({
@@ -102,39 +104,67 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
   className,
   experimental_attachments,
   toolInvocations,
+  userData,
 }) => {
-  const files = useMemo(() => {
-    return experimental_attachments?.map((attachment) => {
-      const dataArray = dataUrlToUint8Array(attachment.url)
-      const file = new File([dataArray], attachment.name ?? "Unknown")
-      return file
-    })
-  }, [experimental_attachments])
+  // Render attachments directly from URL
+  const files = experimental_attachments ?? [];
 
   const isUser = role === "user"
 
-  const formattedTime = createdAt?.toLocaleTimeString("en-US", {
+  // Use userData from prop for user info
+  let userName = "User";
+  let userAvatar = "/assets/img/default-avatar.png";
+  if (isUser && userData) {
+    userName = userData.name || "User";
+    userAvatar = userData.profile_picture || "/assets/img/default-avatar.png";
+  }
+
+  const dateObj = createdAt ? new Date(createdAt) : undefined;
+  const formattedTime = dateObj?.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
-  })
+  });
 
   return (
     <div className={cn("flex flex-col", isUser ? "items-end" : "items-start")}>
-      <div className={cn("flex gap-2", isUser ? "flex-row-reverse": "flex-row")}>
-        {/* TODO: Change to USER */}
+      <div className={cn("flex gap-2 items-center", isUser ? "flex-row-reverse": "flex-row")}>
         <div>
-          <Image alt="NuBo Image" src={"/assets/img/nubo.png"} width={40} height={40} />
+          {isUser ? (
+            <img alt={userName} src={userAvatar} width={30} height={30} className="rounded-full object-cover aspect-square border border-black" />
+          ) : (
+            <Image alt="NuBo Image" src={"/assets/img/nubo.png"} width={30} height={30} />
+          )}
         </div>
-        <p>{isUser ? "User": "Nubo"}</p>
+        <p>{isUser ? userName : "Nubo"}</p>
       </div>
-      {files ? (
+      {files.length > 0 && (
         <div className="mb-1 flex flex-wrap gap-2">
           {files.map((file, index) => {
-            return <FilePreview file={file} key={`file ${index + 1}`} />
+            if (file.contentType?.startsWith("image/")) {
+              return (
+                <img
+                  key={index}
+                  src={file.url}
+                  alt={file.name || `attachment-${index}`}
+                  className="max-h-40 rounded-lg border border-black "
+                />
+              );
+            }
+            // Untuk file lain, bisa tambahkan preview/link
+            return (
+              <a
+                key={index}
+                href={file.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-blue-600"
+              >
+                {file.name || `File ${index + 1}`}
+              </a>
+            );
           })}
         </div>
-      ) : null}
-
+      )}
       <div className={cn(chatBubbleVariants({ isUser, animation }), className)}>
         <div className="space-y-3">
           <MarkdownRenderer>{content}</MarkdownRenderer>
@@ -146,10 +176,9 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
           </div>
         ) : null}
       </div>
-
       {showTimeStamp && createdAt ? (
         <time
-          dateTime={createdAt.toISOString()}
+          dateTime={dateObj instanceof Date && !isNaN(dateObj.getTime()) ? dateObj.toISOString() : ""}
           className={cn(
             "mt-1 block px-1 text-xs opacity-50",
             animation !== "none" && "duration-500 animate-in fade-in-0"
